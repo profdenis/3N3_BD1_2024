@@ -1,6 +1,8 @@
 # 2b - Base de Données Université
 
-Exécutez le fichier `university_create.sql` pour créer la base de données
+Exécutez le
+fichier [university_create.sql](../src/create/university_create.sql) pour
+créer la base de données
 Universitaire.
 
 ```sql
@@ -16,6 +18,7 @@ from student;
 
 2- Supposons que l'université facture 200$ par crédit pour un cours. Trouvez le
 prix pour chaque cours.
+
 -
 - `price` est un alias pour la colonne calculée
 
@@ -32,7 +35,7 @@ from course;
 select *
 from offering
 where semester = 'W'
- and year = 2020;
+  and year = 2020;
 ```
 
 4- **Tri** : ordonner les instructeurs par leurs noms

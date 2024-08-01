@@ -7,7 +7,9 @@
 
 ## Création de la Base de Données de Contacts
 
-1- Exécutez le fichier `contact_create.sql` pour créer la base de données
+1- Exécutez le
+fichier [contact_create.sql](../src/create/contact_create.sql) pour créer
+la base de données
 
 - les commandes SQL incluses dans ce fichier seront expliquées plus tard
 - ouvrez le fichier dans DataGrip et exécutez-le dans une session existante ou
