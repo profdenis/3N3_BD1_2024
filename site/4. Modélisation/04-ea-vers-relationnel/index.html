@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Conversion d'un diagramme EA en schéma relationnel - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Conversion d\u0027un diagramme EA en sch\u00e9ma relationnel";
+        var mkdocs_page_input_path = "4. Mod\u00e9lisation/04-ea-vers-relationnel.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Conversion d'un diagramme EA en schéma relationnel</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#schema-relationnel">Schéma relationnel</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#les-colonnes-faisant-partie-dune-cle-etrangere-sont-suivies-dun">les colonnes faisant partie d'une clé étrangère sont suivies d'un *</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#etapes">Étapes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exemples">Exemples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#contacts">Contacts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#simple-bank">Simple Bank</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#college">Collège</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#music">Music</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#appartments">Appartments</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">4. Modélisation</li>
+      <li class="breadcrumb-item active">Conversion d'un diagramme EA en schéma relationnel</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="conversion-dun-diagramme-ea-en-schema-relationnel">Conversion d'un diagramme EA en schéma relationnel</h1>
+<h2 id="schema-relationnel">Schéma relationnel</h2>
+<ul>
+<li><strong>Schéma relationnel (modèle de données relationnel)</strong> : ensemble de schémas
+  de tables</li>
+<li>
+<p><strong>Schéma de table</strong> :</p>
+<ul>
+<li><em>forme basique</em> : nom de la table et ensemble de noms de colonnes<ul>
+<li><code>employee(emp_id, name, address, dept_id)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Schéma de table</strong> :</p>
+<ul>
+<li><em>forme détaillée</em> : nom de la table et ensemble de noms de colonnes plus
+  types de données et clés primaires, et parfois d'autres contraintes telles
+  que <code>NOT NULL</code><ul>
+<li>les colonnes faisant partie de la clé primaire sont soit soulignées,
+  soit en majuscules<ul>
+<li>pour éviter des problèmes avec certains SGBD, écrivez les noms des
+  tables et des colonnes uniquement en minuscules dans les
+  instructions <code>CREATE TABLE</code></li>
+</ul>
+</li>
+<li>
+<h2 id="les-colonnes-faisant-partie-dune-cle-etrangere-sont-suivies-dun">les colonnes faisant partie d'une clé étrangère sont suivies d'un *</h2>
+<em>exemple</em> : <code>employee(EMP_ID integer, name text, address text, dept_id* integer)</code></li>
+</ul>
+</li>
+<li>d'autres formes intermédiaires entre les deux précédentes sont également
+  possibles</li>
+</ul>
+</li>
+<li><strong>Diagramme physique</strong> : à partir d'un diagramme logique, convertir toutes les
+  relations en clés étrangères et entités supplémentaires (ou tables) si
+  nécessaire</li>
+</ul>
+<h2 id="etapes">Étapes</h2>
+<ol>
+<li>
+<p>Chaque entité du diagramme ER sera une table dans le schéma relationnel</p>
+<ul>
+<li>tous les attributs de l'entité deviennent des colonnes dans le schéma de
+  table</li>
+<li>les attributs de clé primaire deviennent des colonnes de clé primaire dans
+  le schéma de table</li>
+</ul>
+</li>
+<li>
+<p>Chaque association plusieurs-à-plusieurs sera une table</p>
+<ul>
+<li>les attributs de l'association sont ajoutés au schéma de table</li>
+<li>ajouter une colonne de clé étrangère (ou des colonnes) pour chaque table
+  impliquée dans l'association</li>
+<li>choisir une clé primaire parmi les colonnes actuelles, ou ajouter de
+  nouvelles colonnes de clé primaire (comme une colonne ID)</li>
+</ul>
+</li>
+</ol>
+<p><strong>Conseil</strong> : comptez le nombre d'entités dans le diagramme ER, ajoutez le
+   nombre d'associations plusieurs-à-plusieurs, et ce nombre sera le nombre de
+   tables dans le schéma relationnel</p>
+<ol>
+<li>
+<p>Les associations plusieurs-à-un ne deviendront <strong>PAS</strong> des tables</p>
+<ul>
+<li>à la place, ajoutez une colonne de clé étrangère du côté plusieurs
+  référant la clé primaire du côté un</li>
+<li>si le côté un est en fait <em>exactement un</em>, alors rendez la colonne de clé
+  étrangère <code>NOT NULL</code></li>
+</ul>
+</li>
+<li>
+<p>Les associations un-à-un ne deviendront <strong>PAS</strong> des tables</p>
+<ul>
+<li>traitez les associations un-à-un de manière similaire aux associations
+  plusieurs-à-un, sauf que vous ne prenez qu'une des clés primaires comme
+  clé étrangère de l'autre côté</li>
+<li>il n'y a pas de règle parfaite sur quel côté choisir, cela dépend du
+  contexte</li>
+<li>si c'est une association exactement-un-à-au-plus-un, alors généralement la
+  clé étrangère sera du côté au-plus-un (pointant vers le côté
+  exactement-un)</li>
+</ul>
+</li>
+</ol>
+<h2 id="exemples">Exemples</h2>
+<h3 id="contacts">Contacts</h3>
+<p><img alt="contacts alternative notation" src="../../images/contacts_phys_uml.png" /></p>
+<details>
+    <summary>Réponse</summary>
+    <pre>
+contact(CONTACT_ID, name, phone, address, email)
+call(CALL_ID, phone, date, time, contact_id*)
+    </pre>
+</details>
+<p><br></p>
+<h3 id="simple-bank">Simple Bank</h3>
+<p><img alt="SimpleBank_uml.png" src="../../images/SimpleBank_uml.png" /></p>
+<details>
+    <summary>Réponse</summary>
+    <pre>
+customer(ID, name, address, phone)
+account(NUMBER, type, balance)
+transaction(ID, code, amount, date, time, description, account_number*)
+customer_account(id*, number*)
+    </pre>
+</details>
+<p><br></p>
+<h3 id="college">Collège</h3>
+<p><img alt="College_phys_uml.png" src="../../images/College_phys_uml.png" /></p>
+<details>
+    <summary>Réponse</summary>
+    <pre>
+Student(STUDENT_ID, name, phone, advisor_id*)
+Lecturer(LECTURER_ID, name, office, rank, phone)
+Course(CODE, name, credits)
+Grade(GRADE_ID, student_id* NOT NULL, 
+      lecturer_id* NOT NULL, 
+      course_code* NOT NULL, 
+      semester, 
+      year, 
+      result)
+    </pre>
+</details>
+<p><br></p>
+<h3 id="music">Music</h3>
+<p><img alt="Music_phys_uml.png" src="../../images/Music_logique_uml.png" /></p>
+<details>
+    <summary>Réponse</summary>
+    <pre>
+writer(WRITER_ID, first_name, last_name, address, pub_id*)
+work(WORK_ID, title, duration, description)
+publisher(PUB_ID, code, name, address)
+act(ACT_ID, name, address)
+concert(CONCERT_ID, date, venue)
+writer_work(WRITER_ID*, WORK_ID*, percentage)
+performance(PERFORMANCE_ID, act_id*, concert_id*, work_id*)
+    </pre>
+</details>
+<p><br></p>
+<h3 id="appartments">Appartments</h3>
+<p><img alt="ER_apartment_building_phys_uml.png" src="../../images/ER_apartment_building_phys_uml.png" /></p>
+<details>
+    <summary>Réponse</summary>
+    <pre>
+building(BUILDING_ID, name, address, managed)
+apartment(BUILDING_ID*, NUMBER, date_available, asking_rent, managed)
+tenant(TENANT_ID, first_name, last_name, employer, work_phone)
+lease(LEASE_ID, building_id*, apartment_number*, rent, end_of_lease)
+tenant_lease(tenant_id*, lease_id*)
+    </pre>
+</details>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../03-exemples/" class="btn btn-neutral float-left" title="Exemples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../5.%20SQL%20Avanc%C3%A9/01-vues/" class="btn btn-neutral float-right" title="Vues">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../03-exemples/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../5.%20SQL%20Avanc%C3%A9/01-vues/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

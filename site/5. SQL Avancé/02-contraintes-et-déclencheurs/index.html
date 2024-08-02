@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Contraintes et Déclencheurs - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Contraintes et D\u00e9clencheurs";
+        var mkdocs_page_input_path = "5. SQL Avanc\u00e9/02-contraintes-et-d\u00e9clencheurs.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Contraintes et Déclencheurs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#contraintes-null-ou-not-null">Contraintes null ou not null</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contraintes-de-cle-primaire">Contraintes de clé primaire</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contraintes-uniques">Contraintes uniques</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contraintes-de-cle-etrangere">Contraintes de clé étrangère</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#politique-des-contraintes-de-cle-etrangere">Politique des contraintes de clé étrangère</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contraintes-check">Contraintes check</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contraintes-de-domaine">Contraintes de domaine</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#assertions">Assertions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#declencheurs-triggers">Déclencheurs (Triggers)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#quand-utiliser-les-declencheurs">Quand utiliser les déclencheurs</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">5. SQL Avancé</li>
+      <li class="breadcrumb-item active">Contraintes et Déclencheurs</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="contraintes-et-declencheurs">Contraintes et Déclencheurs</h1>
+<ul>
+<li>Les contraintes peuvent être définies dans les instructions <code>create table</code></li>
+<li>Ou ajoutées aux tables existantes avec les instructions <code>alter table</code></li>
+<li>Différents types de contraintes<ul>
+<li><code>null</code> ou <code>not null</code></li>
+<li>Clé primaire</li>
+<li>Unique</li>
+<li>Clé étrangère</li>
+<li>Check</li>
+<li>Domaine</li>
+<li>Assertion</li>
+</ul>
+</li>
+</ul>
+<h2 id="contraintes-null-ou-not-null">Contraintes <code>null</code> ou <code>not null</code></h2>
+<ul>
+<li>Une colonne peut permettre des valeurs <code>null</code></li>
+<li>Ou les interdire avec <code>not null</code></li>
+<li>Par défaut : permettre des valeurs <code>null</code></li>
+</ul>
+<h2 id="contraintes-de-cle-primaire">Contraintes de clé primaire</h2>
+<ul>
+<li>Une colonne ou un groupe de colonnes peut être désigné comme <code>primary key</code> (
+  clé primaire)</li>
+<li>Les colonnes de clé primaire ne peuvent pas être <code>null</code></li>
+<li>implicite <code>not null</code> pour chaque colonne de clé primaire</li>
+<li>Nous pouvons utiliser une contrainte de colonne si la clé primaire n'a qu'une
+  seule colonne<ul>
+<li><code>sid integer primary key</code></li>
+</ul>
+</li>
+<li>Si la clé primaire a plus d'une colonne, nous devons utiliser une contrainte
+  de table<ul>
+<li>spécifiée après toutes les colonnes dans l'instruction <code>create table</code></li>
+<li><code>primary key(eid, sid)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="contraintes-uniques">Contraintes uniques</h2>
+<ul>
+<li>Comme les clés primaires, mais pour les clés candidates (secondaires)</li>
+<li>Définies de la même manière, mais avec <code>unique</code> au lieu de <code>primary key</code></li>
+<li><em>Exemple</em> :<ul>
+<li>ajout d'une contrainte <code>unique</code> à la colonne <code>code</code> de la table <code>course</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">set search_path to university;
+-- alter table course drop constraint course_code_key;
+alter table course
+    add unique (code);
+</code></pre>
+<pre><code class="language-sql">insert into course(name, code, credits)
+values ('Data Structures', 'DS', 3);
+-- delete from course where code = 'DS';
+</code></pre>
+<h2 id="contraintes-de-cle-etrangere">Contraintes de clé étrangère</h2>
+<ul>
+<li>Références à d'autres tables</li>
+<li>Se réfère généralement aux clés primaires dans d'autres tables</li>
+<li>Généralement créées pour représenter des relations lors de la traduction d'un
+  diagramme ER en schéma relationnel</li>
+<li>Une colonne ou un groupe de colonnes peut être des références à une colonne ou
+  un groupe de colonnes dans une autre table</li>
+<li>Nous pouvons utiliser une contrainte de colonne si la clé étrangère n'a qu'une
+  seule colonne<ul>
+<li><code>sid integer references student(sid)</code></li>
+</ul>
+</li>
+<li>Si la clé étrangère a plus d'une colonne, nous devons utiliser une contrainte
+  de table<ul>
+<li>spécifiée après toutes les colonnes dans l'instruction <code>create table</code></li>
+<li><code>foreign key(eid, sid) references enrollment(eid, sid)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="politique-des-contraintes-de-cle-etrangere">Politique des contraintes de clé étrangère</h2>
+<ul>
+<li>Lorsque nous insérons une nouvelle ligne dans une table avec une clé
+  étrangère, la valeur que nous spécifions pour la ou les colonnes de clé
+  étrangère doit exister dans l'autre table à laquelle nous nous référons<ul>
+<li>cela est souvent appelé une <strong>contrainte d'intégrité référentielle</strong></li>
+<li>cela correspond généralement à une relation <em>many-exactly-one</em> (
+  plusieurs-exactement-un)</li>
+<li>exception : si nous permettons des valeurs <code>null</code> pour la ou les colonnes
+  de clé étrangère, alors les valeurs <code>null</code> n'ont pas besoin d'exister dans
+  l'autre table</li>
+<li>et les valeurs <code>null</code> n'existeront généralement pas car la ou les colonnes
+  auxquelles la clé étrangère se réfère seront généralement des colonnes de
+  clé primaire</li>
+<li>cela correspond généralement à une relation <em>many-at-most-one</em> (
+  plusieurs-au-plus-un)</li>
+</ul>
+</li>
+<li>Mais que se passe-t-il lorsque nous supprimons ou mettons à jour une ligne
+  dans la table à laquelle la clé étrangère se réfère ?<ul>
+<li>Si la valeur à laquelle la ou les colonnes de clé étrangère se réfèrent
+  n'existe plus, que faisons-nous ?</li>
+<li>Dans les standards SQL, les actions valides sont<ul>
+<li><code>RESTRICT</code>, <code>CASCADE</code>, <code>SET NULL</code>, <code>NO ACTION</code> et <code>SET DEFAULT</code></li>
+<li>Toutes les actions valides ne sont pas implémentées dans tous les
+  SGBDR</li>
+</ul>
+</li>
+<li>La politique par défaut des clés étrangères est <code>RESTRICT</code><ul>
+<li>si l'exécution de la mise à jour ou de la suppression laisserait des
+  lignes "orphelines" (lignes qui se réfèrent à des valeurs
+  inexistantes), alors bloquer la mise à jour ou la suppression et
+  renvoyer un message d'erreur</li>
+<li><code>NO ACTION</code> est un synonyme de <code>RESTRICT</code></li>
+</ul>
+</li>
+<li>Si la politique <code>CASCADE</code> est définie<ul>
+<li>alors les changements sont propagés aux lignes dépendant de la ligne
+  originale</li>
+<li>si la ligne est supprimée, alors les lignes dépendant d'elle seront
+  également supprimées (<strong>très dangereux</strong>)</li>
+<li>si la ligne est mise à jour, alors les lignes dépendant d'elle seront
+  également mises à jour</li>
+</ul>
+</li>
+<li>Si la politique est définie sur <code>SET NULL</code> ou <code>SET DEFAULT</code>, elle
+  remplacera les valeurs de la ou des colonnes de clé étrangère par la
+  valeur <code>null</code> ou par la valeur par défaut, si possible</li>
+</ul>
+</li>
+</ul>
+<h2 id="contraintes-check">Contraintes <code>check</code></h2>
+<ul>
+<li>Vérifie une expression avant d'effectuer une insertion ou une mise à jour<ul>
+<li>si l'expression est fausse, alors l'insertion ou la mise à jour échouera</li>
+<li>sinon, elle réussira</li>
+<li>attention : si l'expression évalue à <code>null</code>, alors l'insertion ou la mise
+  à jour réussira</li>
+</ul>
+</li>
+<li>Si les contraintes <code>check</code> se réfèrent à une seule colonne, elles peuvent être
+  spécifiées comme une contrainte de colonne<ul>
+<li><code>score integer check(score &gt;= 0 and score &lt;= 100)</code></li>
+</ul>
+</li>
+<li>Si les contraintes <code>check</code> se réfèrent à 2 colonnes ou plus, elles doivent
+  être spécifiées comme une contrainte de table<ul>
+<li><code>check(end_date &gt;= start_date)</code></li>
+<li>notez que si l'une des dates est <code>null</code>, l'expression sera <code>null</code> et la
+  vérification passera</li>
+</ul>
+</li>
+</ul>
+<h2 id="contraintes-de-domaine">Contraintes de domaine</h2>
+<ul>
+<li>Un domaine est utilisé pour restreindre les valeurs possibles pour un type de
+  données</li>
+<li>Un domaine<ul>
+<li>peut avoir une valeur par défaut</li>
+<li>peut être défini avec une contrainte <code>null</code> ou <code>not null</code></li>
+<li>peut avoir une ou plusieurs contraintes <code>check</code></li>
+</ul>
+</li>
+<li>Un domaine peut être utilisé pour éviter de répéter trop de contraintes, en
+  particulier les contraintes <code>check</code><ul>
+<li><code>create domain score as integer check(score &gt;= 0 and score &lt;= 100)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="assertions">Assertions</h2>
+<ul>
+<li>Contraintes générales qui peuvent s'appliquer à plus d'une ligne d'une table
+  ou à des colonnes de plus d'une table</li>
+<li>Comme des contraintes <code>check</code> plus générales qui ne sont pas limitées à une
+  seule ligne</li>
+<li>La plupart des SGBDR n'ont pas de support complet pour les assertions, voire
+  aucun support pour les assertions</li>
+</ul>
+<h2 id="declencheurs-triggers">Déclencheurs (<em>Triggers</em>)</h2>
+<ul>
+<li>Les déclencheurs sont utilisés dans les bases de données actives</li>
+<li>Ils sont similaires aux <em>événements</em> dans une <em>architecture orientée
+  événements</em></li>
+<li>Un déclencheur exécute généralement une fonction sur un événement ou des
+  événements spécifiques</li>
+<li>La fonction qu'il exécute est similaire à un gestionnaire d'événements<ul>
+<li>par exemple, dans une page HTML, vous pouvez associer une fonction
+  JavaScript à un événement <code>onclick</code> sur un bouton</li>
+<li><code>Do something</code></li>
+</ul>
+</li>
+<li>Les déclencheurs suivent la <em>structure ECA</em> pour définir des <em>règles actives</em><ul>
+<li><strong>E</strong>vent : signal (déclencheur) invoquant la règle</li>
+<li><strong>C</strong>ondition : test logique, détermine si l'action sera exécutée ou non</li>
+<li><strong>A</strong>ction : code ou fonction (en SQL, PL/SQL, ou un autre langage
+  supporté) s'exécutant sur la base de données</li>
+</ul>
+</li>
+<li>Le support des déclencheurs varie selon les SGBDR</li>
+</ul>
+<h3 id="quand-utiliser-les-declencheurs">Quand utiliser les déclencheurs</h3>
+<ul>
+<li>Les déclencheurs peuvent être utilisés pour imposer des contraintes qui ne
+  peuvent pas être imposées autrement<ul>
+<li>si les assertions ne sont pas supportées, alors une fonctionnalité
+  similaire peut être obtenue avec des déclencheurs...</li>
+<li>mais les déclencheurs sont plus puissants que les assertions</li>
+</ul>
+</li>
+<li>Les déclencheurs peuvent être utilisés pour la journalisation<ul>
+<li>si vous voulez (ou devez) conserver des journaux de modifications, alors
+  les déclencheurs peuvent aider</li>
+<li>normalement, lorsque des insertions, mises à jour et suppressions sont
+  exécutées sur la base de données, aucune trace ne sera laissée</li>
+<li>créer des déclencheurs pour insérer des données dans une table de journal
+  ou d'historique (ou des tables)</li>
+<li>plus de détails : https://en.wikipedia.org/wiki/Log_trigger</li>
+</ul>
+</li>
+<li>Les déclencheurs peuvent être utilisés pour de nombreuses autres choses<ul>
+<li>pour générer/mettre à jour des valeurs pour d'autres colonnes</li>
+<li>pour mettre à jour une table de statistiques</li>
+<li>pour auditer des données sensibles</li>
+<li>pour envoyer des emails aux DBA lors d'événements critiques</li>
+<li>pour implémenter d'autres règles métier</li>
+</ul>
+</li>
+<li>De même que la programmation événementielle en JavaScript ou dans d'autres
+  langages de programmation, des fonctions doivent être associées à certains
+  événements<ul>
+<li>les événements les plus courants sont : <code>INSERT</code>, <code>UPDATE</code>, et <code>DELETE</code></li>
+<li>avec un modificateur (spécifié avant l'événement) : <code>BEFORE</code> ou <code>AFTER</code></li>
+<li>L'événement peut être déclenché pour chaque ligne ou pour l'ensemble de la
+  déclaration<ul>
+<li>une seule instruction <code>INSERT</code>, <code>UPDATE</code>, ou <code>DELETE</code> peut s'appliquer
+  à une ou plusieurs lignes</li>
+<li>par défaut, nous obtenons un déclencheur au niveau de la déclaration</li>
+<li>si nous spécifions <em>FOR EACH ROW</em>, alors nous obtenons un déclencheur
+  au niveau de la ligne</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Par exemple, après avoir inséré les informations d'un nouvel employé dans une
+  table <code>employee</code>, nous pourrions vouloir créer automatiquement un compte pour
+  permettre au nouvel employé de se connecter au système de l'entreprise<ul>
+<li>la création d'un tel compte nécessiterait probablement l'insertion d'une
+  ligne dans une table <code>account</code></li>
+<li>nous avons donc besoin d'un déclencheur <code>AFTER INSERT</code> pour cela</li>
+<li>notez que parfois, cette fonctionnalité est gérée par l'application
+  frontale, et non par la base de données</li>
+</ul>
+</li>
+<li>
+<p>Un autre exemple : nous pourrions avoir un déclencheur <code>BEFORE DELETE</code> pour
+  archiver les données supprimées importantes</p>
+<ul>
+<li>nous pourrions insérer les données supprimées dans une autre table</li>
+<li>nous pourrions également enregistrer qui a supprimé les données et quand
+  elles ont été supprimées</li>
+</ul>
+</li>
+<li>
+<p>Malheureusement, les implémentations de déclencheurs varient selon les SGBD</p>
+<ul>
+<li>Certains ne supportent que des sous-ensembles de la norme, d'autres y
+  apportent de petites modifications</li>
+</ul>
+</li>
+<li>Dans PostgreSQL, les déclencheurs peuvent être créés avec la syntaxe (
+  simplifiée) suivante :</li>
+</ul>
+<pre><code>CREATE TRIGGER trigger_name 
+{BEFORE | AFTER | INSTEAD OF} {event [OR ...]}
+   ON table_name
+   [FOR [EACH] {ROW | STATEMENT}]
+       EXECUTE PROCEDURE trigger_function
+</code></pre>
+<ul>
+<li>où <code>event</code> peut être <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code> ou <code>TRUNCATE</code></li>
+<li>
+<p>Référez-vous à ces liens pour plus de détails :</p>
+<ul>
+<li><a href="https://www.postgresqltutorial.com/creating-first-trigger-postgresql/">https://www.postgresqltutorial.com/creating-first-trigger-postgresql/</a></li>
+<li><a href="https://www.postgresql.org/docs/14/sql-createtrigger.html">https://www.postgresql.org/docs/14/sql-createtrigger.html</a></li>
+<li><a href="https://www.postgresql.org/docs/14/triggers.html">https://www.postgresql.org/docs/14/triggers.html</a></li>
+</ul>
+</li>
+<li>
+<p>Sur MySQL/MariaDB, la syntaxe de base est :</p>
+</li>
+</ul>
+<pre><code>CREATE TRIGGER trigger_name
+{BEFORE | AFTER} {INSERT | UPDATE| DELETE }
+ON table_name FOR EACH ROW
+trigger_body;
+</code></pre>
+<ul>
+<li>
+<p>Référez-vous à ces liens pour plus de détails :</p>
+<ul>
+<li><a href="https://www.mysqltutorial.org/create-the-first-trigger-in-mysql.aspx">https://www.mysqltutorial.org/create-the-first-trigger-in-mysql.aspx</a></li>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/create-trigger.html">https://dev.mysql.com/doc/refman/8.0/en/create-trigger.html</a></li>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html">https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html</a></li>
+</ul>
+</li>
+<li>
+<p>Sur Oracle, les déclencheurs peuvent être créés en utilisant la syntaxe
+  suivante :</p>
+</li>
+</ul>
+<pre><code>CREATE [OR REPLACE] TRIGGER trigger_name
+{BEFORE | AFTER } triggering_event ON table_name
+[FOR EACH ROW]
+[FOLLOWS | PRECEDES another_trigger]
+[ENABLE / DISABLE ]
+[WHEN condition]
+DECLARE
+    declaration statements
+BEGIN
+    executable statements
+EXCEPTION
+    exception_handling statements
+END;
+</code></pre>
+<ul>
+<li>
+<p><a href="https://www.oracletutorial.com/plsql-tutorial/oracle-trigger/">https://www.oracletutorial.com/plsql-tutorial/oracle-trigger/</a></p>
+</li>
+<li>
+<p>Pour bien utiliser les déclencheurs, nous devons écrire des fonctions ou des
+  procédures dans un certain langage de programmation</p>
+<ul>
+<li>PL/SQL (langage de programmation pour SQL) est supporté sous une certaine
+  forme dans la plupart des bases de données relationnelles</li>
+<li>ou un autre langage de programmation supporté, tel que C<ul>
+<li>PostgreSQL supporte les <em>types définis par l'utilisateur (UDT)</em> et les
+  <em>fonctions définies par l'utilisateur (UDF)</em></li>
+<li>Les UDF peuvent être définies en PL/SQL ou en C</li>
+<li>Les UDF peuvent être utilisées pour les déclencheurs</li>
+</ul>
+</li>
+<li>d'autres langages de programmation supportent les langages de
+  programmation de différentes manières</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01-vues/" class="btn btn-neutral float-left" title="Vues"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../03-objet-relationel/" class="btn btn-neutral float-right" title="Modèle objet-relationel">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../01-vues/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../03-objet-relationel/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

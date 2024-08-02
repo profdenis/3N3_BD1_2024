@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Présentation - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e9sentation";
+        var mkdocs_page_input_path = "2. Le mod\u00e8le relationnel/01-Pr\u00e9sentation.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Présentation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#lexique">Lexique</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exemples">Exemples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-1-table-des-etudiants">Exemple 1 : Table des Étudiants</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-2-table-des-cours">Exemple 2 : Table des Cours</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-3-table-des-inscriptions">Exemple 3 : Table des Inscriptions</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">2. Le modèle relationnel</li>
+      <li class="breadcrumb-item active">Présentation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="presentation">Présentation</h1>
+<p>Le modèle relationnel est un cadre conceptuel pour organiser et gérer des
+données sous forme de tables, également appelées relations. Ce modèle a été
+introduit par Edgar F. Codd en 1970 et est devenu la base des systèmes de
+gestion de bases de données relationnelles (SGBDR), tels que PostgreSQL. Dans ce
+modèle, les données sont représentées par des tuples (lignes) dans des
+relations (tables), et les opérations sur les données sont effectuées à l'aide
+d'un langage de requête structuré comme SQL (Structured Query Language).</p>
+<h2 id="lexique">Lexique</h2>
+<ol>
+<li>
+<p><strong>Relation (Table)</strong> : Une relation est une table à deux dimensions composée
+   de lignes et de colonnes. Chaque table représente une entité ou un concept du
+   monde réel.</p>
+</li>
+<li>
+<p><strong>Attribut (Colonne)</strong> : Un attribut est une colonne dans une table. Chaque
+   attribut a un nom et un type de données (par exemple, entier, texte, date).</p>
+</li>
+<li>
+<p><strong>Tuple (Ligne)</strong> : Un tuple est une ligne dans une table. Chaque tuple
+   représente un enregistrement unique d'une entité.</p>
+</li>
+<li>
+<p><strong>Domaine</strong> : Un domaine est l'ensemble des valeurs possibles qu'un attribut
+   peut prendre. Par exemple, le domaine d'un attribut "âge" pourrait être les
+   entiers de 0 à 120.</p>
+</li>
+<li>
+<p><strong>Clé Primaire</strong> : Une clé primaire est un attribut ou un ensemble
+   d'attributs qui identifie de manière unique chaque tuple dans une relation.
+   Par exemple, un numéro de sécurité sociale peut être une clé primaire pour
+   une table de personnes.</p>
+</li>
+<li>
+<p><strong>Clé Étrangère</strong> : Une clé étrangère est un attribut ou un ensemble
+   d'attributs dans une table qui fait référence à la clé primaire d'une autre
+   table. Cela crée une relation entre les deux tables.</p>
+</li>
+<li>
+<p><strong>Schéma de Relation</strong> : Le schéma de relation est la structure ou la
+   définition d'une relation, incluant les noms des attributs et leurs types de
+   données.</p>
+</li>
+<li>
+<p><strong>Intégrité Référentielle</strong> : L'intégrité référentielle est une contrainte
+   qui assure que les valeurs des clés étrangères correspondent à des valeurs
+   existantes de clés primaires dans les tables référencées.</p>
+</li>
+</ol>
+<h2 id="exemples">Exemples</h2>
+<h3 id="exemple-1-table-des-etudiants">Exemple 1 : Table des Étudiants</h3>
+<table>
+<thead>
+<tr>
+<th>ID_Étudiant</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Âge</th>
+<th>Département</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Dupont</td>
+<td>Jean</td>
+<td>20</td>
+<td>Informatique</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Martin</td>
+<td>Sophie</td>
+<td>22</td>
+<td>Mathématiques</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Durand</td>
+<td>Pierre</td>
+<td>21</td>
+<td>Physique</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Relation</strong> : <code>Étudiants</code></li>
+<li><strong>Attributs</strong> : <code>ID_Étudiant</code>, <code>Nom</code>, <code>Prénom</code>, <code>Âge</code>, <code>Département</code></li>
+<li><strong>Clé Primaire</strong> : <code>ID_Étudiant</code></li>
+</ul>
+<h3 id="exemple-2-table-des-cours">Exemple 2 : Table des Cours</h3>
+<table>
+<thead>
+<tr>
+<th>Code_Cours</th>
+<th>Nom_Cours</th>
+<th>Crédit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CS101</td>
+<td>Introduction à CS</td>
+<td>3</td>
+</tr>
+<tr>
+<td>MA101</td>
+<td>Calcul I</td>
+<td>4</td>
+</tr>
+<tr>
+<td>PH101</td>
+<td>Physique Générale</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Relation</strong> : <code>Cours</code></li>
+<li><strong>Attributs</strong> : <code>Code_Cours</code>, <code>Nom_Cours</code>, <code>Crédit</code></li>
+<li><strong>Clé Primaire</strong> : <code>Code_Cours</code></li>
+</ul>
+<h3 id="exemple-3-table-des-inscriptions">Exemple 3 : Table des Inscriptions</h3>
+<table>
+<thead>
+<tr>
+<th>ID_Étudiant</th>
+<th>Code_Cours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>CS101</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MA101</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PH101</td>
+</tr>
+<tr>
+<td>1</td>
+<td>MA101</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Relation</strong> : <code>Inscriptions</code></li>
+<li><strong>Attributs</strong> : <code>ID_Étudiant</code>, <code>Code_Cours</code></li>
+<li><strong>Clé Primaire</strong> : <code>(ID_Étudiant, Code_Cours)</code></li>
+<li><strong>Clé Étrangère</strong> : <code>ID_Étudiant</code> réfère
+  à <code>Étudiants(ID_Étudiant)</code>, <code>Code_Cours</code> réfère à <code>Cours(Code_Cours)</code></li>
+</ul>
+<p>Ces exemples montrent comment les données peuvent être organisées et
+interconnectées dans le modèle relationnel, facilitant ainsi la gestion et
+l'interrogation des informations de manière efficace et cohérente.</p>
+<p><strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3 Opus</code>. L'IA
+a été utilisée pour générer des explications, des exemples et des suggestions de
+structure. Toutes les informations ont été vérifiées, éditées et complétées par
+l'auteur._</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../1.%20Introduction/PostgreSQL/04-Configuration/" class="btn btn-neutral float-left" title="Configuration de PostgreSQL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02-DEA/" class="btn btn-neutral float-right" title="Introduction aux Diagrammes Entité-Association">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../1.%20Introduction/PostgreSQL/04-Configuration/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02-DEA/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

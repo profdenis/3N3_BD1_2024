@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Types de bases de données - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Types de bases de donn\u00e9es";
+        var mkdocs_page_input_path = "1. Introduction/02-Types-de-bases-de-donnees.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Types de bases de données</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-bases-de-donnees-relationnelles">1. Bases de données relationnelles</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemples">Exemples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#avantages">Avantages</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-bases-de-donnees-objet-relationnelles">2. Bases de données objet-relationnelles</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_1">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemples_1">Exemples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#avantages_1">Avantages</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-bases-de-donnees-nosql">3. Bases de données NoSQL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_2">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#types-de-bases-de-donnees-nosql">Types de bases de données NoSQL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#avantages_2">Avantages</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-bases-de-donnees-en-memoire">4. Bases de données en mémoire</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_3">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemples_2">Exemples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#avantages_3">Avantages</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-bases-de-donnees-orientees-objet">5. Bases de données orientées objet</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description_4">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemples_3">Exemples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#avantages_4">Avantages</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">1. Introduction</li>
+      <li class="breadcrumb-item active">Types de bases de données</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="types-de-bases-de-donnees">Types de bases de données</h1>
+<p>Il existe plusieurs types de bases de données, chacune étant conçue pour
+répondre à des besoins spécifiques. Voici un aperçu des principaux types de
+bases de données utilisés de nos jours :</p>
+<h2 id="1-bases-de-donnees-relationnelles">1. Bases de données relationnelles</h2>
+<h3 id="description">Description</h3>
+<p>Les bases de données relationnelles organisent les données en tables qui peuvent
+être reliées entre elles par des clés primaires et étrangères. Elles utilisent
+le langage SQL (<em>Structured Query Language</em>) pour la gestion et la manipulation
+des données.</p>
+<h3 id="exemples">Exemples</h3>
+<ul>
+<li><strong>PostgreSQL</strong> : Un SGBD relationnel (et objet-relationnel) open-source
+  puissant et extensible.</li>
+<li><strong>MySQL</strong> : Un SGBD relationnel open-source populaire, souvent utilisé pour
+  les applications web.</li>
+<li><strong>Oracle Database</strong> : Un SGBD relationnel (et objet-relationnel) commercial
+  avec de nombreuses fonctionnalités avancées.</li>
+<li><strong>Microsoft SQL Server</strong> : Un SGBD relationnel développé par Microsoft,
+  souvent utilisé dans les environnements Windows.</li>
+</ul>
+<h3 id="avantages">Avantages</h3>
+<ul>
+<li><strong>Structure claire</strong> : Les données sont organisées de manière logique et
+  cohérente.</li>
+<li><strong>Intégrité des données</strong> : Les contraintes et les règles d'intégrité
+  garantissent la précision et la cohérence des données.</li>
+<li><strong>Requêtes complexes</strong> : SQL permet de réaliser des requêtes complexes pour
+  extraire des informations spécifiques.</li>
+</ul>
+<h2 id="2-bases-de-donnees-objet-relationnelles">2. Bases de données objet-relationnelles</h2>
+<h3 id="description_1">Description</h3>
+<p>Les bases de données objet-relationnelles combinent les aspects des bases de
+données relationnelles et des bases de données orientées objets. Elles
+permettent de stocker des données sous forme de tables tout en supportant des
+concepts de programmation orientée objet comme les types de données
+personnalisés, les héritages de tables et les méthodes.</p>
+<h3 id="exemples_1">Exemples</h3>
+<ul>
+<li><strong>PostgreSQL</strong> : Un SGBD objet-relationnel open-source qui supporte des
+  fonctionnalités avancées comme les types de données personnalisés et les
+  héritages de tables.</li>
+<li><strong>Oracle Database</strong> : Offre des fonctionnalités objet-relationnelles en plus
+  de ses fonctionnalités relationnelles.</li>
+</ul>
+<h3 id="avantages_1">Avantages</h3>
+<ul>
+<li><strong>Flexibilité</strong> : Combine les avantages des bases de données relationnelles et
+  orientées objets.</li>
+<li><strong>Extensibilité</strong> : Permet de créer des types de données et des méthodes
+  personnalisés.</li>
+<li><strong>Compatibilité</strong> : Maintient la compatibilité avec SQL tout en offrant des
+  fonctionnalités avancées.</li>
+</ul>
+<h2 id="3-bases-de-donnees-nosql">3. Bases de données NoSQL</h2>
+<h3 id="description_2">Description</h3>
+<p>Les bases de données NoSQL sont conçues pour des besoins spécifiques qui ne sont
+pas bien pris en charge par les bases de données relationnelles. Elles sont
+souvent utilisées pour des applications nécessitant une grande scalabilité et
+des performances élevées.</p>
+<h3 id="types-de-bases-de-donnees-nosql">Types de bases de données NoSQL</h3>
+<ul>
+<li><strong>Bases de données de documents</strong> : Stockent les données sous forme de
+  documents JSON ou BSON. Exemple : MongoDB.</li>
+<li><strong>Bases de données de colonnes</strong> : Stockent les données dans des colonnes
+  plutôt que des lignes. Exemple : Apache Cassandra.</li>
+<li><strong>Bases de données de graphes</strong> : Utilisent des structures de graphes pour
+  représenter et stocker les données. Exemple : Neo4j.</li>
+<li><strong>Bases de données de paires clé-valeur</strong> : Stockent les données sous forme de
+  paires clé-valeur. Exemple : Redis.</li>
+</ul>
+<h3 id="avantages_2">Avantages</h3>
+<ul>
+<li><strong>Scalabilité</strong> : Conçues pour gérer de grandes quantités de données et des
+  charges de travail élevées.</li>
+<li><strong>Flexibilité</strong> : Permettent de stocker des données non structurées ou
+  semi-structurées.</li>
+<li><strong>Performance</strong> : Optimisées pour des opérations de lecture et d'écriture
+  rapides.</li>
+</ul>
+<h2 id="4-bases-de-donnees-en-memoire">4. Bases de données en mémoire</h2>
+<h3 id="description_3">Description</h3>
+<p>Les bases de données en mémoire stockent les données directement dans la mémoire
+vive (RAM), ce qui permet des temps d'accès très rapides. Elles sont souvent
+utilisées pour des applications nécessitant des performances élevées en temps
+réel.</p>
+<h3 id="exemples_2">Exemples</h3>
+<ul>
+<li><strong>Redis</strong> : Une base de données en mémoire open-source souvent utilisée pour
+  la mise en cache et la gestion de sessions.</li>
+<li><strong>Memcached</strong> : Un système de cache distribué en mémoire, utilisé pour
+  accélérer les applications web en réduisant la charge sur les bases de
+  données.</li>
+</ul>
+<h3 id="avantages_3">Avantages</h3>
+<ul>
+<li><strong>Performance</strong> : Accès aux données extrêmement rapide.</li>
+<li><strong>Temps réel</strong> : Idéales pour les applications nécessitant des réponses en
+  temps réel.</li>
+</ul>
+<h2 id="5-bases-de-donnees-orientees-objet">5. Bases de données orientées objet</h2>
+<h3 id="description_4">Description</h3>
+<p>Les bases de données orientées objets stockent les données sous forme d'objets,
+comme dans la programmation orientée objet. Elles permettent de stocker des
+objets complexes avec leurs méthodes et leurs attributs.</p>
+<h3 id="exemples_3">Exemples</h3>
+<ul>
+<li><strong>db4o</strong> : Une base de données orientée objet open-source.</li>
+<li><strong>ObjectDB</strong> : Une base de données orientée objet pour Java.</li>
+</ul>
+<h3 id="avantages_4">Avantages</h3>
+<ul>
+<li><strong>Correspondance avec la programmation orientée objet</strong> : Facilite la
+  transition entre les objets en mémoire et les objets stockés.</li>
+<li><strong>Complexité des données</strong> : Permet de stocker des structures de données
+  complexes.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Chaque type de base de données a ses propres avantages et inconvénients, et le
+choix du type de base de données dépend des besoins spécifiques de
+l'application. Dans le cadre de ce cours, nous nous concentrerons principalement
+sur les bases de données relationnelles et l'utilisation de PostgreSQL, mais il
+est important de connaître les autres types de bases de données et leurs cas
+d'utilisation.</p>
+<p><strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3 Opus</code>. L'IA
+a été utilisée pour générer des explications, des exemples et des suggestions de
+structure. Toutes les informations ont été vérifiées, éditées et complétées par
+l'auteur._</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01-Introduction-aux-bd/" class="btn btn-neutral float-left" title="Qu'est-ce qu'une base de données ?"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../03-Historique-des-bases-de-donnees/" class="btn btn-neutral float-right" title="Historique des bases de données">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../01-Introduction-aux-bd/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../03-Historique-des-bases-de-donnees/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

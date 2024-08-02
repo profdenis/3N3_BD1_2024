@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Modélisation Entité-Association - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Mod\u00e9lisation Entit\u00e9-Association";
+        var mkdocs_page_input_path = "4. Mod\u00e9lisation/01-mod\u00e9lisation-EA.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Modélisation Entité-Association</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#modele-relationnel">Modèle Relationnel</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-de-table-base-de-donnees-monde">Exemple de Table (Base de Données Monde)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#table-country-donnees-dexemple-triees-par-nom-de-pays">Table : country (données d'exemple, triées par nom de pays)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#terminologie">Terminologie</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#etapes-pour-creer-une-nouvelle-base-de-donnees">Étapes pour créer une nouvelle base de données</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modele-entite-association-ea">Modèle Entité-Association (EA)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#notation-traditionnelle">Notation Traditionnelle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#notation-uml">Notation UML</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#base-de-donnees-de-contacts">Base de Données de Contacts</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#notation-traditionnelle_1">Notation Traditionnelle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#autre-notation-traditionnelle">Autre Notation Traditionnelle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#notation-uml_1">Notation UML</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#les-entites-faibles-dans-le-modele-entite-association">Les Entités Faibles dans le Modèle Entité-Association</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#definition">Définition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#caracteristiques-des-entites-faibles">Caractéristiques des Entités Faibles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple">Exemple</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comparaison-avec-la-conception-orientee-objet-oo-en-uml">Comparaison avec la Conception Orientée Objet (OO) en UML</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#illustration-uml">Illustration UML</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">4. Modélisation</li>
+      <li class="breadcrumb-item active">Modélisation Entité-Association</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="modelisation-entite-association">Modélisation Entité-Association</h1>
+<ul>
+<li><em>Modèle de données relationnel</em> (ou <em>modèle relationnel</em>)</li>
+<li><em>Modèle Entité-Association</em> (ou <em>Modèle EA</em>)</li>
+<li>Exemples</li>
+</ul>
+<h2 id="modele-relationnel">Modèle Relationnel</h2>
+<ul>
+<li><strong>Relation (table)</strong> : table à deux dimensions, ensemble (et non liste) de
+  tuples</li>
+<li><strong>Attributs</strong> : colonnes de la table, champs</li>
+<li><strong>Schéma</strong> : <code>Movies(title, year, length, filmType)</code></li>
+<li><strong>Tuples</strong> : lignes dans la table, enregistrements</li>
+<li><strong>Domaines</strong> : types</li>
+</ul>
+<h3 id="exemple-de-table-base-de-donnees-monde">Exemple de Table (Base de Données <code>Monde</code>)</h3>
+<h4 id="table-country-donnees-dexemple-triees-par-nom-de-pays">Table : <strong>country</strong> (données d'exemple, triées par nom de pays)</h4>
+<p><img alt="example table" src="../../images/relational_table.png" /></p>
+<h3 id="terminologie">Terminologie</h3>
+<ul>
+<li><strong>Entité</strong> : Quelque chose d'intérêt pour la communauté des utilisateurs de la
+  base de données.<ul>
+<li>clients, pièces, localisations géographiques</li>
+</ul>
+</li>
+<li><strong>Colonne</strong> : Un élément de données individuel stocké dans une table.</li>
+<li><strong>Ligne</strong> : Un ensemble de colonnes qui, ensemble, décrivent complètement une
+  entité ou une action sur une entité. Aussi appelé un enregistrement.</li>
+<li><strong>Table</strong> : Un ensemble de lignes, conservées soit en mémoire (non
+  persistante) soit sur un stockage permanent (persistant).</li>
+<li><strong>Ensemble de résultats</strong> : Un autre nom pour une table non persistante,
+  généralement le résultat d'une requête SQL.</li>
+<li><strong>Clé primaire</strong> : Une ou plusieurs colonnes pouvant être utilisées comme
+  identifiant unique pour chaque ligne d'une table.</li>
+<li><strong>Clé étrangère</strong> : Une ou plusieurs colonnes pouvant être utilisées ensemble
+  pour identifier une ligne unique dans une autre table.</li>
+</ul>
+<h2 id="etapes-pour-creer-une-nouvelle-base-de-donnees">Étapes pour créer une nouvelle base de données</h2>
+<ol>
+<li>
+<p><strong>Modèles Conceptuels</strong> et <strong>Logiques</strong> : modéliser (ou concevoir) la base de
+   données au niveau <em>conceptuel</em> et <em>logique</em></p>
+<ul>
+<li>nous pouvons utiliser la notation traditionnelle <strong>ERD</strong>, ou</li>
+<li>la notation <strong>UML</strong>, ou</li>
+<li>d'autres notations <a href="../02-notation/">notation.md</a></li>
+<li>le modèle <em>conceptuel</em> est très général, comme une première ébauche, se
+  concentrant uniquement sur les entités et les relations</li>
+<li>le modèle <em>logique</em> ajoute des types de données et des contraintes au
+  modèle <em>conceptuel</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Modèle de Données Relationnel</strong>, aussi appelé <strong>Modèle Physique</strong> :
+   convertir le modèle logique en modèle de données relationnel</p>
+<ul>
+<li>nous pourrions utiliser d'autres modèles de données, tels que le modèle
+  <em>objet-relationnel</em> ou d'autres modèles non relationnels (OO, NoSQL, ...)</li>
+<li>le modèle relationnel est le modèle le plus courant, et il ne peut pas
+  être ignoré lors de l'apprentissage des bases de données</li>
+</ul>
+</li>
+<li>
+<p><strong>Création d'Instance de Base de Données</strong> : générer les instructions SQL
+   nécessaires <code>CREATE TABLE</code> et autres pour créer une instance de base de
+   données, et la remplir avec des données</p>
+</li>
+<li>
+<p>Une fois la base de données créée, vous pouvez commencer à l'utiliser (
+  instructions <code>SELECT</code>, mises à jour de données, ...)</p>
+</li>
+</ol>
+<h3 id="modele-entite-association-ea">Modèle Entité-Association (EA)</h3>
+<h4 id="notation-traditionnelle">Notation Traditionnelle</h4>
+<ul>
+<li><strong>Ensembles d'entités</strong> : rectangles</li>
+<li><strong>Ensembles de relations</strong> : losanges</li>
+<li><strong>Attributs</strong> : ovales</li>
+<li><strong>Flèches</strong> pour connecter les ensembles de relations aux ensembles
+  d'entités :<ul>
+<li><em>triangle noir plein</em> : au plus 1</li>
+<li><em>triangle rond ouvert</em> ou <em>triangle transparent</em> : exactement 1</li>
+<li>pas de flèches : plusieurs</li>
+</ul>
+</li>
+<li><strong>Clés primaires</strong> : noms d'attributs soulignés</li>
+</ul>
+<h4 id="notation-uml">Notation UML</h4>
+<p><a href="../02-notation/">notation.md</a></p>
+<ul>
+<li><strong>Entités</strong> : rectangles</li>
+<li><strong>Relations</strong> : lignes entre les entités, éventuellement avec des étiquettes
+  et des flèches directionnelles à côté des étiquettes</li>
+<li><strong>Attributs</strong> : dans les rectangles des entités, sous les noms des entités</li>
+<li><strong>Cardinalités</strong> pour connecter les relations aux entités :<ul>
+<li><em>au plus 1</em> : <code>0..1</code></li>
+<li><em>exactement 1</em> : <code>1</code> ou <code>1..1</code></li>
+<li><em>plusieurs</em> : <code>*</code></li>
+<li><em>au moins 1</em> : <code>1..*</code></li>
+</ul>
+</li>
+<li><strong>Clés primaires</strong> : attributs avec la contrainte <code>&lt;&lt;pk&gt;&gt;</code></li>
+<li><strong>Clés étrangères</strong> (dans les diagrammes physiques uniquement) : attributs
+  avec la contrainte <code>&lt;&lt;fk&gt;&gt;</code></li>
+<li><strong>Contrainte de non-nullité</strong> : cercle avant le nom de l'attribut</li>
+</ul>
+<h4 id="base-de-donnees-de-contacts">Base de Données de Contacts</h4>
+<h4 id="notation-traditionnelle_1">Notation Traditionnelle</h4>
+<p><img alt="contacts original notation" src="../../images/contacts_orig.png" /></p>
+<h4 id="autre-notation-traditionnelle">Autre Notation Traditionnelle</h4>
+<p><img alt="contacts alternative notation" src="../../images/contacts_alt.png" /></p>
+<h4 id="notation-uml_1">Notation UML</h4>
+<p><img alt="contacts_uml.png" src="../../images/contacts_uml.png" /></p>
+<h2 id="les-entites-faibles-dans-le-modele-entite-association">Les Entités Faibles dans le Modèle Entité-Association</h2>
+<h3 id="definition">Définition</h3>
+<p>Dans le modèle entité-association (E-A), une <strong>entité faible</strong> est une entité
+qui ne peut pas être identifiée de manière unique par ses propres attributs
+seuls. Elle dépend d'une autre entité, appelée <strong>entité forte</strong>, pour son
+identification. Une entité faible est souvent utilisée pour représenter des
+objets qui n'ont pas de signification indépendante sans leur entité forte
+associée.</p>
+<h3 id="caracteristiques-des-entites-faibles">Caractéristiques des Entités Faibles</h3>
+<ol>
+<li><strong>Dépendance d'Existence</strong> : Une entité faible ne peut pas exister sans son
+   entité forte correspondante.</li>
+<li><strong>Clé Partielle</strong> : L'identification d'une entité faible nécessite une clé
+   partielle (un ensemble d'attributs propres à l'entité faible) en combinaison
+   avec la clé primaire de l'entité forte.</li>
+<li><strong>Relation d'Identification</strong> : Une relation spéciale, souvent appelée
+   relation d'identification, relie l'entité faible à son entité forte.</li>
+</ol>
+<h3 id="exemple">Exemple</h3>
+<p>Considérons une base de données pour une bibliothèque. Nous avons deux entités :
+<strong>Bibliothèque</strong> et <strong>Livre</strong>.</p>
+<ul>
+<li><strong>Bibliothèque</strong> (entité forte) : Identifiée par un attribut unique,
+  comme <code>ID_Bibliothèque</code>.</li>
+<li><strong>Livre</strong> (entité faible) : Identifié par une combinaison de <code>ID_Bibliothèque</code>
+  et <code>Numéro_Livre</code>. Un livre n'a pas de signification sans la bibliothèque à
+  laquelle il appartient.</li>
+</ul>
+<h3 id="comparaison-avec-la-conception-orientee-objet-oo-en-uml">Comparaison avec la Conception Orientée Objet (OO) en UML</h3>
+<p>En conception orientée objet avec UML (Unified Modeling Language), les concepts
+d'entités faibles et fortes peuvent être comparés aux relations de composition
+et d'agrégation.</p>
+<ul>
+<li><strong>Composition</strong> : Similaire aux entités faibles, une classe composante ne peut
+  pas exister indépendamment de la classe composite. Par exemple, une
+  classe <code>Page</code> peut être une composante d'une classe <code>Livre</code>, et une page n'a
+  pas de sens sans le livre auquel elle appartient.</li>
+<li><strong>Agrégation</strong> : Contrairement aux entités faibles, une classe agrégée peut
+  exister indépendamment de la classe agrégante. Par exemple, une
+  classe <code>Auteur</code> peut être associée à plusieurs <code>Livres</code>, mais elle peut
+  exister indépendamment de ces livres.</li>
+</ul>
+<h3 id="illustration-uml">Illustration UML</h3>
+<p>En UML, une composition est représentée par un losange rempli à l'extrémité de
+l'association, tandis qu'une agrégation est représentée par un losange vide.</p>
+<ul>
+<li><strong>Composition</strong> :</li>
+</ul>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+Livre *-- Page
+@enduml
+</code></pre>
+
+
+</details>
+<p><img alt="composition.png" src="../../images/composition.png" /></p>
+<ul>
+<li><strong>Agrégation</strong> :</li>
+</ul>
+<details>
+    <summary>Code</summary>
+
+<pre><code class="language-plantuml">@startuml
+Auteur o-- Livre
+@enduml
+</code></pre>
+
+</details>
+<p><img alt="aggrégation.png" src="../../images/aggr%C3%A9gation.png" /></p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Les entités faibles sont un concept crucial dans le modèle entité-association
+pour modéliser des objets dépendants d'autres objets pour leur identification.
+En comparaison, la conception orientée objet utilise des relations de
+composition pour représenter des dépendances similaires, mais permet également
+des relations plus lâches avec l'agrégation. Comprendre ces concepts est
+essentiel pour concevoir des bases de données relationnelles robustes et bien
+structurées.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../3.%20SQL/06-r%C3%A9cursives/" class="btn btn-neutral float-left" title="Requêtes récursives"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02-notation/" class="btn btn-neutral float-right" title="Différentes notations pour les DEA">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../3.%20SQL/06-r%C3%A9cursives/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02-notation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Base de données Pagila - Cours bases de données</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Base de donn\u00e9es Pagila";
+        var mkdocs_page_input_path = "7. Exercices/SQL/01-pagila.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >SQL</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Base de données Pagila</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#creation">Création</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dea">DEA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#requetes">Requêtes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-trouver-des-films-dau-moins-2-heures">1. Trouver des films d'au moins 2 heures</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-trouver-lidentifiant-et-la-description-du-film-academy-dinosaur">2. Trouver l'identifiant et la description du film 'ACADEMY DINOSAUR'</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-trouver-les-categories-de-academy-dinosaur">3. Trouver les catégories de 'ACADEMY DINOSAUR'</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4-trouver-les-films-sans-categories">4. Trouver les films sans catégories</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#5-trouver-les-categories-sans-films">5. Trouver les catégories sans films</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#6-trouver-les-films-daction">6. Trouver les films d'action</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#7-trouver-le-nombre-de-films-dans-la-categorie-action">7. Trouver le nombre de films dans la catégorie 'Action'</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#8-nombre-de-films-dans-chaque-categorie">8. Nombre de films dans chaque catégorie</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#9-trouver-le-nombre-de-categories-pour-chaque-film">9. Trouver le nombre de catégories pour chaque film</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#10-trouver-le-nombre-de-films">10. Trouver le nombre de films</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#11-trouver-le-nombre-de-langues-differentes-dans-la-table-des-langues">11. Trouver le nombre de langues différentes dans la table des langues</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#12-trouver-le-nombre-de-langues-differentes-dans-la-table-des-films">12. Trouver le nombre de langues différentes dans la table des films</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#13-categorie-avec-le-plus-grand-nombre-de-films">13. Catégorie avec le plus grand nombre de films</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#14-liste-des-films-les-plus-loues">14. Liste des films les plus loués</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#15-revenus-totaux-par-categorie-de-film">15. Revenus totaux par catégorie de film</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#16-clients-ayant-depense-le-plus">16. Clients ayant dépensé le plus</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#17-films-disponibles-dans-un-magasin-specifique">17. Films disponibles dans un magasin spécifique</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#18-quels-sont-les-5-acteurs-qui-ont-joue-dans-le-plus-grand-nombre-de-films">18. Quels sont les 5 acteurs qui ont joué dans le plus grand nombre de films ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#19-quel-est-le-revenu-total-genere-par-chaque-magasin">19. Quel est le revenu total généré par chaque magasin ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#20-quels-sont-les-10-films-les-plus-rentables-base-sur-le-montant-total-des-paiements">20. Quels sont les 10 films les plus rentables (basé sur le montant total des paiements) ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#21-quelle-est-la-duree-moyenne-de-location-pour-chaque-categorie-de-film">21. Quelle est la durée moyenne de location pour chaque catégorie de film ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#22-quels-sont-les-clients-qui-nont-pas-effectue-de-location-depuis-plus-de-3-mois">22. Quels sont les clients qui n'ont pas effectué de location depuis plus de 3 mois ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#23-quels-sont-les-films-qui-nont-jamais-ete-loues">23. Quels sont les films qui n'ont jamais été loués ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#24-quel-est-le-client-qui-a-depense-le-plus-dargent-et-combien-a-t-il-depense">24. Quel est le client qui a dépensé le plus d'argent, et combien a-t-il dépensé ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#25-quels-sont-les-5-couples-dacteurs-qui-ont-joue-ensemble-dans-le-plus-grand-nombre-de-films">25. Quels sont les 5 couples d'acteurs qui ont joué ensemble dans le plus grand nombre de films ?</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">7. Exercices</li>
+          <li class="breadcrumb-item">SQL</li>
+      <li class="breadcrumb-item active">Base de données Pagila</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="base-de-donnees-pagila">Base de données Pagila</h1>
+<h2 id="creation">Création</h2>
+<p><a href="../../../src/create/pagila_create.sql">pagila_create.sql</a></p>
+<h2 id="dea">DEA</h2>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+
+'top to bottom direction
+'skinparam linetype polyline
+!define TABLE(name,desc) class name as &quot;desc&quot; &lt;&lt; (T,#FFAAAA) &gt;&gt;
+!define PK(x) &lt;u&gt;x&lt;/u&gt;
+!define FK(x) &lt;i&gt;x&lt;/i&gt;
+
+hide empty methods
+hide empty fields
+
+TABLE(actor, &quot;actor&quot;) {
+   first_name: text
+   last_name: text
+   last_update: timestamp with time zone
+   actor_id: integer
+}
+TABLE(address, &quot;address&quot;) {
+   address: text
+   address2: text
+   district: text
+   city_id: smallint
+   postal_code: text
+   phone: text
+   last_update: timestamp with time zone
+   address_id: integer
+}
+TABLE(category, &quot;category&quot;) {
+   name: text
+   last_update: timestamp with time zone
+   category_id: integer
+}
+
+TABLE(city, &quot;city&quot;) {
+   city: text
+   country_id: smallint
+   last_update: timestamp with time zone
+   city_id: integer
+}
+
+TABLE(country, &quot;country&quot;) {
+   country: text
+   last_update: timestamp with time zone
+   country_id: integer
+}
+
+TABLE(customer, &quot;customer&quot;) {
+   store_id: smallint
+   first_name: text
+   last_name: text
+   email: text
+   address_id: smallint
+   activebool: boolean
+   create_date: date
+   last_update: timestamp with time zone
+   active: integer
+   customer_id: integer
+}
+
+TABLE(film, &quot;film&quot;) {
+   title: text
+   description: text
+   release_year: pagila.year
+   language_id: smallint
+   original_language_id: smallint
+   rental_duration: smallint
+   rental_rate: numeric(4,2)
+   length: smallint
+   replacement_cost: numeric(5,2)
+   rating: pagila.mpaa_rating
+   last_update: timestamp with time zone
+   special_features: text[]
+   fulltext: tsvector
+   film_id: integer
+}
+
+TABLE(film_actor, &quot;film_actor&quot;) {
+   last_update: timestamp with time zone
+   actor_id: smallint
+   film_id: smallint
+}
+
+TABLE(film_category, &quot;film_category&quot;) {
+   last_update: timestamp with time zone
+   film_id: smallint
+   category_id: smallint
+}
+
+TABLE(inventory, &quot;inventory&quot;) {
+   film_id: smallint
+   store_id: smallint
+   last_update: timestamp with time zone
+   inventory_id: integer
+}
+
+TABLE(language, &quot;language&quot;) {
+   name: char(20)
+   last_update: timestamp with time zone
+   language_id: integer
+}
+
+TABLE(payment, &quot;payment&quot;) {
+   payment_id: integer
+   customer_id: smallint
+   staff_id: smallint
+   rental_id: integer
+   amount: numeric(5,2)
+   payment_date: timestamp with time zone
+}
+
+TABLE(rental, &quot;rental&quot;) {
+   rental_date: timestamp with time zone
+   inventory_id: integer
+   customer_id: smallint
+   return_date: timestamp with time zone
+   staff_id: smallint
+   last_update: timestamp with time zone
+   rental_id: integer
+}
+
+TABLE(staff, &quot;staff&quot;) {
+   first_name: text
+   last_name: text
+   address_id: smallint
+   email: text
+   store_id: smallint
+   active: boolean
+   username: text
+   password: text
+   last_update: timestamp with time zone
+   picture: bytea
+   staff_id: integer
+}
+
+TABLE(store, &quot;store&quot;) {
+   manager_staff_id: smallint
+   address_id: smallint
+   last_update: timestamp with time zone
+   store_id: integer
+}
+
+address        -[#595959,plain]-^  city          : &quot;city_id&quot;
+city           -[#595959,plain]-^  country       : &quot;country_id&quot;
+customer       -[#595959,plain]-^  address       : &quot;address_id&quot;
+customer       -[#595959,plain]-^  store         : &quot;store_id&quot;
+film           -[#595959,plain]-^  language      : &quot;language_id&quot;
+film           -[#595959,plain]-^  language      : &quot;original_language_id:language_id&quot;
+film_actor     -[#595959,plain]-^  actor         : &quot;actor_id&quot;
+film_actor     -[#595959,plain]-^  film          : &quot;film_id&quot;
+film_category  -[#595959,plain]-^  category      : &quot;category_id&quot;
+film_category  -[#595959,plain]-^  film          : &quot;film_id&quot;
+inventory      -[#595959,plain]-^  film          : &quot;film_id&quot;
+inventory      -[#595959,plain]-^  store         : &quot;store_id&quot;
+payment        -[#595959,plain]-^  customer      : &quot;customer_id&quot;
+payment        -[#595959,plain]-^  rental        : &quot;rental_id&quot;
+payment        -[#595959,plain]-^  staff         : &quot;staff_id&quot;
+rental         -[#595959,plain]-^  customer      : &quot;customer_id&quot;
+rental         -[#595959,plain]-^  inventory     : &quot;inventory_id&quot;
+rental         -[#595959,plain]-^  staff         : &quot;staff_id&quot;
+staff          -[#595959,plain]-^  address       : &quot;address_id&quot;
+staff          -[#595959,plain]-^  store         : &quot;store_id&quot;
+store          -[#595959,plain]-^  address       : &quot;address_id&quot;
+@enduml
+
+</code></pre>
+
+</details>
+<p><img alt="pagila_plantuml.png" src="../../../images/pagila_plantuml.png" />
+<img alt="pagila.png" src="../../../images/pagila.png" /></p>
+<h2 id="requetes">Requêtes</h2>
+<h3 id="1-trouver-des-films-dau-moins-2-heures">1. Trouver des films d'au moins 2 heures</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT title, length
+FROM film
+WHERE length &gt;= 120
+ORDER BY length DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="2-trouver-lidentifiant-et-la-description-du-film-academy-dinosaur">2. Trouver l'identifiant et la description du film 'ACADEMY DINOSAUR'</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT film_id, description
+FROM film
+WHERE title = 'ACADEMY DINOSAUR';
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="3-trouver-les-categories-de-academy-dinosaur">3. Trouver les catégories de 'ACADEMY DINOSAUR'</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.name
+FROM category c
+         JOIN film_category fc ON c.category_id = fc.category_id
+         JOIN film f ON fc.film_id = f.film_id
+WHERE f.title = 'ACADEMY DINOSAUR';
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="4-trouver-les-films-sans-categories">4. Trouver les films sans catégories</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT f.title
+FROM film f
+         LEFT JOIN film_category fc ON f.film_id = fc.film_id
+WHERE fc.category_id IS NULL;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="5-trouver-les-categories-sans-films">5. Trouver les catégories sans films</h3>
+<p>Meilleure réponse :</p>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.name
+FROM category c
+         LEFT JOIN film_category fc ON c.category_id = fc.category_id
+WHERE fc.film_id IS NULL;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Autres réponses :</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">select c.category_id, c.name
+from category c
+         left join film_category fc on c.category_id = fc.category_id
+group by c.category_id, c.name
+having count(fc.film_id) = 0;
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">select category_id, name
+from category
+where category_id not in (select category_id from film_category);
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">select category_id, name
+from category c
+where not exists(select fc.category_id
+                 from film_category fc
+                 where fc.category_id = c.category_id);
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">select category_id, name
+from category c
+except
+select c.category_id, c.name
+from category c
+         inner join film_category fc on fc.category_id = c.category_id;
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">select c.category_id, name
+from category c
+         inner join (select category_id
+                     from category c
+                     except
+                     select fc.category_id
+                     from film_category fc) as T
+                    on c.category_id = T.category_id;
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">with T as (select category_id
+           from category c
+           except
+           select fc.category_id
+           from film_category fc)
+select c.category_id, name
+from category c
+         inner join T on c.category_id = T.category_id;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="6-trouver-les-films-daction">6. Trouver les films d'action</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT f.title
+FROM film f
+         JOIN film_category fc ON f.film_id = fc.film_id
+         JOIN category c ON fc.category_id = c.category_id
+WHERE c.name = 'Action';
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="7-trouver-le-nombre-de-films-dans-la-categorie-action">7. Trouver le nombre de films dans la catégorie 'Action'</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT COUNT(*) AS action_film_count
+FROM film_category fc
+         JOIN category c ON fc.category_id = c.category_id
+WHERE c.name = 'Action';
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="8-nombre-de-films-dans-chaque-categorie">8. Nombre de films dans chaque catégorie</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.name, COUNT(fc.film_id) AS film_count
+FROM category c
+         LEFT JOIN film_category fc ON c.category_id = fc.category_id
+GROUP BY c.category_id, c.name
+ORDER BY film_count DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="9-trouver-le-nombre-de-categories-pour-chaque-film">9. Trouver le nombre de catégories pour chaque film</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT f.title, COUNT(fc.category_id) AS category_count
+FROM film f
+         LEFT JOIN film_category fc ON f.film_id = fc.film_id
+GROUP BY f.film_id, f.title
+ORDER BY category_count DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="10-trouver-le-nombre-de-films">10. Trouver le nombre de films</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT COUNT(*) AS total_films
+FROM film;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="11-trouver-le-nombre-de-langues-differentes-dans-la-table-des-langues">11. Trouver le nombre de langues différentes dans la table des langues</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT COUNT(*) AS language_count
+FROM language;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="12-trouver-le-nombre-de-langues-differentes-dans-la-table-des-films">12. Trouver le nombre de langues différentes dans la table des films</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT COUNT(DISTINCT language_id) AS film_language_count
+FROM film;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="13-categorie-avec-le-plus-grand-nombre-de-films">13. Catégorie avec le plus grand nombre de films</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.name, COUNT(f.film_id) AS film_count
+FROM category c
+         JOIN film_category fc ON c.category_id = fc.category_id
+         JOIN film f ON fc.film_id = f.film_id
+GROUP BY c.category_id, c.name
+ORDER BY film_count DESC
+LIMIT 1;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH category_counts AS (SELECT c.category_id, c.name, COUNT(f.film_id) AS film_count
+                         FROM category c
+                                  JOIN film_category fc ON c.category_id = fc.category_id
+                                  JOIN film f ON fc.film_id = f.film_id
+                         GROUP BY c.category_id, c.name),
+     max_count AS (SELECT MAX(film_count) AS max_film_count
+                   FROM category_counts)
+SELECT cc.name AS category, cc.film_count
+FROM category_counts cc,
+     max_count mc
+WHERE cc.film_count = mc.max_film_count
+ORDER BY cc.name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="14-liste-des-films-les-plus-loues">14. Liste des films les plus loués</h3>
+<p>Difficulté : 3</p>
+<p>Pour obtenir la liste des 10 films les plus loués, avec leur titre et le nombre de locations :</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT f.title, COUNT(r.rental_id) AS rental_count
+FROM film f
+         JOIN inventory i ON f.film_id = i.film_id
+         JOIN rental r ON i.inventory_id = r.inventory_id
+GROUP BY f.film_id, f.title
+ORDER BY rental_count DESC
+LIMIT 10;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH actor_counts AS (
+    SELECT a.actor_id, a.first_name, a.last_name, COUNT(fa.film_id) AS film_count
+    FROM actor a
+    JOIN film_actor fa ON a.actor_id = fa.actor_id
+    GROUP BY a.actor_id, a.first_name, a.last_name
+),
+top_5_count AS (
+    SELECT film_count
+    FROM actor_counts
+    ORDER BY film_count DESC
+    LIMIT 1 OFFSET 4
+)
+SELECT ac.first_name, ac.last_name, ac.film_count
+FROM actor_counts ac, top_5_count t5c
+WHERE ac.film_count &gt;= t5c.film_count
+ORDER BY ac.film_count DESC, ac.last_name, ac.first_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="15-revenus-totaux-par-categorie-de-film">15. Revenus totaux par catégorie de film</h3>
+<p>Difficulté : 3</p>
+<p>Pour calculer les revenus totaux générés par chaque catégorie de film :</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.name AS category, SUM(p.amount) AS total_revenue
+FROM category c
+         JOIN film_category fc ON c.category_id = fc.category_id
+         JOIN film f ON fc.film_id = f.film_id
+         JOIN inventory i ON f.film_id = i.film_id
+         JOIN rental r ON i.inventory_id = r.inventory_id
+         JOIN payment p ON r.rental_id = p.rental_id
+GROUP BY c.category_id, c.name
+ORDER BY total_revenue DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="16-clients-ayant-depense-le-plus">16. Clients ayant dépensé le plus</h3>
+<p>Difficulté : 3</p>
+<p>Pour obtenir les 10 clients ayant dépensé le plus, avec leur nom et le montant total :</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.first_name, c.last_name, SUM(p.amount) AS total_spent
+FROM customer c
+         JOIN payment p ON c.customer_id = p.customer_id
+GROUP BY c.customer_id, c.first_name, c.last_name
+ORDER BY total_spent DESC
+LIMIT 10;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH customer_spending AS (SELECT c.customer_id, c.first_name, c.last_name, SUM(p.amount) AS total_spent
+                           FROM customer c
+                                    JOIN payment p ON c.customer_id = p.customer_id
+                           GROUP BY c.customer_id, c.first_name, c.last_name),
+     top_10_spent AS (SELECT total_spent
+                      FROM customer_spending
+                      ORDER BY total_spent DESC
+                      LIMIT 1 OFFSET 9)
+SELECT cs.first_name, cs.last_name, cs.total_spent
+FROM customer_spending cs,
+     top_10_spent t10s
+WHERE cs.total_spent &gt;= t10s.total_spent
+ORDER BY cs.total_spent DESC, cs.last_name, cs.first_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="17-films-disponibles-dans-un-magasin-specifique">17. Films disponibles dans un magasin spécifique</h3>
+<p>Difficulté : 2</p>
+<p>Pour obtenir la liste des films disponibles dans le magasin avec l'ID 1 :</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT DISTINCT f.title
+FROM film f
+         JOIN inventory i ON f.film_id = i.film_id
+WHERE i.store_id = 1
+ORDER BY f.title;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="18-quels-sont-les-5-acteurs-qui-ont-joue-dans-le-plus-grand-nombre-de-films">18. Quels sont les 5 acteurs qui ont joué dans le plus grand nombre de films ?</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT a.actor_id, a.first_name, a.last_name, COUNT(fa.film_id) AS film_count
+FROM actor a
+         JOIN film_actor fa ON a.actor_id = fa.actor_id
+GROUP BY a.actor_id, a.first_name, a.last_name
+ORDER BY film_count DESC
+LIMIT 5;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH actor_counts AS (SELECT a.actor_id, a.first_name, a.last_name, COUNT(fa.film_id) AS film_count
+                      FROM actor a
+                               JOIN film_actor fa ON a.actor_id = fa.actor_id
+                      GROUP BY a.actor_id, a.first_name, a.last_name),
+     top_5_count AS (SELECT film_count
+                     FROM actor_counts
+                     ORDER BY film_count DESC
+                     LIMIT 1 OFFSET 4)
+SELECT ac.first_name, ac.last_name, ac.film_count
+FROM actor_counts ac,
+     top_5_count t5c
+WHERE ac.film_count &gt;= t5c.film_count
+ORDER BY ac.film_count DESC, ac.last_name, ac.first_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="19-quel-est-le-revenu-total-genere-par-chaque-magasin">19. Quel est le revenu total généré par chaque magasin ?</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT s.store_id, s.address_id, SUM(p.amount) AS total_revenue
+FROM store s
+         JOIN staff st ON s.store_id = st.store_id
+         JOIN payment p ON st.staff_id = p.staff_id
+GROUP BY s.store_id, s.address_id
+ORDER BY total_revenue DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="20-quels-sont-les-10-films-les-plus-rentables-base-sur-le-montant-total-des-paiements">20. Quels sont les 10 films les plus rentables (basé sur le montant total des paiements) ?</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT f.film_id, f.title, SUM(p.amount) AS total_revenue
+FROM film f
+         JOIN inventory i ON f.film_id = i.film_id
+         JOIN rental r ON i.inventory_id = r.inventory_id
+         JOIN payment p ON r.rental_id = p.rental_id
+GROUP BY f.film_id, f.title
+ORDER BY total_revenue DESC
+LIMIT 10;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH film_revenue AS (SELECT f.film_id, f.title, SUM(p.amount) AS total_revenue
+                      FROM film f
+                               JOIN inventory i ON f.film_id = i.film_id
+                               JOIN rental r ON i.inventory_id = r.inventory_id
+                               JOIN payment p ON r.rental_id = p.rental_id
+                      GROUP BY f.film_id, f.title),
+     top_10_revenue AS (SELECT total_revenue
+                        FROM film_revenue
+                        ORDER BY total_revenue DESC
+                        LIMIT 1 OFFSET 9)
+SELECT fr.film_id, fr.title, fr.total_revenue
+FROM film_revenue fr,
+     top_10_revenue t10r
+WHERE fr.total_revenue &gt;= t10r.total_revenue
+ORDER BY fr.total_revenue DESC, fr.title;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="21-quelle-est-la-duree-moyenne-de-location-pour-chaque-categorie-de-film">21. Quelle est la durée moyenne de location pour chaque catégorie de film ?</h3>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.name, AVG(EXTRACT(DAY FROM (r.return_date - r.rental_date))) AS avg_rental_duration
+FROM category c
+         JOIN film_category fc ON c.category_id = fc.category_id
+         JOIN film f ON fc.film_id = f.film_id
+         JOIN inventory i ON f.film_id = i.film_id
+         JOIN rental r ON i.inventory_id = r.inventory_id
+WHERE r.return_date IS NOT NULL
+GROUP BY c.category_id, c.name
+ORDER BY avg_rental_duration DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="22-quels-sont-les-clients-qui-nont-pas-effectue-de-location-depuis-plus-de-3-mois">22. Quels sont les clients qui n'ont pas effectué de location depuis plus de 3 mois ?</h3>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.customer_id, c.first_name, c.last_name, MAX(r.rental_date) AS last_rental_date
+FROM customer c
+         LEFT JOIN rental r ON c.customer_id = r.customer_id
+GROUP BY c.customer_id, c.first_name, c.last_name
+HAVING MAX(r.rental_date) &lt; CURRENT_DATE - INTERVAL '3 months'
+    OR MAX(r.rental_date) IS NULL
+ORDER BY last_rental_date;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="23-quels-sont-les-films-qui-nont-jamais-ete-loues">23. Quels sont les films qui n'ont jamais été loués ?</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT f.film_id, f.title
+FROM film f
+         LEFT JOIN inventory i ON f.film_id = i.film_id
+         LEFT JOIN rental r ON i.inventory_id = r.inventory_id
+WHERE r.rental_id IS NULL;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="24-quel-est-le-client-qui-a-depense-le-plus-dargent-et-combien-a-t-il-depense">24. Quel est le client qui a dépensé le plus d'argent, et combien a-t-il dépensé ?</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.customer_id, c.first_name, c.last_name, SUM(p.amount) AS total_spent
+FROM customer c
+         JOIN payment p ON c.customer_id = p.customer_id
+GROUP BY c.customer_id, c.first_name, c.last_name
+ORDER BY total_spent DESC
+LIMIT 1;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH customer_spending AS (SELECT c.customer_id, c.first_name, c.last_name, SUM(p.amount) AS total_spent
+                           FROM customer c
+                                    JOIN payment p ON c.customer_id = p.customer_id
+                           GROUP BY c.customer_id, c.first_name, c.last_name),
+     max_spending AS (SELECT MAX(total_spent) AS max_amount
+                      FROM customer_spending)
+SELECT cs.customer_id, cs.first_name, cs.last_name, cs.total_spent
+FROM customer_spending cs,
+     max_spending ms
+WHERE cs.total_spent = ms.max_amount
+ORDER BY cs.last_name, cs.first_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="25-quels-sont-les-5-couples-dacteurs-qui-ont-joue-ensemble-dans-le-plus-grand-nombre-de-films">25. Quels sont les 5 couples d'acteurs qui ont joué ensemble dans le plus grand nombre de films ?</h3>
+<p>Difficulté : 5</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT a1.actor_id   AS actor1_id,
+       a1.first_name AS actor1_first_name,
+       a1.last_name  AS actor1_last_name,
+       a2.actor_id   AS actor2_id,
+       a2.first_name AS actor2_first_name,
+       a2.last_name  AS actor2_last_name,
+       COUNT(*)      AS films_together
+FROM film_actor fa1
+         JOIN film_actor fa2 ON fa1.film_id = fa2.film_id AND fa1.actor_id &lt; fa2.actor_id
+         JOIN actor a1 ON fa1.actor_id = a1.actor_id
+         JOIN actor a2 ON fa2.actor_id = a2.actor_id
+GROUP BY a1.actor_id, a1.first_name, a1.last_name, a2.actor_id, a2.first_name, a2.last_name
+ORDER BY films_together DESC
+LIMIT 5;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 5</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH actor_pairs AS (SELECT LEAST(fa1.actor_id, fa2.actor_id)    AS actor1_id,
+                            GREATEST(fa1.actor_id, fa2.actor_id) AS actor2_id,
+                            COUNT(*)                             AS films_together
+                     FROM film_actor fa1
+                              JOIN film_actor fa2 ON fa1.film_id = fa2.film_id AND fa1.actor_id &lt; fa2.actor_id
+                     GROUP BY LEAST(fa1.actor_id, fa2.actor_id), GREATEST(fa1.actor_id, fa2.actor_id)),
+     top_5_count AS (SELECT films_together
+                     FROM actor_pairs
+                     ORDER BY films_together DESC
+                     LIMIT 1 OFFSET 4)
+SELECT a1.actor_id   AS actor1_id,
+       a1.first_name AS actor1_first_name,
+       a1.last_name  AS actor1_last_name,
+       a2.actor_id   AS actor2_id,
+       a2.first_name AS actor2_first_name,
+       a2.last_name  AS actor2_last_name,
+       ap.films_together
+FROM actor_pairs ap
+         JOIN actor a1 ON ap.actor1_id = a1.actor_id
+         JOIN actor a2 ON ap.actor2_id = a2.actor_id
+         JOIN top_5_count t5c ON ap.films_together &gt;= t5c.films_together
+ORDER BY ap.films_together DESC, a1.last_name, a1.first_name, a2.last_name, a2.first_name;
+</code></pre>
+
+</details>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../DEA/exercises_ER/" class="btn btn-neutral float-left" title="Exercises - Entity-Relationship Modeling"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02-recettes/" class="btn btn-neutral float-right" title="Recettes de cuisine">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../DEA/exercises_ER/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02-recettes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Introduction aux Diagrammes Entité-Association - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Introduction aux Diagrammes Entit\u00e9-Association";
+        var mkdocs_page_input_path = "2. Le mod\u00e8le relationnel/02-DEA.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Introduction aux Diagrammes Entité-Association</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#composants-dun-diagramme-entite-association">Composants d'un Diagramme Entité-Association</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exemple-de-diagramme-entite-association">Exemple de Diagramme Entité-Association</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#explication-du-diagramme">Explication du Diagramme</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">2. Le modèle relationnel</li>
+      <li class="breadcrumb-item active">Introduction aux Diagrammes Entité-Association</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="introduction-aux-diagrammes-entite-association">Introduction aux Diagrammes Entité-Association</h1>
+<p>Un diagramme entité-association (E-A) est un outil graphique utilisé pour
+modéliser les données et les associations entre elles dans un système
+d'information. Il est couramment utilisé dans la conception de bases de données
+pour représenter les entités, leurs attributs et les associations entre ces
+entités. Ce type de diagramme aide à visualiser la structure de la base de
+données et à comprendre comment les données sont interconnectées.</p>
+<h2 id="composants-dun-diagramme-entite-association">Composants d'un Diagramme Entité-Association</h2>
+<ol>
+<li>
+<p><strong>Entités</strong> : Représentées par des entitys, les entités sont des objets ou
+   concepts du monde réel ayant une existence indépendante. Par exemple, dans
+   une base de données universitaire, des entités peuvent être Étudiant, Cours,
+   et Instructeur.</p>
+</li>
+<li>
+<p><strong>Attributs</strong> : Représentés par des ovales, les attributs sont des propriétés
+   ou caractéristiques des entités. Par exemple, un Étudiant peut avoir des
+   attributs comme ID_Étudiant, Nom, et Date_Naissance.</p>
+</li>
+<li>
+<p><strong>Associations</strong> : Représentées par des losanges, les associations décrivent
+   comment les entités sont liées entre elles. Par exemple, une relation
+   Inscription peut lier les entités Étudiant et Cours.</p>
+</li>
+<li>
+<p><strong>Cardinalité</strong> : La cardinalité spécifie le nombre d'occurrences d'une
+   entité qui peuvent être associées à une occurrence d'une autre entité. Les
+   types de cardinalité courants sont :</p>
+<ul>
+<li>Un à Un (1:1)</li>
+<li>Un à Plusieurs (1:N)</li>
+<li>Plusieurs à Plusieurs (M:N)</li>
+</ul>
+</li>
+</ol>
+<h2 id="exemple-de-diagramme-entite-association">Exemple de Diagramme Entité-Association</h2>
+<p>Voici un exemple de diagramme E-A pour une base de données universitaire, au
+format PlantUML.</p>
+<p><img alt="DEA Université" src="https://www.plantuml.com/plantuml/png/XP11JWCn34NtEKKqIr0hs7PLD6NHJK7Y0ACeyLIM9WvAd0L2782Zz1npCQ96esGe2jdbsVxVt_l0odEqam1Yv0yvVtCqg8Zbfv3ftHyFGs4xYSIPdvnDty0UwPp9gvylT4CFYc4uAGn1aOPKD0c8Bx4OzYxwi9Zrpi2GIQMItVxaVV8qo25lLiaUARL5pH1zbQIYxIpFLk5Ks4fNUtndTDIuK3DCFaabT7kKbt7qosnnkTB_7PfHty12Ai2lWIUY-GBbYYLGzzZ9pKPs3zljNIVNM-FrnoAlqEhKZZHu0b6ljHweC-yaK00y4sJjPgiRH_0iza0cska7" /></p>
+<details>
+<summary>Code PlantUML</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+
+entity Étudiant {
+    +ID_Étudiant : int
+    +Nom : string
+    +Prénom : string
+    +Date_Naissance : date
+}
+
+entity Cours {
+    +Code_Cours : string
+    +Nom_Cours : string
+    +Crédits : int
+}
+
+entity Instructeur {
+    +ID_Instructeur : int
+    +Nom : string
+    +Email : string
+}
+
+entity Inscription {
+    +ID_Étudiant : int
+    +Code_Cours : string
+    +Date_Inscription : date
+}
+
+entity Offre_Cours {
+    +ID_Offre : int
+    +Code_Cours : string
+    +ID_Instructeur : int
+    +Semestre : string
+    +Année : int
+}
+
+Étudiant &quot;1&quot; -- &quot;0..*&quot; Inscription : inscrit
+Cours &quot;1&quot; -- &quot;0..*&quot; Inscription : concerne
+Instructeur &quot;1&quot; -- &quot;0..*&quot; Offre_Cours : enseigne
+Cours &quot;1&quot; -- &quot;0..*&quot; Offre_Cours : offert
+
+@enduml
+</code></pre>
+
+
+</details>
+
+<h3 id="explication-du-diagramme">Explication du Diagramme</h3>
+<ul>
+<li><strong>Étudiant</strong> : Entité représentant un étudiant, avec des attributs comme
+  ID_Étudiant, Nom, Prénom, et Date_Naissance.</li>
+<li><strong>Cours</strong> : Entité représentant un cours, avec des attributs comme Code_Cours,
+  Nom_Cours, et Crédits.</li>
+<li><strong>Instructeur</strong> : Entité représentant un instructeur, avec des attributs comme
+  ID_Instructeur, Nom, et Email.</li>
+<li><strong>Inscription</strong> : Relation entre Étudiant et Cours, avec des attributs comme
+  ID_Étudiant, Code_Cours, et Date_Inscription.</li>
+<li><strong>Offre_Cours</strong> : Relation entre Cours et Instructeur, avec des attributs
+  comme ID_Offre, Code_Cours, ID_Instructeur, Semestre, et Année.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Les diagrammes entité-association sont des outils précieux pour la modélisation
+des bases de données. Ils permettent de représenter visuellement les entités,
+leurs attributs et les Associations entre elles, facilitant ainsi la
+compréhension et la conception de la structure de la base de données. Utiliser
+des outils comme PlantUML pour créer ces diagrammes peut aider à standardiser et
+à automatiser le processus de modélisation.</p>
+<p><strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3 Opus</code>. L'IA
+a été utilisée pour générer des explications, des exemples et des suggestions de
+structure. Toutes les informations ont été vérifiées, éditées et complétées par
+l'auteur._</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01-Pr%C3%A9sentation/" class="btn btn-neutral float-left" title="Présentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../3.%20SQL/01-intro/" class="btn btn-neutral float-right" title="1 - Introduction à SQL">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../01-Pr%C3%A9sentation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../3.%20SQL/01-intro/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>BD Northwind - Cours bases de données</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "BD Northwind";
+        var mkdocs_page_input_path = "7. Exercices/SQL/03-northwind.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >SQL</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">BD Northwind</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#creation">Création</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dea">DEA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#requetes">Requêtes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-listez-tous-les-produits-dont-le-prix-unitaire-est-superieur-a-50">1. Listez tous les produits dont le prix unitaire est supérieur à 50.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-combien-y-a-t-il-demployes-au-total-dans-lentreprise">2. Combien y a-t-il d'employés au total dans l'entreprise ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-quels-sont-les-5-produits-les-plus-chers">3. Quels sont les 5 produits les plus chers ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4-listez-tous-les-clients-bases-en-france">4. Listez tous les clients basés en France.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#5-quel-est-le-prix-moyen-des-produits">5. Quel est le prix moyen des produits ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#6-listez-tous-les-fournisseurs-qui-ne-sont-pas-bases-aux-etats-unis">6. Listez tous les fournisseurs qui ne sont pas basés aux États-Unis.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#7-combien-de-produits-sont-actuellement-en-rupture-de-stock">7. Combien de produits sont actuellement en rupture de stock ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#8-quels-sont-les-employes-embauches-apres-le-1er-janvier-1993">8. Quels sont les employés embauchés après le 1er janvier 1993 ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#9-quel-est-le-produit-le-moins-cher-en-stock">9. Quel est le produit le moins cher en stock ?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#10-listez-toutes-les-categories-de-produits-par-ordre-alphabetique">10. Listez toutes les catégories de produits par ordre alphabétique.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#11-listez-tous-les-produits-avec-leur-categorie-correspondante">11. Listez tous les produits avec leur catégorie correspondante.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#12-affichez-les-noms-des-employes-et-les-noms-de-leurs-superieurs-directs">12. Affichez les noms des employés et les noms de leurs supérieurs directs.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#13-listez-tous-les-clients-avec-leurs-commandes-y-compris-ceux-qui-nont-pas-encore-passe-de-commande">13. Listez tous les clients avec leurs commandes, y compris ceux qui n'ont pas encore passé de commande.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#14-affichez-les-details-des-produits-commandes-dans-la-commande-numero-10248">14. Affichez les détails des produits commandés dans la commande numéro 10248.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#15-listez-tous-les-employes-avec-leurs-territoires-assignes">15. Listez tous les employés avec leurs territoires assignés.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#16-affichez-les-noms-des-fournisseurs-et-les-noms-des-produits-quils-fournissent-pour-la-categorie-beverages">16. Affichez les noms des fournisseurs et les noms des produits qu'ils fournissent pour la catégorie 'Beverages'.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#17-listez-toutes-les-commandes-passees-par-le-client-quick-stop-en-1997">17. Listez toutes les commandes passées par le client 'QUICK-Stop' en 1997.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#18-affichez-les-produits-et-leurs-fournisseurs-pour-tous-les-produits-qui-sont-en-rupture-de-stock">18. Affichez les produits et leurs fournisseurs pour tous les produits qui sont en rupture de stock.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#19-listez-tous-les-employes-et-le-nombre-de-territoires-qui-leur-sont-assignes">19. Listez tous les employés et le nombre de territoires qui leur sont assignés.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#20-affichez-les-details-de-la-commande-la-plus-recente-pour-chaque-client">20. Affichez les détails de la commande la plus récente pour chaque client.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#21-calculez-le-nombre-total-de-commandes-par-client">21. Calculez le nombre total de commandes par client.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#22-trouvez-le-chiffre-daffaires-total-par-categorie-de-produits">22. Trouvez le chiffre d'affaires total par catégorie de produits.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#23-listez-les-employes-et-le-nombre-de-commandes-quils-ont-gerees-en-1997">23. Listez les employés et le nombre de commandes qu'ils ont gérées en 1997.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#24-calculez-le-prix-moyen-des-produits-par-fournisseur">24. Calculez le prix moyen des produits par fournisseur.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#25-trouvez-les-5-produits-les-plus-vendus-en-termes-de-quantite">25. Trouvez les 5 produits les plus vendus en termes de quantité.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#26-calculez-le-nombre-moyen-de-jours-entre-la-date-de-commande-et-la-date-dexpedition-pour-chaque-transporteur">26. Calculez le nombre moyen de jours entre la date de commande et la date d'expédition pour chaque transporteur.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#27-identifiez-les-clients-qui-ont-passe-des-commandes-totalisant-plus-de-10000-en-valeur">27. Identifiez les clients qui ont passé des commandes totalisant plus de 10000 en valeur.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#28-calculez-le-nombre-de-produits-differents-commandes-par-chaque-client">28. Calculez le nombre de produits différents commandés par chaque client.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#29-trouvez-le-chiffre-daffaires-total-par-annee-et-par-mois">29. Trouvez le chiffre d'affaires total par année et par mois.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#30-identifiez-les-categories-de-produits-qui-ont-genere-le-plus-de-revenus-par-region">30. Identifiez les catégories de produits qui ont généré le plus de revenus par région.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#31-trouvez-les-produits-qui-nont-jamais-ete-commandes">31. Trouvez les produits qui n'ont jamais été commandés.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#32-calculez-le-rang-des-employes-en-fonction-du-nombre-de-commandes-quils-ont-gerees">32. Calculez le rang des employés en fonction du nombre de commandes qu'ils ont gérées.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#33-identifiez-les-clients-qui-ont-commande-tous-les-produits-dune-categorie-specifique-par-exemple-beverages">33. Identifiez les clients qui ont commandé tous les produits d'une catégorie spécifique (par exemple, 'Beverages').</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#34-calculez-la-moyenne-mobile-sur-3-mois-des-ventes-totales">34. Calculez la moyenne mobile sur 3 mois des ventes totales.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#35-trouvez-les-paires-de-produits-qui-sont-toujours-commandes-ensemble">35. Trouvez les paires de produits qui sont toujours commandés ensemble.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#36-calculez-le-pourcentage-de-contribution-de-chaque-produit-au-chiffre-daffaires-total">36. Calculez le pourcentage de contribution de chaque produit au chiffre d'affaires total.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#37-identifiez-les-clients-qui-ont-augmente-leurs-achats-dune-annee-a-lautre">37. Identifiez les clients qui ont augmenté leurs achats d'une année à l'autre.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#38-trouvez-la-sequence-la-plus-longue-de-jours-consecutifs-avec-des-commandes">38. Trouvez la séquence la plus longue de jours consécutifs avec des commandes.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#39-calculez-le-temps-moyen-entre-les-commandes-pour-chaque-client">39. Calculez le temps moyen entre les commandes pour chaque client.</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#40-identifiez-les-produits-dont-les-ventes-ont-augmente-chaque-mois-sur-une-periode-dau-moins-3-mois-consecutifs">40. Identifiez les produits dont les ventes ont augmenté chaque mois sur une période d'au moins 3 mois consécutifs.</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">7. Exercices</li>
+          <li class="breadcrumb-item">SQL</li>
+      <li class="breadcrumb-item active">BD Northwind</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="bd-northwind">BD Northwind</h1>
+<h2 id="creation">Création</h2>
+<p><a href="../../../src/create/northwind_create.sql">northwind_create.sql</a></p>
+<h2 id="dea">DEA</h2>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+
+'!theme plain
+top to bottom direction
+skinparam linetype ortho
+skinparam entityFontSize 18
+skinparam entityFontName Source Code Pro
+hide empty methods
+hide empty fields
+
+entity categories {
+   category_name: varchar(15)
+   description: text
+   picture: bytea
+   category_id: smallint
+}
+entity customer_customer_demo {
+   customer_id: varchar(5)
+   customer_type_id: varchar(5)
+}
+entity customer_demographics {
+   customer_desc: text
+   customer_type_id: varchar(5)
+}
+entity customers {
+   company_name: varchar(40)
+   contact_name: varchar(30)
+   contact_title: varchar(30)
+   address: varchar(60)
+   city: varchar(15)
+   region: varchar(15)
+   postal_code: varchar(10)
+   country: varchar(15)
+   phone: varchar(24)
+   fax: varchar(24)
+   customer_id: varchar(5)
+}
+entity employee_territories {
+   employee_id: smallint
+   territory_id: varchar(20)
+}
+entity employees {
+   last_name: varchar(20)
+   first_name: varchar(10)
+   title: varchar(30)
+   title_of_courtesy: varchar(25)
+   birth_date: date
+   hire_date: date
+   address: varchar(60)
+   city: varchar(15)
+   region: varchar(15)
+   postal_code: varchar(10)
+   country: varchar(15)
+   home_phone: varchar(24)
+   extension: varchar(4)
+   photo: bytea
+   notes: text
+   reports_to: smallint
+   photo_path: varchar(255)
+   employee_id: smallint
+}
+entity order_details {
+   unit_price: real
+   quantity: smallint
+   discount: real
+   order_id: smallint
+   product_id: smallint
+}
+entity orders {
+   customer_id: varchar(5)
+   employee_id: smallint
+   order_date: date
+   required_date: date
+   shipped_date: date
+   ship_via: smallint
+   freight: real
+   ship_name: varchar(40)
+   ship_address: varchar(60)
+   ship_city: varchar(15)
+   ship_region: varchar(15)
+   ship_postal_code: varchar(10)
+   ship_country: varchar(15)
+   order_id: smallint
+}
+entity products {
+   product_name: varchar(40)
+   supplier_id: smallint
+   category_id: smallint
+   quantity_per_unit: varchar(20)
+   unit_price: real
+   units_in_stock: smallint
+   units_on_order: smallint
+   reorder_level: smallint
+   discontinued: integer
+   product_id: smallint
+}
+entity region {
+   region_description: varchar(60)
+   region_id: smallint
+}
+entity shippers {
+   company_name: varchar(40)
+   phone: varchar(24)
+   shipper_id: smallint
+}
+entity suppliers {
+   company_name: varchar(40)
+   contact_name: varchar(30)
+   contact_title: varchar(30)
+   address: varchar(60)
+   city: varchar(15)
+   region: varchar(15)
+   postal_code: varchar(10)
+   country: varchar(15)
+   phone: varchar(24)
+   fax: varchar(24)
+   homepage: text
+   supplier_id: smallint
+}
+entity territories {
+   territory_description: varchar(60)
+   region_id: smallint
+   territory_id: varchar(20)
+}
+entity us_states {
+   state_name: varchar(100)
+   state_abbr: varchar(2)
+   state_region: varchar(50)
+   state_id: smallint
+}
+
+customer_customer_demo  -[#595959,plain]-^  customer_demographics  : &quot;customer_type_id&quot;
+customer_customer_demo  -[#595959,plain]-^  customers              : &quot;customer_id&quot;
+employee_territories    -[#595959,plain]-^  employees              : &quot;employee_id&quot;
+employee_territories    -[#595959,plain]-^  territories            : &quot;territory_id&quot;
+employees               -[#595959,plain]-^  employees              : &quot;reports_to:employee_id&quot;
+order_details           -[#595959,plain]-^  orders                 : &quot;order_id&quot;
+order_details           -[#595959,plain]-^  products               : &quot;product_id&quot;
+orders                  -[#595959,plain]-^  customers              : &quot;customer_id&quot;
+orders                  -[#595959,plain]-^  employees              : &quot;employee_id&quot;
+orders                  -[#595959,plain]-^  shippers               : &quot;ship_via:shipper_id&quot;
+categories              ^-[#595959,plain]-  products               : &quot;category_id&quot;
+products                -[#595959,plain]-^  suppliers              : &quot;supplier_id&quot;
+territories             -[#595959,plain]-^  region                 : &quot;region_id&quot;
+@enduml
+</code></pre>
+
+
+</details>
+
+<p><img alt="northwind_uml.png" src="../../../images/northwind_uml.png" />
+<img alt="northwind.png" src="../../../images/northwind.png" /></p>
+<h2 id="requetes">Requêtes</h2>
+<p>Bien sûr, je vais vous proposer quelques questions simples basées sur le diagramme entité-association (DEA) de la base
+de données Northwind que vous avez fourni. Ces questions se concentreront sur des requêtes impliquant une seule table,
+sans jointures ni regroupements, mais avec la possibilité d'utiliser des fonctions d'agrégation. Je vais également
+fournir les réponses sous forme de requêtes SQL pour PostgreSQL.</p>
+<h3 id="1-listez-tous-les-produits-dont-le-prix-unitaire-est-superieur-a-50">1. Listez tous les produits dont le prix unitaire est supérieur à 50.</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary> 
+
+
+<pre><code class="language-sql">SELECT product_name, unit_price
+FROM products
+WHERE unit_price &gt; 50
+ORDER BY unit_price DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="2-combien-y-a-t-il-demployes-au-total-dans-lentreprise">2. Combien y a-t-il d'employés au total dans l'entreprise ?</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT COUNT(*) AS total_employees
+FROM employees;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="3-quels-sont-les-5-produits-les-plus-chers">3. Quels sont les 5 produits les plus chers ?</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT product_name, unit_price
+FROM products
+ORDER BY unit_price DESC
+LIMIT 5;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH ranked_products AS (SELECT product_name,
+                                unit_price,
+                                DENSE_RANK() OVER (ORDER BY unit_price DESC) as price_rank
+                         FROM products)
+SELECT product_name, unit_price
+FROM ranked_products
+WHERE price_rank &lt;= 5
+ORDER BY unit_price DESC, product_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="4-listez-tous-les-clients-bases-en-france">4. Listez tous les clients basés en France.</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT company_name, contact_name, city
+FROM customers
+WHERE country = 'France';
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="5-quel-est-le-prix-moyen-des-produits">5. Quel est le prix moyen des produits ?</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT AVG(unit_price) AS average_price
+FROM products;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="6-listez-tous-les-fournisseurs-qui-ne-sont-pas-bases-aux-etats-unis">6. Listez tous les fournisseurs qui ne sont pas basés aux États-Unis.</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT company_name, country
+FROM suppliers
+WHERE country != 'USA';
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="7-combien-de-produits-sont-actuellement-en-rupture-de-stock">7. Combien de produits sont actuellement en rupture de stock ?</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT COUNT(*) AS out_of_stock_products
+FROM products
+WHERE units_in_stock = 0;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="8-quels-sont-les-employes-embauches-apres-le-1er-janvier-1993">8. Quels sont les employés embauchés après le 1er janvier 1993 ?</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT first_name, last_name, hire_date
+FROM employees
+WHERE hire_date &gt; '1993-01-01'
+ORDER BY hire_date;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="9-quel-est-le-produit-le-moins-cher-en-stock">9. Quel est le produit le moins cher en stock ?</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT product_name, unit_price
+FROM products
+WHERE units_in_stock &gt; 0
+ORDER BY unit_price ASC
+LIMIT 1;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT product_name, unit_price
+FROM products
+WHERE units_in_stock &gt; 0
+  AND unit_price = (SELECT MIN(unit_price)
+                    FROM products
+                    WHERE units_in_stock &gt; 0)
+ORDER BY product_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="10-listez-toutes-les-categories-de-produits-par-ordre-alphabetique">10. Listez toutes les catégories de produits par ordre alphabétique.</h3>
+<p>Difficulté : 1</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT category_name
+FROM categories
+ORDER BY category_name ASC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="11-listez-tous-les-produits-avec-leur-categorie-correspondante">11. Listez tous les produits avec leur catégorie correspondante.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT p.product_name, c.category_name
+FROM products p
+         JOIN categories c ON p.category_id = c.category_id
+ORDER BY c.category_name, p.product_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="12-affichez-les-noms-des-employes-et-les-noms-de-leurs-superieurs-directs">12. Affichez les noms des employés et les noms de leurs supérieurs directs.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT e.first_name || ' ' || e.last_name AS employee_name,
+       m.first_name || ' ' || m.last_name AS manager_name
+FROM employees e
+         LEFT JOIN employees m ON e.reports_to = m.employee_id
+ORDER BY manager_name, employee_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="13-listez-tous-les-clients-avec-leurs-commandes-y-compris-ceux-qui-nont-pas-encore-passe-de-commande">13. Listez tous les clients avec leurs commandes, y compris ceux qui n'ont pas encore passé de commande.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.company_name, o.order_id, o.order_date
+FROM customers c
+         LEFT JOIN orders o ON c.customer_id = o.customer_id
+ORDER BY c.company_name, o.order_date;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="14-affichez-les-details-des-produits-commandes-dans-la-commande-numero-10248">14. Affichez les détails des produits commandés dans la commande numéro 10248.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT p.product_name, od.quantity, od.unit_price
+FROM order_details od
+         JOIN products p ON od.product_id = p.product_id
+WHERE od.order_id = 10248
+ORDER BY p.product_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="15-listez-tous-les-employes-avec-leurs-territoires-assignes">15. Listez tous les employés avec leurs territoires assignés.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT e.first_name || ' ' || e.last_name AS employee_name,
+       t.territory_description
+FROM employees e
+         JOIN employee_territories et ON e.employee_id = et.employee_id
+         JOIN territories t ON et.territory_id = t.territory_id
+ORDER BY employee_name, t.territory_description;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="16-affichez-les-noms-des-fournisseurs-et-les-noms-des-produits-quils-fournissent-pour-la-categorie-beverages">16. Affichez les noms des fournisseurs et les noms des produits qu'ils fournissent pour la catégorie 'Beverages'.</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT s.company_name AS supplier_name, p.product_name
+FROM suppliers s
+         JOIN products p ON s.supplier_id = p.supplier_id
+         JOIN categories c ON p.category_id = c.category_id
+WHERE c.category_name = 'Beverages'
+ORDER BY s.company_name, p.product_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="17-listez-toutes-les-commandes-passees-par-le-client-quick-stop-en-1997">17. Listez toutes les commandes passées par le client 'QUICK-Stop' en 1997.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT o.order_id, o.order_date, e.first_name || ' ' || e.last_name AS employee_name
+FROM orders o
+         JOIN customers c ON o.customer_id = c.customer_id
+         JOIN employees e ON o.employee_id = e.employee_id
+WHERE c.company_name = 'QUICK-Stop'
+  AND EXTRACT(YEAR FROM o.order_date) = 1997
+ORDER BY o.order_date;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="18-affichez-les-produits-et-leurs-fournisseurs-pour-tous-les-produits-qui-sont-en-rupture-de-stock">18. Affichez les produits et leurs fournisseurs pour tous les produits qui sont en rupture de stock.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT p.product_name, s.company_name AS supplier_name, p.units_in_stock
+FROM products p
+         JOIN suppliers s ON p.supplier_id = s.supplier_id
+WHERE p.units_in_stock = 0
+ORDER BY s.company_name, p.product_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="19-listez-tous-les-employes-et-le-nombre-de-territoires-qui-leur-sont-assignes">19. Listez tous les employés et le nombre de territoires qui leur sont assignés.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT e.first_name || ' ' || e.last_name AS employee_name,
+       COUNT(et.territory_id)             AS territory_count
+FROM employees e
+         LEFT JOIN employee_territories et ON e.employee_id = et.employee_id
+GROUP BY e.employee_id, employee_name
+ORDER BY employee_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="20-affichez-les-details-de-la-commande-la-plus-recente-pour-chaque-client">20. Affichez les détails de la commande la plus récente pour chaque client.</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH latest_orders AS (SELECT customer_id, MAX(order_date) AS max_order_date
+                       FROM orders
+                       GROUP BY customer_id)
+SELECT c.company_name, o.order_id, o.order_date
+FROM customers c
+         JOIN latest_orders lo ON c.customer_id = lo.customer_id
+         JOIN orders o ON lo.customer_id = o.customer_id AND lo.max_order_date = o.order_date
+ORDER BY c.company_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="21-calculez-le-nombre-total-de-commandes-par-client">21. Calculez le nombre total de commandes par client.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.company_name, COUNT(o.order_id) AS total_orders
+FROM customers c
+         LEFT JOIN orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id, c.company_name
+ORDER BY total_orders DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="22-trouvez-le-chiffre-daffaires-total-par-categorie-de-produits">22. Trouvez le chiffre d'affaires total par catégorie de produits.</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.category_name, TRUNC(SUM(od.quantity * od.unit_price * (1 - od.discount))::numeric, 2) AS total_revenue
+FROM categories c
+         JOIN products p ON c.category_id = p.category_id
+         JOIN order_details od ON p.product_id = od.product_id
+GROUP BY c.category_id, c.category_name
+ORDER BY total_revenue DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="23-listez-les-employes-et-le-nombre-de-commandes-quils-ont-gerees-en-1997">23. Listez les employés et le nombre de commandes qu'ils ont gérées en 1997.</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT e.first_name || ' ' || e.last_name AS employee_name, COUNT(o.order_id) AS orders_handled
+FROM employees e
+         LEFT JOIN orders o ON e.employee_id = o.employee_id AND EXTRACT(YEAR FROM o.order_date) = 1997
+GROUP BY e.employee_id, employee_name
+ORDER BY orders_handled DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="24-calculez-le-prix-moyen-des-produits-par-fournisseur">24. Calculez le prix moyen des produits par fournisseur.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT s.company_name AS supplier_name, TRUNC(AVG(p.unit_price)::numeric, 2) AS average_price
+FROM suppliers s
+         JOIN products p ON s.supplier_id = p.supplier_id
+GROUP BY s.supplier_id, s.company_name
+ORDER BY average_price DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="25-trouvez-les-5-produits-les-plus-vendus-en-termes-de-quantite">25. Trouvez les 5 produits les plus vendus en termes de quantité.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT p.product_name, SUM(od.quantity) AS total_quantity_sold
+FROM products p
+         JOIN order_details od ON p.product_id = od.product_id
+GROUP BY p.product_id, p.product_name
+ORDER BY total_quantity_sold DESC
+LIMIT 5;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH product_sales AS (SELECT p.product_id, p.product_name, SUM(od.quantity) AS total_quantity_sold
+                       FROM products p
+                                JOIN order_details od ON p.product_id = od.product_id
+                       GROUP BY p.product_id, p.product_name),
+     ranked_products AS (SELECT product_id,
+                                product_name,
+                                total_quantity_sold,
+                                DENSE_RANK() OVER (ORDER BY total_quantity_sold DESC) AS sales_rank
+                         FROM product_sales)
+SELECT product_id, product_name, total_quantity_sold
+FROM ranked_products
+WHERE sales_rank &lt;= 5
+ORDER BY total_quantity_sold DESC, product_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="26-calculez-le-nombre-moyen-de-jours-entre-la-date-de-commande-et-la-date-dexpedition-pour-chaque-transporteur">26. Calculez le nombre moyen de jours entre la date de commande et la date d'expédition pour chaque transporteur.</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT s.company_name                               AS shipper_name,
+       ROUND(AVG(o.shipped_date - o.order_date), 2) AS avg_shipping_days
+FROM shippers s
+         JOIN orders o ON s.shipper_id = o.ship_via
+WHERE o.shipped_date IS NOT NULL
+GROUP BY s.shipper_id, s.company_name
+ORDER BY avg_shipping_days;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="27-identifiez-les-clients-qui-ont-passe-des-commandes-totalisant-plus-de-10000-en-valeur">27. Identifiez les clients qui ont passé des commandes totalisant plus de 10000 en valeur.</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.company_name,
+       TRUNC(SUM(od.quantity * od.unit_price * (1 - od.discount))::numeric, 2) AS total_order_value
+FROM customers c
+         JOIN orders o ON c.customer_id = o.customer_id
+         JOIN order_details od ON o.order_id = od.order_id
+GROUP BY c.customer_id, c.company_name
+HAVING SUM(od.quantity * od.unit_price * (1 - od.discount)) &gt; 10000
+ORDER BY total_order_value DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="28-calculez-le-nombre-de-produits-differents-commandes-par-chaque-client">28. Calculez le nombre de produits différents commandés par chaque client.</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.company_name, COUNT(DISTINCT od.product_id) AS unique_products_ordered
+FROM customers c
+         JOIN orders o ON c.customer_id = o.customer_id
+         JOIN order_details od ON o.order_id = od.order_id
+GROUP BY c.customer_id, c.company_name
+ORDER BY unique_products_ordered DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="29-trouvez-le-chiffre-daffaires-total-par-annee-et-par-mois">29. Trouvez le chiffre d'affaires total par année et par mois.</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT EXTRACT(YEAR FROM o.order_date)                                         AS year,
+       EXTRACT(MONTH FROM o.order_date)                                        AS month,
+       TRUNC(SUM(od.quantity * od.unit_price * (1 - od.discount))::numeric, 2) AS total_revenue
+FROM orders o
+         JOIN order_details od ON o.order_id = od.order_id
+GROUP BY EXTRACT(YEAR FROM o.order_date), EXTRACT(MONTH FROM o.order_date)
+ORDER BY year, month;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="30-identifiez-les-categories-de-produits-qui-ont-genere-le-plus-de-revenus-par-region">30. Identifiez les catégories de produits qui ont généré le plus de revenus par région.</h3>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT c.category_name,
+       r.region_description,
+       TRUNC(SUM(od.quantity * od.unit_price * (1 - od.discount))::numeric, 2) AS total_revenue
+FROM categories c
+         JOIN products p ON c.category_id = p.category_id
+         JOIN order_details od ON p.product_id = od.product_id
+         JOIN orders o ON od.order_id = o.order_id
+         JOIN customers cu ON o.customer_id = cu.customer_id
+         JOIN employees e ON o.employee_id = e.employee_id
+         JOIN employee_territories et ON e.employee_id = et.employee_id
+         JOIN territories t ON et.territory_id = t.territory_id
+         JOIN region r ON t.region_id = r.region_id
+GROUP BY c.category_id, c.category_name, r.region_id, r.region_description
+ORDER BY r.region_description, total_revenue DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="31-trouvez-les-produits-qui-nont-jamais-ete-commandes">31. Trouvez les produits qui n'ont jamais été commandés.</h3>
+<p>Difficulté : 2</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT p.product_id, p.product_name
+FROM products p
+         LEFT JOIN order_details od ON p.product_id = od.product_id
+WHERE od.order_id IS NULL
+ORDER BY p.product_id;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="32-calculez-le-rang-des-employes-en-fonction-du-nombre-de-commandes-quils-ont-gerees">32. Calculez le rang des employés en fonction du nombre de commandes qu'ils ont gérées.</h3>
+<p>Difficulté : 3</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">SELECT e.employee_id,
+       e.first_name || ' ' || e.last_name            AS employee_name,
+       COUNT(o.order_id)                             AS order_count,
+       RANK() OVER (ORDER BY COUNT(o.order_id) DESC) AS employee_rank
+FROM employees e
+         LEFT JOIN orders o ON e.employee_id = o.employee_id
+GROUP BY e.employee_id, employee_name
+ORDER BY employee_rank, employee_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="33-identifiez-les-clients-qui-ont-commande-tous-les-produits-dune-categorie-specifique-par-exemple-beverages">33. Identifiez les clients qui ont commandé tous les produits d'une catégorie spécifique (par exemple, 'Beverages').</h3>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH beverage_products AS (SELECT product_id
+                           FROM products
+                                    JOIN categories ON products.category_id = categories.category_id
+                           WHERE category_name = 'Beverages')
+SELECT c.customer_id, c.company_name
+FROM customers c
+WHERE NOT EXISTS (SELECT bp.product_id
+                  FROM beverage_products bp
+                  WHERE NOT EXISTS (SELECT 1
+                                    FROM orders o
+                                             JOIN order_details od ON o.order_id = od.order_id
+                                    WHERE o.customer_id = c.customer_id
+                                      AND od.product_id = bp.product_id))
+ORDER BY c.company_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="34-calculez-la-moyenne-mobile-sur-3-mois-des-ventes-totales">34. Calculez la moyenne mobile sur 3 mois des ventes totales.</h3>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH monthly_sales AS (SELECT DATE_TRUNC('month', o.order_date)                    AS sale_month,
+                              SUM(od.quantity * od.unit_price * (1 - od.discount)) AS total_sales
+                       FROM orders o
+                                JOIN
+                            order_details od ON o.order_id = od.order_id
+                       GROUP BY DATE_TRUNC('month', o.order_date))
+SELECT sale_month,
+       total_sales,
+       AVG(total_sales) OVER (
+           ORDER BY sale_month
+           ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+           ) AS moving_average
+FROM monthly_sales
+ORDER BY sale_month;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="35-trouvez-les-paires-de-produits-qui-sont-toujours-commandes-ensemble">35. Trouvez les paires de produits qui sont toujours commandés ensemble.</h3>
+<p>Difficulté : 5</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH product_pairs AS (SELECT od1.product_id               AS product1_id,
+                              od2.product_id               AS product2_id,
+                              COUNT(DISTINCT od1.order_id) AS order_count
+                       FROM order_details od1
+                                JOIN
+                            order_details od2 ON od1.order_id = od2.order_id AND od1.product_id &lt; od2.product_id
+                       GROUP BY od1.product_id, od2.product_id)
+SELECT p1.product_name AS product1_name,
+       p2.product_name AS product2_name,
+       pp.order_count
+FROM product_pairs pp
+         JOIN
+     products p1 ON pp.product1_id = p1.product_id
+         JOIN
+     products p2 ON pp.product2_id = p2.product_id
+WHERE pp.order_count = (SELECT COUNT(DISTINCT order_id) FROM orders)
+ORDER BY p1.product_name, p2.product_name;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="36-calculez-le-pourcentage-de-contribution-de-chaque-produit-au-chiffre-daffaires-total">36. Calculez le pourcentage de contribution de chaque produit au chiffre d'affaires total.</h3>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH product_sales AS (SELECT p.product_id,
+                              p.product_name,
+                              SUM(od.quantity * od.unit_price * (1 - od.discount)) AS product_revenue
+                       FROM products p
+                                JOIN
+                            order_details od ON p.product_id = od.product_id
+                       GROUP BY p.product_id, p.product_name),
+     total_sales AS (SELECT SUM(product_revenue) AS total_revenue
+                     FROM product_sales)
+SELECT ps.product_name,
+       ps.product_revenue,
+       ROUND((ps.product_revenue / ts.total_revenue * 100)::numeric, 2) AS revenue_percentage
+FROM product_sales ps
+         CROSS JOIN
+     total_sales ts
+ORDER BY revenue_percentage DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="37-identifiez-les-clients-qui-ont-augmente-leurs-achats-dune-annee-a-lautre">37. Identifiez les clients qui ont augmenté leurs achats d'une année à l'autre.</h3>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH yearly_customer_purchases AS (SELECT c.customer_id,
+                                          c.company_name,
+                                          EXTRACT(YEAR FROM o.order_date)                      AS order_year,
+                                          SUM(od.quantity * od.unit_price * (1 - od.discount)) AS total_purchase
+                                   FROM customers c
+                                            JOIN
+                                        orders o ON c.customer_id = o.customer_id
+                                            JOIN
+                                        order_details od ON o.order_id = od.order_id
+                                   GROUP BY c.customer_id, c.company_name, EXTRACT(YEAR FROM o.order_date))
+SELECT ycp1.customer_id,
+       ycp1.company_name,
+       ycp1.order_year                                                                              AS year1,
+       ycp1.total_purchase                                                                          AS purchase_year1,
+       ycp2.order_year                                                                              AS year2,
+       ycp2.total_purchase                                                                          AS purchase_year2,
+       TRUNC(((ycp2.total_purchase - ycp1.total_purchase) / ycp1.total_purchase * 100)::numeric, 2) AS growth_percentage
+FROM yearly_customer_purchases ycp1
+         JOIN
+     yearly_customer_purchases ycp2 ON ycp1.customer_id = ycp2.customer_id AND ycp2.order_year = ycp1.order_year + 1
+WHERE ycp2.total_purchase &gt; ycp1.total_purchase
+ORDER BY growth_percentage DESC;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="38-trouvez-la-sequence-la-plus-longue-de-jours-consecutifs-avec-des-commandes">38. Trouvez la séquence la plus longue de jours consécutifs avec des commandes.</h3>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH date_diff AS (SELECT order_date,
+                          order_date - LAG(order_date) OVER (ORDER BY order_date) AS diff
+                   FROM orders),
+     sequences AS (SELECT order_date,
+                          SUM(CASE WHEN diff = 1 THEN 0 ELSE 1 END) OVER (ORDER BY order_date) AS seq
+                   FROM date_diff)
+SELECT MIN(order_date) AS start_date,
+       MAX(order_date) AS end_date,
+       COUNT(*)        AS consecutive_days
+FROM sequences
+GROUP BY seq
+ORDER BY consecutive_days DESC
+LIMIT 1;
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Difficulté : 5</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH date_diff AS (SELECT order_date,
+                          order_date - LAG(order_date) OVER (ORDER BY order_date) AS diff
+                   FROM orders),
+     sequences AS (SELECT order_date,
+                          SUM(CASE WHEN diff = 1 THEN 0 ELSE 1 END) OVER (ORDER BY order_date) AS seq
+                   FROM date_diff),
+     sequence_lengths AS (SELECT seq,
+                                 MIN(order_date) AS start_date,
+                                 MAX(order_date) AS end_date,
+                                 COUNT(*)        AS consecutive_days
+                          FROM sequences
+                          GROUP BY seq),
+     max_length AS (SELECT MAX(consecutive_days) AS max_consecutive_days
+                    FROM sequence_lengths)
+SELECT sl.start_date,
+       sl.end_date,
+       sl.consecutive_days
+FROM sequence_lengths sl
+         JOIN
+     max_length ml ON sl.consecutive_days = ml.max_consecutive_days
+ORDER BY sl.start_date;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="39-calculez-le-temps-moyen-entre-les-commandes-pour-chaque-client">39. Calculez le temps moyen entre les commandes pour chaque client.</h3>
+<p>Difficulté : 4</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH customer_order_dates AS (SELECT customer_id,
+                                     order_date,
+                                     LAG(order_date) OVER (PARTITION BY customer_id ORDER BY order_date) AS prev_order_date
+                              FROM orders)
+SELECT c.customer_id,
+       c.company_name,
+       ROUND(AVG(cod.order_date - cod.prev_order_date)::numeric, 2) AS avg_days_between_orders
+FROM customers c
+         JOIN
+     customer_order_dates cod ON c.customer_id = cod.customer_id
+WHERE cod.prev_order_date IS NOT NULL
+GROUP BY c.customer_id, c.company_name
+ORDER BY avg_days_between_orders;
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="40-identifiez-les-produits-dont-les-ventes-ont-augmente-chaque-mois-sur-une-periode-dau-moins-3-mois-consecutifs">40. Identifiez les produits dont les ventes ont augmenté chaque mois sur une période d'au moins 3 mois consécutifs.</h3>
+<p>Difficulté : 5</p>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">WITH monthly_product_sales AS (SELECT p.product_id,
+                                      p.product_name,
+                                      DATE_TRUNC('month', o.order_date)                    AS sale_month,
+                                      SUM(od.quantity * od.unit_price * (1 - od.discount)) AS monthly_sales
+                               FROM products p
+                                        JOIN
+                                    order_details od ON p.product_id = od.product_id
+                                        JOIN
+                                    orders o ON od.order_id = o.order_id
+                               GROUP BY p.product_id, p.product_name, DATE_TRUNC('month', o.order_date)),
+     sales_growth AS (SELECT product_id,
+                             product_name,
+                             sale_month,
+                             monthly_sales,
+                             LAG(monthly_sales) OVER (PARTITION BY product_id ORDER BY sale_month) AS prev_month_sales,
+                             CASE
+                                 WHEN monthly_sales &gt;
+                                      LAG(monthly_sales) OVER (PARTITION BY product_id ORDER BY sale_month) THEN 1
+                                 ELSE 0
+                                 END                                                               AS is_increase
+                      FROM monthly_product_sales),
+     consecutive_increases AS (SELECT product_id,
+                                      product_name,
+                                      sale_month,
+                                      monthly_sales,
+                                      SUM(CASE WHEN is_increase = 0 THEN 1 ELSE 0 END)
+                                      OVER (PARTITION BY product_id ORDER BY sale_month) AS grp
+                               FROM sales_growth
+                               WHERE is_increase = 1)
+SELECT DISTINCT product_id,
+                product_name
+FROM (SELECT product_id,
+             product_name,
+             grp,
+             COUNT(*) OVER (PARTITION BY product_id, grp) AS consecutive_count
+      FROM consecutive_increases) subq
+WHERE consecutive_count &gt;= 3
+ORDER BY product_id;
+</code></pre>
+
+</details>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../02-recettes/" class="btn btn-neutral float-left" title="Recettes de cuisine"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../02-recettes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

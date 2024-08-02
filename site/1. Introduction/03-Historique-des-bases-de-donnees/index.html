@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Historique des bases de données - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Historique des bases de donn\u00e9es";
+        var mkdocs_page_input_path = "1. Introduction/03-Historique-des-bases-de-donnees.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Historique des bases de données</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#annees-1960-les-debuts">Années 1960 : Les débuts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#systemes-de-fichiers">Systèmes de fichiers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-hierarchiques">Bases de données hiérarchiques</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#exemple-de-structure-hierarchique">Exemple de structure hiérarchique</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#annees-1970-lere-des-bases-de-donnees-relationnelles">Années 1970 : L'ère des bases de données relationnelles</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modele-relationnel">Modèle relationnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sgbd-relationnels">SGBD relationnels</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#annees-1980-commercialisation-et-standardisation">Années 1980 : Commercialisation et standardisation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#sgbd-commerciaux">SGBD commerciaux</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#standardisation-de-sql">Standardisation de SQL</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#annees-1990-evolution-et-diversification">Années 1990 : Évolution et diversification</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-orientees-objets">Bases de données orientées objets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-distribuees">Bases de données distribuées</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#annees-2000-lessor-des-bases-de-donnees-nosql">Années 2000 : L'essor des bases de données NoSQL</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#big-data">Big Data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-nosql">Bases de données NoSQL</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#annees-2010-a-aujourdhui-nouvelles-tendances-et-technologies">Années 2010 à aujourd'hui : Nouvelles tendances et technologies</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-en-memoire">Bases de données en mémoire</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-multi-modeles">Bases de données multi-modèles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cloud-et-bases-de-donnees-en-tant-que-service-dbaas">Cloud et bases de données en tant que service (DBaaS)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">1. Introduction</li>
+      <li class="breadcrumb-item active">Historique des bases de données</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="historique-des-bases-de-donnees">Historique des bases de données</h1>
+<h2 id="annees-1960-les-debuts">Années 1960 : Les débuts</h2>
+<h3 id="systemes-de-fichiers">Systèmes de fichiers</h3>
+<ul>
+<li><strong>Stockage séquentiel</strong> : Les premiers systèmes de gestion des données
+  utilisaient des fichiers séquentiels pour stocker les informations. Les
+  données étaient enregistrées dans un ordre spécifique, ce qui rendait les
+  opérations de recherche et de mise à jour lentes et inefficaces.</li>
+</ul>
+<h3 id="bases-de-donnees-hierarchiques">Bases de données hiérarchiques</h3>
+<ul>
+<li><strong>IMS (Information Management System)</strong> : Développé par IBM en 1966, IMS est
+  l'un des premiers systèmes de gestion de bases de données (SGBD)
+  hiérarchiques. Les données sont organisées en une structure arborescente, avec
+  des enregistrements parents et enfants.</li>
+</ul>
+<h4 id="exemple-de-structure-hierarchique">Exemple de structure hiérarchique</h4>
+<pre><code>Entreprise
+│
+├── Département A
+│   ├── Employé 1
+│   └── Employé 2
+│
+└── Département B
+    ├── Employé 3
+    └── Employé 4
+</code></pre>
+<h2 id="annees-1970-lere-des-bases-de-donnees-relationnelles">Années 1970 : L'ère des bases de données relationnelles</h2>
+<h3 id="modele-relationnel">Modèle relationnel</h3>
+<ul>
+<li><strong>Edgar F. Codd</strong> : En 1970, Edgar F. Codd, un chercheur chez IBM, propose le
+  modèle relationnel dans son article "A Relational Model of Data for Large
+  Shared Data Banks". Ce modèle organise les données en tables (relations) et
+  utilise des clés pour établir des relations entre les tables.</li>
+</ul>
+<h3 id="sgbd-relationnels">SGBD relationnels</h3>
+<ul>
+<li><strong>System R</strong> : IBM développe System R dans les années 1970 pour démontrer la
+  faisabilité du modèle relationnel. Ce projet conduit à la création du langage
+  SQL (<em>Structured Query Language</em>).</li>
+<li><strong>Ingres</strong> : Un autre projet de recherche majeur, Ingres, est développé à
+  l'Université de Californie, Berkeley, et contribue également à la
+  popularisation des bases de données relationnelles. Ce système aura comme
+  successeur Postgres et plus tard PostgreSQL.</li>
+</ul>
+<h2 id="annees-1980-commercialisation-et-standardisation">Années 1980 : Commercialisation et standardisation</h2>
+<h3 id="sgbd-commerciaux">SGBD commerciaux</h3>
+<ul>
+<li><strong>Oracle</strong> : Fondée en 1977, Oracle Corporation lance son premier SGBD
+  relationnel commercial en 1979. Oracle devient rapidement un leader dans le
+  domaine des bases de données.</li>
+<li><strong>IBM DB2</strong> : En 1983, IBM lance DB2, un SGBD relationnel basé sur les
+  recherches de System R.</li>
+<li><strong>Microsoft SQL Server</strong> : Lancé en 1989, SQL Server devient un acteur majeur
+  dans le domaine des bases de données relationnelles.</li>
+</ul>
+<h3 id="standardisation-de-sql">Standardisation de SQL</h3>
+<ul>
+<li><strong>ANSI SQL</strong> : En 1986, l'<em>American National Standards Institute</em> (ANSI)
+  publie la première norme SQL, standardisant le langage de requête pour les
+  bases de données relationnelles.</li>
+</ul>
+<h2 id="annees-1990-evolution-et-diversification">Années 1990 : Évolution et diversification</h2>
+<h3 id="bases-de-donnees-orientees-objets">Bases de données orientées objets</h3>
+<ul>
+<li><strong>Emergence</strong> : Les bases de données orientées objets gagnent en popularité
+  pour gérer des données complexes et des objets de programmation.</li>
+<li><strong>db4o et ObjectDB</strong> : Des exemples de SGBD orientés objets qui apparaissent
+  durant cette période.</li>
+</ul>
+<h3 id="bases-de-donnees-distribuees">Bases de données distribuées</h3>
+<ul>
+<li><strong>Scalabilité</strong> : Les bases de données distribuées sont développées pour
+  permettre la répartition des données sur plusieurs serveurs, améliorant ainsi
+  la scalabilité et la tolérance aux pannes.</li>
+</ul>
+<h2 id="annees-2000-lessor-des-bases-de-donnees-nosql">Années 2000 : L'essor des bases de données NoSQL</h2>
+<h3 id="big-data">Big Data</h3>
+<ul>
+<li><strong>Explosion des données</strong> : Avec l'essor d'internet et des applications web,
+  le volume des données explose, nécessitant de nouvelles approches de gestion
+  des données.</li>
+</ul>
+<h3 id="bases-de-donnees-nosql">Bases de données NoSQL</h3>
+<ul>
+<li><strong>MongoDB</strong> : Lancé en 2009, MongoDB est une base de données de documents qui
+  permet de stocker des données semi-structurées.</li>
+<li><strong>Cassandra</strong> : Développé par Facebook, Cassandra est une base de données de
+  colonnes distribuée, conçue pour gérer de grandes quantités de données sur
+  plusieurs serveurs.</li>
+<li><strong>Redis</strong> : Une base de données en mémoire, utilisée pour des applications
+  nécessitant des performances élevées.</li>
+</ul>
+<h2 id="annees-2010-a-aujourdhui-nouvelles-tendances-et-technologies">Années 2010 à aujourd'hui : Nouvelles tendances et technologies</h2>
+<h3 id="bases-de-donnees-en-memoire">Bases de données en mémoire</h3>
+<ul>
+<li><strong>Performance</strong> : Les bases de données en mémoire, comme Redis et Memcached,
+  gagnent en popularité pour les applications nécessitant des temps de réponse
+  ultra-rapides.</li>
+</ul>
+<h3 id="bases-de-donnees-multi-modeles">Bases de données multi-modèles</h3>
+<ul>
+<li><strong>Flexibilité</strong> : Les bases de données multi-modèles, comme ArangoDB et
+  OrientDB, permettent de combiner plusieurs modèles de données (relationnel,
+  document, graphe) dans un même SGBD.</li>
+</ul>
+<h3 id="cloud-et-bases-de-donnees-en-tant-que-service-dbaas">Cloud et bases de données en tant que service (DBaaS)</h3>
+<ul>
+<li><strong>Accessibilité</strong> : Les services de bases de données dans le cloud, comme
+  Amazon RDS, Google Cloud SQL et Azure SQL Database, permettent aux entreprises
+  de déployer et de gérer des bases de données sans avoir à se soucier de
+  l'infrastructure sous-jacente.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>L'histoire des bases de données est marquée par une évolution constante,
+répondant aux besoins croissants de stockage, de gestion et d'accès aux données.
+Des premiers systèmes hiérarchiques aux bases de données relationnelles, en
+passant par les bases de données NoSQL et les solutions en mémoire, chaque étape
+a apporté des innovations significatives. Aujourd'hui, les bases de données
+continuent d'évoluer pour répondre aux défis du Big Data, de l'Internet des
+objets (IoT) et des applications en temps réel.</p>
+<p><strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3 Opus</code>. L'IA
+a été utilisée pour générer des explications, des exemples et des suggestions de
+structure. Toutes les informations ont été vérifiées, éditées et complétées par
+l'auteur._</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../02-Types-de-bases-de-donnees/" class="btn btn-neutral float-left" title="Types de bases de données"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../04-Exemples-de-Bases-de-Donnees/" class="btn btn-neutral float-right" title="Exemples de Bases de Données dans Différents Contextes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../02-Types-de-bases-de-donnees/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../04-Exemples-de-Bases-de-Donnees/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

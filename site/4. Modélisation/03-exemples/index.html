@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Exemples - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Exemples";
+        var mkdocs_page_input_path = "4. Mod\u00e9lisation/03-exemples.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Exemples</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#base-de-donnees-bancaire-simple">Base de Données Bancaire Simple</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#base-de-donnees-dun-college">Base de Données d'un Collège</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#base-de-donnees-des-droits-dauteur-de-musique">Base de Données des Droits d'Auteur de Musique</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#appartements-a-louer">Appartements à Louer</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#entite-faible-appartement">Entité Faible : Appartement</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#notation-traditionnelle">Notation Traditionnelle</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#appartements-a-louer_1">Appartements à Louer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#diagramme-complet">Diagramme Complet</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#diagramme-ameliore">Diagramme Amélioré</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">4. Modélisation</li>
+      <li class="breadcrumb-item active">Exemples</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="exemples">Exemples</h1>
+<h2 id="base-de-donnees-bancaire-simple">Base de Données Bancaire Simple</h2>
+<ul>
+<li>L'application de base de données appelée BANK, qui suit les clients d'une
+  banque et leurs comptes.<ul>
+<li>Les clients sont identifiés par leur nom, adresse, téléphone et ID client.</li>
+<li>Les comptes ont des numéros, des types (par exemple, épargne, courant) et
+  des soldes.</li>
+<li>Enregistrer également le(s) client(s) qui possèdent un compte.</li>
+<li>Une transaction a lieu sur un seul compte.</li>
+<li>Chaque transaction a un ID, un code, un montant, une date, une heure et
+  une description.</li>
+</ul>
+</li>
+</ul>
+<details>
+    <summary>Traditionnelle</summary>
+    <img src="../../images/SimpleBank.png">
+</details>
+
+<details>
+    <summary>UML</summary>
+    <img src="../../images/SimpleBank_uml.png">
+</details>
+
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+entity Customer {
+    customer_id
+    --
+    name
+    address
+    phone
+}
+
+entity Account {
+    number
+    --
+    type
+    balance
+}
+
+entity Transaction {
+    transaction_id
+    --
+    code
+    amount
+    date
+    time
+    description
+}
+
+Customer &quot;1..*&quot; -- &quot; *  &quot; Account: &gt; owns
+Transaction &quot; *  &quot; -- &quot;1&quot; Account: &gt; takes place
+
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<h2 id="base-de-donnees-dun-college">Base de Données d'un Collège</h2>
+<ul>
+<li>Dans cette base de données, vous devez enregistrer les étudiants, les
+  enseignants, les cours, les notes et les conseillers étudiants.<ul>
+<li>Chaque étudiant a un numéro d'étudiant, un nom et une adresse.</li>
+<li>Chaque enseignant a un numéro d'employé, un nom, un numéro de bureau, un
+  rang et un numéro de téléphone.</li>
+<li>Pour chaque cours, son code, son nom et son nombre de crédits sont
+  enregistrés.</li>
+<li>Une note est donnée à un étudiant par un enseignant pour un cours enseigné
+  pendant un semestre (A, B ou C) d'une année particulière.</li>
+<li>Les conseillers des étudiants sont des enseignants.</li>
+</ul>
+</li>
+</ul>
+<details>
+    <summary>Traditionnelle (avec association <em>grade</em>) </summary>
+    <img src="../../images/College_grade_rel.png">
+</details>
+
+<details>
+    <summary>Traditionnelle (avec entité <em>grade</em>) </summary>
+    <img src="../../images/College_grade_ent.png">
+</details>
+
+<details>
+    <summary>UML</summary>
+    <img src="../../images/College_uml.png">
+</details>
+<p><br></p>
+<h2 id="base-de-donnees-des-droits-dauteur-de-musique">Base de Données des Droits d'Auteur de Musique</h2>
+<ul>
+<li>Vous êtes chargé de concevoir une base de données pour une agence de collecte
+  de droits d'auteur de musique, incluant les informations suivantes :<ul>
+<li>Un auteur a un numéro d'auteur, un prénom, un nom de famille et une
+  adresse.</li>
+<li>Les auteurs peuvent être signés avec un éditeur. Les éditeurs signent de
+  nombreux auteurs.</li>
+<li>Les éditeurs ont un code éditeur, un nom et une adresse.</li>
+<li>Les auteurs écrivent des œuvres. Les œuvres peuvent avoir plus d'un
+  auteur. Chaque auteur écrit un pourcentage d'une œuvre.</li>
+<li>Une œuvre a un titre, une durée et une description.</li>
+<li>Les œuvres sont interprétées lors de concerts (ou spectacles de musique)
+  par un groupe.</li>
+<li>Un concert a une date et un lieu.</li>
+</ul>
+</li>
+</ul>
+<details>
+    <summary>Traditionnelle</summary>
+    <img src="../../images/Music.png">
+</details>
+
+<details>
+    <summary>UML</summary>
+    <img src="../../images/Music_uml.png">
+</details>
+
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+
+entity Writer {
+number
+first name
+last name
+address
+}
+
+entity Work {
+id
+title
+duration
+description
+}
+
+entity Publisher {
+code
+name
+address
+}
+
+entity Act {
+id
+name
+address
+}
+
+entity Concert {
+id
+date venue
+}
+
+Writer &quot;*&quot; -- &quot;0..1&quot; Publisher: &gt; signs contract
+
+entity writes {
+percentage
+}
+Writer &quot;1&quot; - &quot;*&quot; writes: &quot;       &quot;
+writes &quot;*&quot; - &quot;1&quot; Work: &quot;       &quot;
+
+entity performed {
+
+}
+Work &quot;1&quot; -- &quot;*&quot; performed
+Act &quot;1&quot; -- &quot;*&quot; performed
+Concert &quot;1&quot; -- &quot;*&quot; performed
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<h2 id="appartements-a-louer">Appartements à Louer</h2>
+<ul>
+<li>
+<p>Vous devez concevoir une base de données pour gérer les informations d'une
+  entreprise gérant un ensemble d'appartements à louer.</p>
+<ul>
+<li>Cette entreprise gère de nombreux bâtiments, chacun composé d'au moins un
+  appartement.</li>
+<li>Supposons qu'un appartement puisse être identifié de manière unique par
+  son numéro dans son bâtiment.</li>
+<li>Pour chaque appartement, il y a au moins un locataire, s'il est loué.</li>
+<li>Le loyer mensuel et la date de fin de bail (si connue) doivent être
+  inclus.</li>
+<li>Pour chaque appartement disponible prochainement, la date de disponibilité
+  et le loyer mensuel demandé doivent être inclus.</li>
+<li>Pour chaque locataire, le prénom, le nom de famille, le numéro de
+  téléphone à domicile, le nom de son employeur et son numéro de téléphone
+  professionnel doivent être inclus.</li>
+</ul>
+</li>
+<li>
+<p>Cette date de fin de bail n'est pas toujours le jour suivant la fin du bail
+  précédent car un appartement pourrait être indisponible pendant un certain
+  temps en raison de rénovations, par exemple.</p>
+</li>
+<li>En suivant un raisonnement similaire, le loyer mensuel demandé n'est pas
+  nécessairement le même que le loyer actuel.</li>
+</ul>
+<h3 id="entite-faible-appartement">Entité Faible : Appartement</h3>
+<h4 id="notation-traditionnelle">Notation Traditionnelle</h4>
+<details>
+    <summary>Traditionnelle 1</summary>
+    <img src="../../images/ER_apartment_building_orig.png">
+</details>
+
+<details>
+    <summary>Traditionnelle 2</summary>
+    <img src="../../images/ER_apartment_building_orig.png">
+</details>
+
+<details>
+    <summary>UML</summary>
+    <img src="../../images/College_faible_uml.png">
+</details>
+
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+
+skinparam linetype ortho
+skinparam classFontSize 20
+skinparam classFontName Source Code Pro
+hide empty methods
+
+entity Apartment {
+    * number: integer
+    asking_rent: numeric(10, 2)
+    available_on: date
+}
+
+entity Building {
+    * building_id: integer &lt;&lt;generated&gt;&gt; &lt;&lt;pk&gt;&gt;
+    --
+    name: text
+    * address: text
+}
+
+Apartment &quot;1..*&quot; --* &quot;1&quot; Building : &gt; located in
+
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="appartements-a-louer_1">Appartements à Louer</h3>
+<h4 id="diagramme-complet">Diagramme Complet</h4>
+<details>
+    <summary>Traditionnelle</summary>
+    <img src="../../images/ER_apartment_building_full.png">
+</details>
+
+<details>
+    <summary>UML</summary>
+    <img src="../../images/ER_apartment_building_uml.png">
+</details>
+<p><br></p>
+<h4 id="diagramme-ameliore">Diagramme Amélioré</h4>
+<details>
+    <summary>Traditionnelle</summary>
+    <img src="../../images/ER_apartment_building_improved.png">
+</details>
+
+<details>
+    <summary>UML</summary>
+    <img src="../../images/ER_apartment_building_improved_uml.png">
+</details>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../02-notation/" class="btn btn-neutral float-left" title="Différentes notations pour les DEA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../04-ea-vers-relationnel/" class="btn btn-neutral float-right" title="Conversion d'un diagramme EA en schéma relationnel">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../02-notation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../04-ea-vers-relationnel/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

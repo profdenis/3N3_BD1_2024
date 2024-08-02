@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Requêtes SQL imbriquées - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Requ\u00eates SQL imbriqu\u00e9es";
+        var mkdocs_page_input_path = "3. SQL/05-imbriqu\u00e9es.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Requêtes SQL imbriquées</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#base-de-donnees-universitaire">Base de Données Universitaire</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#sous-requetes-non-correlees">Sous-requêtes Non Corrélées</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#exemples-avec-2-sous-requetes-non-correlees">Exemples : avec 2 sous-requêtes non corrélées</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sous-requetes-scalaires">Sous-requêtes Scalaires</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#exemples">Exemples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#format-de-requete-sql-with">Format de Requête SQL with</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#valeurs-null-en-sql">Valeurs NULL en SQL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sous-requetes-non-scalaires">Sous-requêtes Non-Scalaires</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#in">IN</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#recommandation-ne-pas-utiliser-not-in">Recommandation : ne pas utiliser NOT IN</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#recommandation-utiliser-une-left-join-a-la-place">Recommandation : utiliser une left join à la place</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#any-et-all">ANY et ALL</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">3. SQL</li>
+      <li class="breadcrumb-item active">Requêtes SQL imbriquées</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="requetes-sql-imbriquees">Requêtes SQL imbriquées</h1>
+<ul>
+<li>Une <em>sous-requête</em> est une requête à l'intérieur d'une autre requête (ou d'une
+  autre sous-requête).</li>
+<li>Nous pouvons avoir plusieurs niveaux de sous-requêtes.</li>
+<li>Parfois, nous faisons référence aux sous-requêtes comme des requêtes
+  <em>internes</em> et aux requêtes englobantes comme des requêtes <em>externes</em>.</li>
+</ul>
+<h2 id="base-de-donnees-universitaire">Base de Données Universitaire</h2>
+<pre><code class="language-sql">set search_path to university;
+</code></pre>
+<h3 id="sous-requetes-non-correlees">Sous-requêtes Non Corrélées</h3>
+<ul>
+<li>Aussi appelées sous-requêtes <strong><em>simples</em></strong>.</li>
+<li>Les sous-requêtes <em>corrélées</em> seront abordées plus tard.</li>
+<li>Les sous-requêtes non corrélées sont indépendantes de leurs requêtes
+  externes (englobantes).</li>
+<li>Elles peuvent s'exécuter seules.</li>
+<li>Elles ne dépendent pas de quelque chose défini dans les requêtes externes.</li>
+</ul>
+<h4 id="exemples-avec-2-sous-requetes-non-correlees">Exemples : avec 2 sous-requêtes non corrélées</h4>
+<p>1- Trouver les étudiants et les instructeurs avec une adresse
+email <code>@example.com</code></p>
+<pre><code class="language-sql">select name, email
+from student
+where email like '%@example.com'
+union
+select name, email
+from instructor
+where email like '%@example.com';
+</code></pre>
+<p>2- Vérifier s'il y a des étudiants et des instructeurs avec la même adresse
+email</p>
+<pre><code class="language-sql">select email
+from student
+intersect
+select email
+from instructor;
+</code></pre>
+<p>3- Trouver les cours qui n'ont jamais été offerts</p>
+<pre><code class="language-sql">select cid
+from course
+except
+select cid
+from offering;
+
+select c.cid
+from course c
+         left join offering o on c.cid = o.cid
+where o.oid is null;
+</code></pre>
+<p>4- Trouver les étudiants non inscrits à un cours</p>
+<pre><code class="language-sql">select sid
+from student
+except
+select sid
+from enrollment;
+</code></pre>
+<p>5- Trouver les offres de cours dans lesquelles aucun étudiant n'est inscrit</p>
+<pre><code class="language-sql">select oid
+from offering
+except
+select oid
+from enrollment;
+</code></pre>
+<h3 id="sous-requetes-scalaires">Sous-requêtes Scalaires</h3>
+<ul>
+<li>Les sous-requêtes scalaires sont le type le plus simple de sous-requêtes.</li>
+<li>Elles renvoient toujours exactement 1 ligne contenant exactement 1 colonne.</li>
+<li>Elles sont souvent (mais pas toujours) obtenues en calculant une fonction
+  d'agrégat.</li>
+</ul>
+<h4 id="exemples">Exemples</h4>
+<p>1- Trouver le nombre d'étudiants avec une adresse email <code>@example.com</code></p>
+<pre><code class="language-sql">select count(sid) as n_students
+from student
+where email like '%@example.com';
+</code></pre>
+<p>2- Trouver les cours qui ont été offerts plus souvent que le cours <code>DB</code></p>
+<p>a) Trouver le nombre de fois que <code>DB</code> a été offert</p>
+<pre><code class="language-sql">select count(o.cid)
+from course c
+         left join offering o on c.cid = o.cid
+where c.code = 'DB';
+</code></pre>
+<p>b) Insérer le résultat précédent dans la clause <code>HAVING</code> d'une requête calculant
+le nombre de fois que chaque cours a été offert. Il pourrait être préférable de
+commencer avec un nombre fixe (par exemple 3) au lieu d'insérer immédiatement la
+première requête dans la seconde</p>
+<pre><code class="language-sql">select c.cid, c.code
+from course c
+         left join offering o on c.cid = o.cid
+group by c.cid, c.code
+having count(o.oid) &gt; 3;
+</code></pre>
+<pre><code class="language-sql">select c.cid, c.code
+from course c
+         left join offering o on c.cid = o.cid
+group by c.cid, c.code
+having count(o.oid) &gt; (select count(o.cid)
+                       from course c
+                                left join offering o on c.cid = o.cid
+                       where c.code = 'DB');
+</code></pre>
+<p>3- Trouver le nombre moyen de fois que chaque cours a été offert. Commencer par
+trouver le nombre de fois que chaque cours a été offert, puis prendre la moyenne</p>
+<pre><code class="language-sql">select c.cid, c.code, count(o.oid) as n_offerings
+from course c
+         left join offering o on c.cid = o.cid
+group by c.cid;
+</code></pre>
+<pre><code class="language-sql">-- ne fonctionnera pas
+select c.cid, c.code, avg(count(o.oid)) as n_offerings
+from course c
+         left join offering o on c.cid = o.cid
+group by c.cid;
+</code></pre>
+<pre><code class="language-sql">select round(avg(n_offerings), 2) as avg_n_offerings
+from (select count(o.oid) as n_offerings
+      from course c
+               left join offering o on c.cid = o.cid
+      group by c.cid) as T;
+
+with T as (select count(o.oid) as n_offerings
+           from course c
+                    left join offering o on c.cid = o.cid
+           group by c.cid)
+select round(avg(n_offerings), 2) as avg_n_offerings
+from T;
+</code></pre>
+<p>4- Trouver les cours qui ont été offerts plus souvent que la moyenne (nombre de
+fois que chaque cours a été offert)</p>
+<pre><code class="language-sql">select c.cid, c.code
+from course c
+         left join offering o on c.cid = o.cid
+group by c.cid
+having count(o.oid) &gt; (select avg(n_offerings) as avg_n_offerings
+                       from (select count(o.oid) as n_offerings
+                             from course c
+                                      left join offering o on c.cid = o.cid
+                             group by c.cid) as T);
+</code></pre>
+<h3 id="format-de-requete-sql-with">Format de Requête SQL <code>with</code></h3>
+<ul>
+<li>Afin d'exprimer plus facilement des requêtes avec plusieurs niveaux de
+  sous-requêtes, nous pouvons utiliser le style de
+  requête <code>with ... select ...</code>.</li>
+<li>Nous définissons (en quelque sorte) des tables temporaires avant que la
+  requête principale <code>select</code> ne commence.</li>
+<li>Ensuite, nous utilisons les tables temporaires dans la requête
+  principale <code>select</code> comme si elles étaient des tables stockées dans la base de
+  données.</li>
+</ul>
+<pre><code class="language-sql">with T2 as (select avg(n_offerings) as avg_n_offerings
+            from (select c.cid, c.code, count(o.oid) as n_offerings
+                  from course c
+                           left join offering o on c.cid = o.cid
+                  group by c.cid) as T1)
+select c.cid, c.code
+from course c
+         left join offering o on c.cid = o.cid
+group by c.cid
+having count(o.oid) &gt; (select * from T2);
+
+with n_offerings_per_course as (select c.cid,
+                                       c.code,
+                                       count(o.oid) as n_offerings
+                                from course c
+                                         left join offering o on c.cid = o.cid
+                                group by c.cid)
+select cid, code
+from n_offerings_per_course
+where n_offerings &gt; (select avg(n_offerings) as avg_n_offerings
+                     from n_offerings_per_course);
+</code></pre>
+<ul>
+<li>Ne pas <em>sur-utiliser</em> la syntaxe <code>with</code></li>
+<li>Par exemple, ne réécrivez pas cette requête
+  <code>sql
+  select name, email 
+  from student 
+  where email like '%@example.com'
+  union
+  select name, email 
+  from instructor 
+  where email like '%@example.com';</code></li>
+</ul>
+<p>comme</p>
+<p><code>sql
+  with students_example as (select name, email from student where email like '%@example.com'),
+       instructor_example as (select name, email from instructor where email like '%@example.com')
+  select * from students_example
+  union
+  select * from instructor_example;</code></p>
+<ul>
+<li>Bien que cette requête soit techniquement correcte et équivalente à la requête
+  originale, l'utilisation de <code>with</code> pour définir 2 tables temporaires est
+  excessive ici et réduit en fait la lisibilité.</li>
+<li>Utilisez <code>with</code> uniquement lorsque les sous-requêtes sont compliquées ou
+  lorsqu'il y a plusieurs niveaux de sous-requêtes.</li>
+<li>Nous pouvons également utiliser <code>with recursive</code> pour écrire des requêtes
+  récursives.</li>
+</ul>
+<h3 id="valeurs-null-en-sql">Valeurs <code>NULL</code> en SQL</h3>
+<ul>
+<li>SQL utilise une <em>logique à 3 valeurs</em> au lieu de la logique booléenne (une
+  logique à 2 valeurs).</li>
+<li>Les 3 valeurs sont <code>true</code>, <code>false</code> et <code>null</code> (ou <code>T</code>, <code>F</code> et <code>N</code> dans le
+  tableau ci-dessous)...</li>
+<li>Les 2 premières valeurs ont le sens habituel, tandis que <code>null</code> peut avoir
+  différentes significations :<ul>
+<li><em>inconnu</em></li>
+<li><em>non applicable</em></li>
+<li><em>n'a pas d'importance</em></li>
+</ul>
+</li>
+<li>Les opérateurs logiques doivent être mis à jour pour tenir compte des
+  valeurs <code>null</code>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>NOT A</th>
+<th>A OR B</th>
+<th>A AND B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>T</td>
+<td>N</td>
+<td>F</td>
+<td>T</td>
+<td>N</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>N</td>
+<td>T</td>
+<td>N</td>
+<td>F</td>
+</tr>
+<tr>
+<td>N</td>
+<td>T</td>
+<td>N</td>
+<td>T</td>
+<td>N</td>
+</tr>
+<tr>
+<td>N</td>
+<td>F</td>
+<td>N</td>
+<td>N</td>
+<td>F</td>
+</tr>
+<tr>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sous-requetes-non-scalaires">Sous-requêtes Non-Scalaires</h3>
+<ul>
+<li>Si une (sous-)requête renvoie plus d'une ligne et/ou plus d'une colonne, alors
+  ce n'est <strong>pas</strong> une sous-requête scalaire.</li>
+<li>Tenter d'utiliser les opérateurs de comparaison ou arithmétiques normaux avec
+  des sous-requêtes non-scalaires échouera s'il y a plus d'une ligne.</li>
+<li>Certains SGBD, comme PostgreSQL, permettent à certains opérateurs de
+  fonctionner avec des sous-requêtes donnant exactement 1 ligne mais plusieurs
+  colonnes.</li>
+<li>PostgreSQL est un ORDBMS, donc il est plus flexible avec les types de données.</li>
+<li>Il verra la seule ligne avec plusieurs colonnes comme un seul objet avec
+  plusieurs champs.</li>
+<li>En général, nous devons utiliser des opérateurs spéciaux pour traiter les
+  sous-requêtes non-scalaires :<ul>
+<li><code>IN</code>, <code>NOT IN</code>, <code>EXISTS</code>, <code>NOT EXISTS</code>, <code>ANY</code>, <code>ALL</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="in"><code>IN</code></h4>
+<ul>
+<li><code>expression IN (sub-query)</code><ul>
+<li>c'est la même chose que $\in$ en notation mathématique (sauf que nous
+  devons gérer les valeurs <code>null</code>)</li>
+<li>la sous-requête doit renvoyer exactement 1 colonne</li>
+<li><code>true</code> si l'expression est égale à 1 des lignes dans les résultats de la
+  sous-requête</li>
+<li><code>false</code> si l'expression n'est pas <code>null</code> et qu'il n'y a pas de
+  valeurs <code>null</code> dans la sous-requête et que l'expression n'est égale à
+  aucune ligne de la sous-requête</li>
+<li><code>null</code> si l'expression est <code>null</code> ou si l'expression n'est égale à aucune
+  ligne de la sous-requête et qu'il y a au moins 1 valeur <code>null</code> dans la
+  sous-requête</li>
+</ul>
+</li>
+<li>
+<p>Parce que SQL utilise une logique à 3 valeurs, évaluer <code>IN</code> est plus compliqué</p>
+</li>
+<li>
+<p>Rappelez-vous que si nous voulons savoir si une valeur de colonne est <code>null</code>,
+  nous ne pouvons pas utiliser l'opérateur d'égalité <code>=</code> car il renverra
+  toujours <code>null</code></p>
+<ul>
+<li><code>null</code> signifie <em>inconnu</em> dans ce cas, donc nous ne savons pas comment
+  comparer des valeurs à une valeur inconnue</li>
+<li>Nous devons donc utiliser <code>is null</code> au lieu de <code>= null</code>...</li>
+</ul>
+</li>
+<li>
+<p>L'opérateur <code>IN</code> compare les valeurs avec <code>=</code>, donc dès qu'il compare avec
+  un <code>null</code>, il évaluera à <code>null</code></p>
+<ul>
+<li>Donc si l'expression est égale à <code>null</code>, <code>IN</code> évaluera à <code>null</code></li>
+<li>Si l'expression n'est pas <code>null</code>, alors elle comparera l'expression avec
+  des valeurs non-nulles d'abord dans la sous-requête<ul>
+<li>si elle trouve une correspondance, alors la valeur de <code>IN</code> sera vraie</li>
+<li>si nous ne trouvons pas de correspondance, alors elle vérifiera si la
+  sous-requête contient des valeurs <code>null</code><ul>
+<li>si non, alors nous savons avec certitude que l'expression n'est
+  pas dans la sous-requête, donc la valeur de <code>IN</code> sera <code>false</code></li>
+<li>s'il y a des valeurs <code>null</code>, alors nous ne savons pas avec
+  certitude si l'expression est dans la sous-requête parce que nous
+  avons des valeurs <em>inconnues</em> (<code>null</code>), donc la valeur de <code>IN</code>
+  est <code>null</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Cet exemple fonctionne comme prévu</p>
+</li>
+</ul>
+<pre><code class="language-sql">-- notez que (1, 2, 3) n'est pas vraiment une sous-requête, mais agit comme une sous-requête
+-- il est utilisé pour simplifier l'exemple
+select *
+from course
+where cid in (1, 2, 3);
+</code></pre>
+<pre><code class="language-sql">-- notez que (2, 3, 4, null) n'est pas vraiment une sous-requête, mais agit comme une sous-requête
+-- il est utilisé pour simplifier l'exemple
+select *
+from course
+where cid in (2, 3, 4, null);
+</code></pre>
+<ul>
+<li>Cet exemple est équivalent et montre comment les opérateurs <code>IN</code> sont évalués
+  en interne</li>
+</ul>
+<pre><code class="language-sql">select * from course where cid = 2 or cid = 3 or cid = 4 or cid = null;
+</code></pre>
+<ul>
+<li>Cela fonctionne pour les cours avec une valeur <code>cid</code> de 2, 3 ou 4 parce qu'au
+  moins 1 des comparaisons sera vraie et nous obtiendrons quelque chose
+  comme <code>T OR F OR F OR N</code>, ce qui est vrai</li>
+<li>Mais pour les cours avec un <code>cid</code> non inclus dans l'ensemble fourni, nous
+  obtiendrons <code>null</code> parce que <code>F OR F OR F OR N</code> est <code>N</code></li>
+<li>Cela ne crée pas de problème car les lignes avec une condition <code>where</code> seront
+  supprimées</li>
+<li>Mais si nous nions <code>IN</code> pour obtenir un opérateur <code>NOT IN</code>, nous aurons des
+  ennuis</li>
+</ul>
+<pre><code class="language-sql">select *
+from course
+where cid not in (2, 3, 4, null);
+
+select *
+from course
+where cid not in (select cid from offering);
+
+select *
+from course
+except
+select c.*
+from course c
+         inner join offering o on c.cid = o.cid;
+
+select c.*
+from course c
+         left join offering o on c.cid = o.cid
+where o.oid is null;
+
+select *
+from instructor
+where iid not in (select iid from offering);
+</code></pre>
+<ul>
+<li>Nous n'obtenons rien</li>
+<li>Mais le cours avec <code>cid = 1</code> n'est pas dans la sous-requête, alors pourquoi ne
+  l'obtenons-nous pas ?</li>
+<li>C'est à cause de la valeur <code>null</code><ul>
+<li><code>1 in (2, 3, 4, null)</code> évalue à <code>null</code></li>
+<li>et <code>1 not in (2, 3, 4, null)</code> évalue à <code>not null</code>, ce qui est <code>null</code></li>
+</ul>
+</li>
+<li>Donc les requêtes <code>NOT IN</code> sont dangereuses à cause des valeurs <code>null</code></li>
+<li>La requête suivante est correcte parce que nous savons avec certitude
+  que <code>cid</code> dans course ne peut pas être <code>null</code><ul>
+<li>Donc nous pouvons trouver les cours qui n'ont jamais été offerts de cette
+  manière</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sql">--insert into course(name, code, credits) --values ('Data Structures', 'DS', 3);
+-- delete from course where code = 'DS';
+select *
+from course
+where cid not in (select cid from offering);
+</code></pre>
+<ul>
+<li>Mais essayer de faire quelque chose de similaire pour les instructeurs créera
+  des problèmes car <code>iid</code> dans offering peut être <code>null</code></li>
+<li>Nous devons explicitement exclure les valeurs <code>null</code> dans la sous-requête pour
+  que la requête renvoie les résultats corrects</li>
+</ul>
+<pre><code class="language-sql">--insert into instructor(name, email, department) --values ('John', 'john@bbb.com', 'ECE');
+-- delete from instructor where name = 'John';
+select *
+from instructor
+where iid not in (select iid from offering);
+</code></pre>
+<pre><code class="language-sql">select *
+from instructor
+where iid not in (select iid
+                  from offering
+                  where iid is not null);
+</code></pre>
+<h4 id="recommandation-ne-pas-utiliser-not-in">Recommandation : ne pas utiliser <code>NOT IN</code></h4>
+<h4 id="recommandation-utiliser-une-left-join-a-la-place">Recommandation : utiliser une <code>left join</code> à la place</h4>
+<ul>
+<li>Non seulement la jointure gauche (ou les jointures externes en général) vous
+  oblige à penser aux valeurs <code>null</code> (et à les gérer correctement), mais en
+  termes de performance, les jointures gauches seront généralement plus
+  efficaces.</li>
+<li>Utiliser des jointures gauches évite de traiter avec la logique à 3 valeurs de
+  SQL.</li>
+</ul>
+<pre><code class="language-sql">select i.*
+from instructor i
+         left join offering o on i.iid = o.iid
+where o.iid is null;
+</code></pre>
+<h4 id="any-et-all"><code>ANY</code> et <code>ALL</code></h4>
+<ul>
+<li><code>ANY</code> et <code>ALL</code> sont utilisés comme modificateurs d'opérateurs (généralement
+  des opérateurs de comparaison)<ul>
+<li><code>expression operator ANY (sub-query)</code><ul>
+<li><code>true</code> lorsqu'il existe une ligne $r$ dans la sous-requête telle
+  que <code>expression operator r</code> est vrai</li>
+<li><code>false</code> lorsque pour toutes les lignes r dans la
+  sous-requête, <code>expression operator r</code> est faux et qu'il n'y a pas de
+  valeurs <code>null</code> dans la sous-requête...</li>
+<li><code>null</code> lorsque pour toutes les lignes r dans la
+  sous-requête, <code>expression operator r</code> est faux et qu'il y a au moins 1
+  valeur <code>null</code> dans la sous-requête</li>
+</ul>
+</li>
+<li><code>IN</code> est équivalent à <code>=ANY</code></li>
+<li><code>expression operator ALL (sub-query)</code><ul>
+<li><code>true</code> lorsque pour toutes les lignes $r$ dans la
+  sous-requête, <code>expression operator r</code> est vrai</li>
+<li><code>false</code> lorsque <code>expression operator r</code> est faux pour au moins 1 ligne
+  dans la sous-requête</li>
+<li><code>null</code> lorsque pour toutes les lignes $r$ dans la
+  sous-requête, <code>expression operator r</code> n'est pas faux et qu'il y a au
+  moins 1 valeur <code>null</code> dans la sous-requête</li>
+</ul>
+</li>
+<li><code>NOT IN</code> est équivalent à <code>&lt;&gt; ALL</code></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../04b-groupes-universit%C3%A9/" class="btn btn-neutral float-left" title="4b - Groupement et Agrégats (Université)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../06-r%C3%A9cursives/" class="btn btn-neutral float-right" title="Requêtes récursives">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../04b-groupes-universit%C3%A9/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../06-r%C3%A9cursives/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

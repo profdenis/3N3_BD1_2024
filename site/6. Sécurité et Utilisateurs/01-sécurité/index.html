@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Gestion des Utilisateurs et Sécurité - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Gestion des Utilisateurs et S\u00e9curit\u00e9";
+        var mkdocs_page_input_path = "6. S\u00e9curit\u00e9 et Utilisateurs/01-s\u00e9curit\u00e9.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Gestion des Utilisateurs et Sécurité</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-gestion-des-utilisateurs">1. Gestion des Utilisateurs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#11-creation-et-gestion-des-comptes-utilisateurs">1.1. Création et Gestion des Comptes Utilisateurs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12-roles-et-privileges">1.2. Rôles et Privilèges</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-securite-dans-un-sgbd">2. Sécurité dans un SGBD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21-authentification">2.1. Authentification</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22-autorisation">2.2. Autorisation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#23-controle-dacces">2.3. Contrôle d'Accès</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#24-securite-des-donnees">2.4. Sécurité des Données</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#25-audit-et-surveillance">2.5. Audit et Surveillance</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">6. Sécurité et Utilisateurs</li>
+      <li class="breadcrumb-item active">Gestion des Utilisateurs et Sécurité</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="gestion-des-utilisateurs-et-securite">Gestion des Utilisateurs et Sécurité</h1>
+<p>La gestion des utilisateurs et la sécurité sont des aspects cruciaux de
+l'administration des Systèmes de Gestion de Bases de Données (SGBD). Une bonne
+compréhension de ces concepts est essentielle pour garantir l'intégrité, la
+confidentialité et la disponibilité des données. Voici une introduction générale
+à ces sujets.</p>
+<h2 id="1-gestion-des-utilisateurs">1. Gestion des Utilisateurs</h2>
+<h3 id="11-creation-et-gestion-des-comptes-utilisateurs">1.1. Création et Gestion des Comptes Utilisateurs</h3>
+<p>La gestion des utilisateurs dans un SGBD implique la création, la modification
+et la suppression de comptes utilisateurs. Chaque utilisateur se voit attribuer
+un identifiant unique et des informations d'authentification (comme un mot de
+passe). Voici quelques concepts clés :</p>
+<ul>
+<li><strong>Création de Comptes</strong> : Les administrateurs de bases de données (DBA) créent
+  des comptes utilisateurs en définissant des identifiants et des mots de passe.</li>
+<li><strong>Modification de Comptes</strong> : Les DBA peuvent modifier les informations des
+  comptes existants, comme les mots de passe ou les rôles attribués.</li>
+<li><strong>Suppression de Comptes</strong> : Les comptes inutilisés ou compromis peuvent être
+  supprimés pour maintenir la sécurité.</li>
+</ul>
+<h3 id="12-roles-et-privileges">1.2. Rôles et Privilèges</h3>
+<p>Les rôles et privilèges déterminent ce que chaque utilisateur peut faire dans la
+base de données.</p>
+<ul>
+<li><strong>Rôles</strong> : Un rôle est un ensemble de privilèges qui peuvent être attribués à
+  un ou plusieurs utilisateurs. Les rôles facilitent la gestion des permissions
+  en regroupant des privilèges communs.</li>
+<li><strong>Privilèges</strong> : Les privilèges sont des autorisations spécifiques accordées
+  aux utilisateurs ou aux rôles. Ils peuvent inclure des actions comme SELECT,
+  INSERT, UPDATE, DELETE, CREATE, et DROP.</li>
+</ul>
+<h2 id="2-securite-dans-un-sgbd">2. Sécurité dans un SGBD</h2>
+<h3 id="21-authentification">2.1. Authentification</h3>
+<p>L'authentification est le processus de vérification de l'identité d'un
+utilisateur. Les méthodes courantes incluent :</p>
+<ul>
+<li><strong>Mots de Passe</strong> : La méthode la plus courante où les utilisateurs doivent
+  fournir un mot de passe pour accéder à la base de données.</li>
+<li><strong>Authentification à Deux Facteurs (2FA)</strong> : Ajoute une couche de sécurité
+  supplémentaire en exigeant un second facteur, comme un code envoyé par SMS.</li>
+<li><strong>Certificats</strong> : Utilisés pour l'authentification basée sur des certificats
+  numériques.</li>
+</ul>
+<h3 id="22-autorisation">2.2. Autorisation</h3>
+<p>L'autorisation détermine ce que les utilisateurs authentifiés sont autorisés à
+faire. Elle est gérée par des rôles et des privilèges, comme mentionné
+précédemment. Les DBA doivent s'assurer que les utilisateurs n'ont que les
+privilèges nécessaires pour accomplir leurs tâches (principe du moindre
+privilège).</p>
+<h3 id="23-controle-dacces">2.3. Contrôle d'Accès</h3>
+<p>Le contrôle d'accès est la mise en œuvre des politiques d'autorisation. Il
+existe plusieurs modèles de contrôle d'accès :</p>
+<ul>
+<li><strong>Contrôle d'Accès Discrétionnaire (DAC)</strong> : Les propriétaires des objets de
+  la base de données (comme les tables) contrôlent l'accès à leurs objets.</li>
+<li><strong>Contrôle d'Accès Obligatoire (MAC)</strong> : Les accès sont contrôlés par des
+  règles globales définies par l'administrateur, souvent basées sur des niveaux
+  de sécurité.</li>
+<li><strong>Contrôle d'Accès Basé sur les Rôles (RBAC)</strong> : Les accès sont accordés en
+  fonction des rôles attribués aux utilisateurs.</li>
+</ul>
+<h3 id="24-securite-des-donnees">2.4. Sécurité des Données</h3>
+<p>La sécurité des données comprend la protection des données à la fois en transit
+et au repos.</p>
+<ul>
+<li><strong>Chiffrement</strong> : Les données peuvent être chiffrées pour empêcher l'accès non
+  autorisé. Le chiffrement peut être appliqué aux données en transit (
+  lorsqu'elles sont transférées sur le réseau) et aux données au repos (
+  lorsqu'elles sont stockées).</li>
+<li><strong>Masquage de Données</strong> : Technique permettant de masquer les données
+  sensibles pour les utilisateurs qui n'ont pas besoin d'y accéder directement.</li>
+</ul>
+<h3 id="25-audit-et-surveillance">2.5. Audit et Surveillance</h3>
+<p>Les systèmes de gestion de bases de données doivent inclure des mécanismes pour
+auditer et surveiller les activités des utilisateurs. Cela permet de détecter et
+de répondre aux comportements suspects ou non autorisés.</p>
+<ul>
+<li><strong>Journaux d'Audit</strong> : Enregistrement des actions des utilisateurs, comme les
+  connexions, les modifications de données, etc.</li>
+<li><strong>Alertes de Sécurité</strong> : Notifications automatiques en cas d'activités
+  suspectes ou de violations de sécurité.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>La gestion des utilisateurs et la sécurité dans un SGBD sont des domaines vastes
+et complexes, mais essentiels pour protéger les données et garantir leur
+intégrité. Une compréhension approfondie de ces concepts permet aux
+administrateurs de bases de données de mettre en place des systèmes robustes et
+sécurisés, minimisant ainsi les risques de compromission des données.</p>
+<p><strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3 Opus</code>. L'IA
+a été utilisée pour générer des explications, des exemples et des suggestions de
+structure. Toutes les informations ont été vérifiées, éditées et complétées par
+l'auteur._</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/" class="btn btn-neutral float-left" title="Modèle objet-relationel"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02-rbac/" class="btn btn-neutral float-right" title="Contrôle d'Accès Basé sur les Rôles (RBAC)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02-rbac/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

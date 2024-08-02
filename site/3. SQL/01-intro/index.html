@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>1 - Introduction à SQL - Cours bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1 - Introduction \u00e0 SQL";
+        var mkdocs_page_input_path = "3. SQL/01-intro.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">1 - Introduction à SQL</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#historique-de-sql">Historique de SQL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#survol-des-standards-iso">Survol des Standards ISO</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#principes-dun-langage-non-procedural">Principes d'un Langage Non-Procedural</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exemple-de-requete-sql">Exemple de Requête SQL</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">3. SQL</li>
+      <li class="breadcrumb-item active">1 - Introduction à SQL</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="1-introduction-a-sql">1 - Introduction à SQL</h1>
+<p>SQL (Structured Query Language) est un langage de programmation standardisé
+utilisé pour gérer et manipuler des bases de données relationnelles. Il permet
+d'effectuer diverses opérations telles que la création, la modification, la
+suppression et la récupération de données dans une base de données. SQL est
+essentiel pour interagir avec les systèmes de gestion de bases de données
+relationnelles (SGBDR) comme PostgreSQL, MySQL, Oracle, et SQL Server.</p>
+<h2 id="historique-de-sql">Historique de SQL</h2>
+<p>SQL a été développé dans les années 1970 par IBM dans le cadre du projet System
+R, qui visait à démontrer la faisabilité des bases de données relationnelles. Le
+langage a été initialement appelé SEQUEL (Structured English Query Language)
+avant d'être renommé SQL. En 1986, l'American National Standards Institute 
+(ANSI) a publié la première norme SQL, suivie par l'International Organization
+for Standardization (ISO) en 1987. Depuis lors, SQL a évolué avec plusieurs
+révisions et extensions pour répondre aux besoins croissants des bases de
+données modernes.</p>
+<h2 id="survol-des-standards-iso">Survol des Standards ISO</h2>
+<p>Les standards ISO pour SQL définissent les spécifications et les fonctionnalités
+du langage afin d'assurer l'interopérabilité entre différents systèmes de bases
+de données. Voici quelques-unes des versions clés :</p>
+<ul>
+<li><strong>SQL-86</strong> : La première norme SQL publiée par ANSI en 1986 et adoptée par ISO
+  en 1987.</li>
+<li><strong>SQL-89</strong> : Une révision mineure de SQL-86, introduisant quelques
+  améliorations et corrections.</li>
+<li><strong>SQL-92</strong> : Une version majeure qui a ajouté de nombreuses fonctionnalités, y
+  compris les sous-requêtes, les jointures externes et les contraintes
+  d'intégrité.</li>
+<li><strong>SQL:1999 (SQL3)</strong> : Introduction des types de données utilisateur définis,
+  des procédures stockées, et du langage de requête récursif.</li>
+<li><strong>SQL:2003</strong> : Ajout des fonctions XML, des tables dérivées et des types de
+  données fenêtrés.</li>
+<li><strong>SQL:2008</strong> : Améliorations des fonctionnalités existantes et ajout de
+  nouvelles, telles que les expressions de table communes (CTE).</li>
+<li><strong>SQL:2011</strong> : Introduction des fonctionnalités de traitement des données
+  temporelles.</li>
+<li><strong>SQL:2016</strong> : Ajout de fonctionnalités JSON et de nouvelles extensions pour
+  les types de données géospatiales.</li>
+</ul>
+<h2 id="principes-dun-langage-non-procedural">Principes d'un Langage Non-Procedural</h2>
+<p>SQL est un langage non-procédural, ce qui signifie que l'utilisateur spécifie
+<strong>ce qu'il veut</strong> obtenir sans détailler <strong>comment</strong> le système doit l'obtenir.
+Voici quelques principes clés :</p>
+<ol>
+<li>
+<p><strong>Déclaration des Intentions</strong> : En SQL, vous déclarez vos intentions en
+   termes de résultats souhaités. Par exemple, une requête SELECT indique
+   quelles colonnes et quelles lignes vous voulez récupérer, mais pas comment
+   les récupérer.</p>
+</li>
+<li>
+<p><strong>Abstraction de l'Implémentation</strong> : Les détails de l'implémentation, comme
+   les algorithmes de tri ou les chemins d'accès aux données, sont gérés par le
+   SGBDR. L'utilisateur n'a pas besoin de connaître ces détails.</p>
+</li>
+<li>
+<p><strong>Optimisation Automatique</strong> : Les SGBDR optimisent automatiquement les
+   requêtes pour améliorer les performances. L'utilisateur se concentre sur la
+   logique de la requête plutôt que sur l'optimisation.</p>
+</li>
+<li>
+<p><strong>Facilité d'Utilisation</strong> : Le langage non-procédural est généralement plus
+   facile à apprendre et à utiliser pour les utilisateurs finaux, car il se
+   concentre sur les résultats plutôt que sur les processus.</p>
+</li>
+<li>
+<p><strong>Portabilité</strong> : Les requêtes SQL sont portables entre différents systèmes
+   de bases de données, tant qu'elles respectent les standards ISO, ce qui
+   facilite la migration et l'interopérabilité.</p>
+</li>
+</ol>
+<h2 id="exemple-de-requete-sql">Exemple de Requête SQL</h2>
+<pre><code class="language-sql">SELECT Nom, Prénom, Âge
+FROM Étudiants
+WHERE Département = 'Informatique';
+</code></pre>
+<p>Cette requête sélectionne les colonnes Nom, Prénom et Âge de la table Étudiants
+pour les étudiants appartenant au département d'Informatique, sans spécifier
+comment le SGBDR doit accéder aux données ou les trier.</p>
+<p>En résumé, SQL est un langage puissant et flexible pour interagir avec les bases
+de données relationnelles, offrant une abstraction qui permet aux utilisateurs
+de se concentrer sur les résultats souhaités plutôt que sur les détails
+d'implémentation.</p>
+<p><strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3 Opus</code>. L'IA
+a été utilisée pour générer des explications, des exemples et des suggestions de
+structure. Toutes les informations ont été vérifiées, éditées et complétées par
+l'auteur._</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/" class="btn btn-neutral float-left" title="Introduction aux Diagrammes Entité-Association"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02a-bases-contacts/" class="btn btn-neutral float-right" title="2a - Base de Données de Contacts">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02a-bases-contacts/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
