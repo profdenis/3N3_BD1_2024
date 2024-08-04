@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Les Entités Faibles - Cours de bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Les Entit\u00e9s Faibles";
+        var mkdocs_page_input_path = "4. Mod\u00e9lisation/01b-enit\u00e9s-faibles.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours de bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Les Entités Faibles</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#definition">Définition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#caracteristiques-des-entites-faibles">Caractéristiques des Entités Faibles</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exemple">Exemple</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#comparaison-avec-la-conception-orientee-objet-oo-en-uml">Comparaison avec la Conception Orientée Objet (OO) en UML</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#illustration-uml">Illustration UML</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/01-blog/">1. Blog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/02-livres/">2. Livres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/03-transport/">3. Réseau de transports en commun</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/04-restaurants/">4. Chaîne de restaurants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/05-voyages/">5. Agence de voyages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/06-hopital/">6. Système de gestion d'un hôpital</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">1. Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">2. Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">3. BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours de bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">4. Modélisation</li>
+      <li class="breadcrumb-item active">Les Entités Faibles</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="les-entites-faibles">Les Entités Faibles</h1>
+<h2 id="definition">Définition</h2>
+<p>Dans le modèle entité-association (E-A), une <strong>entité faible</strong> est une entité
+qui ne peut pas être identifiée de manière unique par ses propres attributs
+seuls. Elle dépend d'une autre entité, appelée <strong>entité forte</strong>, pour son
+identification. Une entité faible est souvent utilisée pour représenter des
+objets qui n'ont pas de signification indépendante sans leur entité forte
+associée.</p>
+<h2 id="caracteristiques-des-entites-faibles">Caractéristiques des Entités Faibles</h2>
+<ol>
+<li><strong>Dépendance d'Existence</strong> : Une entité faible ne peut pas exister sans son
+   entité forte correspondante.</li>
+<li><strong>Clé Partielle</strong> : L'identification d'une entité faible nécessite une clé
+   partielle (un ensemble d'attributs propres à l'entité faible) en combinaison
+   avec la clé primaire de l'entité forte.</li>
+<li><strong>Relation d'Identification</strong> : Une relation spéciale, souvent appelée
+   relation d'identification, relie l'entité faible à son entité forte.</li>
+</ol>
+<h2 id="exemple">Exemple</h2>
+<p>Considérons une base de données pour une bibliothèque. Nous avons deux entités :
+<strong>Bibliothèque</strong> et <strong>Livre</strong>.</p>
+<ul>
+<li><strong>Bibliothèque</strong> (entité forte) : Identifiée par un attribut unique,
+  comme <code>ID_Bibliothèque</code>.</li>
+<li><strong>Livre</strong> (entité faible) : Identifié par une combinaison de <code>ID_Bibliothèque</code>
+  et <code>Numéro_Livre</code>. Un livre n'a pas de signification sans la bibliothèque à
+  laquelle il appartient.</li>
+</ul>
+<h2 id="comparaison-avec-la-conception-orientee-objet-oo-en-uml">Comparaison avec la Conception Orientée Objet (OO) en UML</h2>
+<p>En conception orientée objet avec UML (Unified Modeling Language), les concepts
+d'entités faibles et fortes peuvent être comparés aux relations de composition
+et d'agrégation.</p>
+<ul>
+<li><strong>Composition</strong> : Similaire aux entités faibles, une classe composante ne peut
+  pas exister indépendamment de la classe composite. Par exemple, une
+  classe <code>Page</code> peut être une composante d'une classe <code>Livre</code>, et une page n'a
+  pas de sens sans le livre auquel elle appartient.</li>
+<li><strong>Agrégation</strong> : Contrairement aux entités faibles, une classe agrégée peut
+  exister indépendamment de la classe agrégante. Par exemple, une
+  classe <code>Auteur</code> peut être associée à plusieurs <code>Livres</code>, mais elle peut
+  exister indépendamment de ces livres.</li>
+</ul>
+<h2 id="illustration-uml">Illustration UML</h2>
+<p>En UML, une composition est représentée par un losange rempli à l'extrémité de
+l'association, tandis qu'une agrégation est représentée par un losange vide.</p>
+<ul>
+<li><strong>Composition</strong> :</li>
+</ul>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+Livre *-- Page
+@enduml
+</code></pre>
+
+
+</details>
+<p><img alt="composition.png" src="../../images/composition.png" /></p>
+<ul>
+<li><strong>Agrégation</strong> :</li>
+</ul>
+<details>
+    <summary>Code</summary>
+
+<pre><code class="language-plantuml">@startuml
+Auteur o-- Livre
+@enduml
+</code></pre>
+
+</details>
+<p><img alt="aggrégation.png" src="../../images/aggr%C3%A9gation.png" /></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Les entités faibles sont un concept crucial dans le modèle entité-association
+pour modéliser des objets dépendants d'autres objets pour leur identification.
+En comparaison, la conception orientée objet utilise des relations de
+composition pour représenter des dépendances similaires, mais permet également
+des relations plus lâches avec l'agrégation. Comprendre ces concepts est
+essentiel pour concevoir des bases de données relationnelles robustes et bien
+structurées.</p>
+<hr />
+<p><small>
+   <cite>
+      <strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3.5 Sonnet</code>. L'IA
+      a été utilisée pour générer des explications, des exemples et des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur._
+   </cite>
+</small></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01-mod%C3%A9lisation-EA/" class="btn btn-neutral float-left" title="Modélisation Entité-Association"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02-notation/" class="btn btn-neutral float-right" title="Différentes notations pour les DEA">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../01-mod%C3%A9lisation-EA/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02-notation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -147,6 +147,8 @@ values ('Data Structures', 'DS', 3);
 
 ## Déclencheurs (_Triggers_)
 
+[trigger_examples.sql](../src/trigger_examples.sql)
+
 - Les déclencheurs sont utilisés dans les bases de données actives
 - Ils sont similaires aux *événements* dans une *architecture orientée
   événements*

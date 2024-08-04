@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>5. Agence de voyages - Cours de bases de données</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5. Agence de voyages";
+        var mkdocs_page_input_path = "7. Exercices/DEA/05-voyages.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Cours de bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >DEA</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../01-blog/">1. Blog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../02-livres/">2. Livres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../03-transport/">3. Réseau de transports en commun</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../04-restaurants/">4. Chaîne de restaurants</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">5. Agence de voyages</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#modeles-logiques">Modèles logiques</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#partie-1">Partie 1</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#partie-2">Partie 2</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#partie-3">Partie 3</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modele-physique">Modèle physique</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#creation">Création</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../06-hopital/">6. Système de gestion d'un hôpital</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../SQL/01-pagila/">1. Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../SQL/02-recettes/">2. Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../SQL/03-northwind/">3. BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Cours de bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">7. Exercices</li>
+          <li class="breadcrumb-item">DEA</li>
+      <li class="breadcrumb-item active">5. Agence de voyages</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="5-agence-de-voyages">5. Agence de voyages</h1>
+<h2 id="modeles-logiques">Modèles logiques</h2>
+<p>Créez un diagramme EA pour la base de données d'une agence de voyages, basé sur les informations données ci-dessous.</p>
+<h3 id="partie-1">Partie 1</h3>
+<ol>
+<li>L'agence propose différentes destinations. Chaque destination a un nom, un pays et une description.</li>
+<li>Les clients de l'agence ont un numéro de client unique, un nom, un prénom, une adresse e-mail et un numéro de
+   téléphone.</li>
+<li>L'agence organise des voyages. Chaque voyage a un code unique, une date de départ, une date de retour et un prix de
+   base.</li>
+<li>Un voyage est associé à une destination et peut accueillir un nombre maximum de participants.</li>
+<li>Les clients peuvent réserver des voyages. Une réservation concerne un client, un voyage, et a une date de
+   réservation.</li>
+</ol>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">@startuml
+entity Destination {
+  * id : integer
+  --
+  nom : string
+  pays : string
+  description : string
+}
+
+entity Client {
+  * numero_client : string
+  --
+  nom : string
+  prenom : string
+  email : string
+  telephone : string
+}
+
+entity Voyage {
+  * code : string
+  --
+  date_depart : date
+  date_retour : date
+  prix_base : decimal
+  nombre_max_participants : integer
+}
+
+entity Reservation {
+  * id : integer
+  --
+  date_reservation : date
+}
+
+Voyage &quot;1&quot; -- &quot;1&quot; Destination : concerne
+Client &quot;1&quot; -- &quot;*&quot; Reservation
+Voyage &quot;1&quot; -- &quot;*&quot; Reservation
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+   <summary>Diagramme</summary>
+   <img src="../../../images/05-voyages-1.png">
+</details>
+<p><br></p>
+<h3 id="partie-2">Partie 2</h3>
+<p>Ajoutez les éléments suivants au diagramme EA que vous avez obtenu dans la partie précédente.</p>
+<ol>
+<li>L'agence travaille avec différents prestataires : compagnies aériennes, hôtels et sociétés de location de voitures.
+   Chaque prestataire a un nom, une adresse et un numéro de contact.</li>
+<li>Un voyage peut inclure des vols, des séjours à l'hôtel et des locations de voiture. Chacun de ces éléments a ses
+   propres caractéristiques (numéro de vol, type de chambre, catégorie de voiture, etc.).</li>
+<li>Les clients peuvent choisir des options supplémentaires pour leur voyage, comme des excursions ou des assurances.
+   Chaque option a un nom, une description et un prix.</li>
+<li>L'agence emploie des agents de voyage. Chaque agent a un numéro d'employé, un nom, un prénom et une spécialité (par
+   exemple, voyages d'affaires, croisières, etc.).</li>
+</ol>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">@startuml
+entity Destination {
+  * id : integer
+  --
+  nom : string
+  pays : string
+  description : string
+}
+
+entity Client {
+  * numero_client : string
+  --
+  nom : string
+  prenom : string
+  email : string
+  telephone : string
+}
+
+entity Voyage {
+  * code : string
+  --
+  date_depart : date
+  date_retour : date
+  prix_base : decimal
+  nombre_max_participants : integer
+}
+
+entity Reservation {
+  * id : integer
+  --
+  date_reservation : date
+}
+
+Voyage &quot;1&quot; -- &quot;1&quot; Destination : concerne
+Client &quot;1&quot; -- &quot;*&quot; Reservation
+Voyage &quot;1&quot; -- &quot;*&quot; Reservation
+
+entity Prestataire {
+  * id : integer
+  --
+  nom : string
+  adresse : string
+  numero_contact : string
+  type : enum {compagnie_aerienne, hotel, location_voiture}
+}
+
+entity Vol {
+  * numero_vol : string
+}
+
+entity Sejour {
+  * id : integer
+  --
+  type_chambre : string
+}
+
+entity LocationVoiture {
+  * id : integer
+  --
+  categorie_voiture : string
+}
+
+entity Option {
+  * id : integer
+  --
+  nom : string
+  description : string
+  prix : decimal
+}
+
+entity AgentVoyage {
+  * numero_employe : string
+  --
+  nom : string
+  prenom : string
+  specialite : string
+}
+
+Voyage &quot;*&quot; -- &quot;*&quot; Prestataire : utilise
+Voyage &quot;1&quot; -- &quot;*&quot; Vol
+Voyage &quot;1&quot; -- &quot;*&quot; Sejour
+Voyage &quot;1&quot; -- &quot;*&quot; LocationVoiture
+Voyage &quot;*&quot; -- &quot;*&quot; Option : propose
+AgentVoyage &quot;*&quot; -- &quot;*&quot; Voyage : gere
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+   <summary>Diagramme</summary>
+   <img src="../../../images/05-voyages-2.png">
+</details>
+<p><br></p>
+<h3 id="partie-3">Partie 3</h3>
+<p>Ajoutez les éléments suivants au diagramme EA que vous avez obtenu dans la partie précédente.</p>
+<ol>
+<li>L'agence souhaite mettre en place un système d'avis. Les clients peuvent laisser des avis sur les voyages qu'ils ont
+   effectués, avec une note (de 1 à 5 étoiles) et un commentaire.</li>
+<li>L'agence propose un programme de fidélité. Les clients peuvent accumuler des points pour chaque voyage réservé, en
+   fonction du prix du voyage. Ces points peuvent être échangés contre des réductions sur de futurs voyages.</li>
+<li>Certains voyages sont des forfaits tout compris, d'autres sont personnalisables. Pour les voyages personnalisables,
+   les clients peuvent choisir individuellement leurs vols, hôtels et activités.</li>
+<li>L'agence veut suivre les paiements des clients. Un paiement est associé à une réservation, a une date, un montant et
+   un mode de paiement (carte de crédit, virement bancaire, etc.).</li>
+</ol>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">@startuml
+entity Destination {
+  * id : integer
+  --
+  nom : string
+  pays : string
+  description : string
+}
+
+entity Client {
+  * numero_client : string
+  --
+  nom : string
+  prenom : string
+  email : string
+  telephone : string
+}
+
+entity Voyage {
+  * code : string
+  --
+  date_depart : date
+  date_retour : date
+  prix_base : decimal
+  nombre_max_participants : integer
+}
+
+entity Reservation {
+  * id : integer
+  --
+  date_reservation : date
+}
+
+Voyage &quot;1&quot; -- &quot;1&quot; Destination : concerne
+Client &quot;1&quot; -- &quot;*&quot; Reservation
+Voyage &quot;1&quot; -- &quot;*&quot; Reservation
+
+entity Prestataire {
+  * id : integer
+  --
+  nom : string
+  adresse : string
+  numero_contact : string
+  type : enum {compagnie_aerienne, hotel, location_voiture}
+}
+
+entity Vol {
+  * numero_vol : string
+}
+
+entity Sejour {
+  * id : integer
+  --
+  type_chambre : string
+}
+
+entity LocationVoiture {
+  * id : integer
+  --
+  categorie_voiture : string
+}
+
+entity Option {
+  * id : integer
+  --
+  nom : string
+  description : string
+  prix : decimal
+}
+
+entity AgentVoyage {
+  * numero_employe : string
+  --
+  nom : string
+  prenom : string
+  specialite : string
+}
+
+Voyage &quot;*&quot; -- &quot;*&quot; Prestataire : utilise
+Voyage &quot;1&quot; -- &quot;*&quot; Vol
+Voyage &quot;1&quot; -- &quot;*&quot; Sejour
+Voyage &quot;1&quot; -- &quot;*&quot; LocationVoiture
+Voyage &quot;*&quot; -- &quot;*&quot; Option : propose
+AgentVoyage &quot;*&quot; -- &quot;*&quot; Voyage : gere
+
+entity Avis {
+  * id : integer
+  --
+  note : integer
+  commentaire : string
+}
+
+entity PointsFidelite {
+  * id : integer
+  --
+  points : integer
+}
+
+entity VoyagePersonnalise {
+  * id : integer
+}
+
+entity Paiement {
+  * id : integer
+  --
+  date : date
+  montant : decimal
+  mode_paiement : string
+}
+
+Client &quot;1&quot; -- &quot;*&quot; Avis
+Voyage &quot;1&quot; -- &quot;*&quot; Avis
+Client &quot;1&quot; -- &quot;*&quot; PointsFidelite
+Voyage &quot;1&quot; -- &quot;*&quot; PointsFidelite : genere
+Client &quot;1&quot; -- &quot;*&quot; VoyagePersonnalise
+Vol &quot;*&quot; -- &quot;*&quot; VoyagePersonnalise
+Sejour &quot;*&quot; -- &quot;*&quot; VoyagePersonnalise
+LocationVoiture &quot;*&quot; -- &quot;*&quot; VoyagePersonnalise
+Option &quot;*&quot; -- &quot;*&quot; VoyagePersonnalise
+Reservation &quot;1&quot; -- &quot;*&quot; Paiement
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+   <summary>Diagramme</summary>
+   <img src="../../../images/05-voyages-3.png">
+</details>
+<p><br></p>
+<h2 id="modele-physique">Modèle physique</h2>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+!define TABLE(name,desc) class name as &quot;desc&quot; &lt;&lt; (T,#FFAAAA) &gt;&gt;
+!define PK(x) &lt;u&gt;x&lt;/u&gt;
+!define FK(x) &lt;i&gt;x&lt;/i&gt;
+hide empty methods
+hide empty fields
+
+TABLE(Destination, &quot;Destination&quot;) {
+    PK(id) : integer
+    nom : string
+    pays : string
+    description : text
+}
+
+TABLE(Client, &quot;Client&quot;) {
+    PK(id) : integer
+    numero_client : string
+    nom : string
+    prenom : string
+    email : string
+    telephone : string
+}
+
+TABLE(Voyage, &quot;Voyage&quot;) {
+    PK(id) : integer
+    code : string
+    date_depart : date
+    date_retour : date
+    prix_base : decimal
+    nombre_max_participants : integer
+    FK(destination_id) : integer
+}
+
+TABLE(Reservation, &quot;Reservation&quot;) {
+    PK(id) : integer
+    date_reservation : date
+    FK(client_id) : integer
+    FK(voyage_id) : integer
+}
+
+TABLE(Prestataire, &quot;Prestataire&quot;) {
+    PK(id) : integer
+    nom : string
+    adresse : text
+    numero_contact : string
+    type : type_prestataire
+}
+
+TABLE(Vol, &quot;Vol&quot;) {
+    PK(id) : integer
+    numero_vol : string
+    FK(voyage_id) : integer
+    FK(prestataire_id) : integer
+}
+
+TABLE(Sejour, &quot;Sejour&quot;) {
+    PK(id) : integer
+    type_chambre : string
+    FK(voyage_id) : integer
+    FK(prestataire_id) : integer
+}
+
+TABLE(LocationVoiture, &quot;LocationVoiture&quot;) {
+    PK(id) : integer
+    categorie_voiture : string
+    FK(voyage_id) : integer
+    FK(prestataire_id) : integer
+}
+
+TABLE(Option, &quot;Option&quot;) {
+    PK(id) : integer
+    nom : string
+    description : text
+    prix : decimal
+}
+
+TABLE(VoyageOption, &quot;VoyageOption&quot;) {
+    PK(FK(voyage_id)) : integer
+    PK(FK(option_id)) : integer
+}
+
+TABLE(AgentVoyage, &quot;AgentVoyage&quot;) {
+    PK(id) : integer
+    numero_employe : string
+    nom : string
+    prenom : string
+    specialite : string
+}
+
+TABLE(Avis, &quot;Avis&quot;) {
+    PK(id) : integer
+    note : integer
+    commentaire : text
+    FK(client_id) : integer
+    FK(voyage_id) : integer
+}
+
+TABLE(PointsFidelite, &quot;PointsFidelite&quot;) {
+    PK(id) : integer
+    points : integer
+    FK(client_id) : integer
+    FK(voyage_id) : integer
+}
+
+TABLE(VoyagePersonnalise, &quot;VoyagePersonnalise&quot;) {
+    PK(id) : integer
+    FK(client_id) : integer
+}
+
+TABLE(VoyagePersonnaliseVol, &quot;VoyagePersonnaliseVol&quot;) {
+    PK(FK(voyage_personnalise_id)) : integer
+    PK(FK(vol_id)) : integer
+}
+
+TABLE(VoyagePersonnaliseSejour, &quot;VoyagePersonnaliseSejour&quot;) {
+    PK(FK(voyage_personnalise_id)) : integer
+    PK(FK(sejour_id)) : integer
+}
+
+TABLE(VoyagePersonnaliseLocationVoiture, &quot;VoyagePersonnaliseLocationVoiture&quot;) {
+    PK(FK(voyage_personnalise_id)) : integer
+    PK(FK(location_voiture_id)) : integer
+}
+
+TABLE(VoyagePersonnaliseOption, &quot;VoyagePersonnaliseOption&quot;) {
+    PK(FK(voyage_personnalise_id)) : integer
+    PK(FK(option_id)) : integer
+}
+
+TABLE(Paiement, &quot;Paiement&quot;) {
+    PK(id) : integer
+    date : date
+    montant : decimal
+    mode_paiement : string
+    FK(reservation_id) : integer
+}
+
+Destination &quot;1&quot; -- &quot;*&quot; Voyage
+Client &quot;1&quot; -- &quot;*&quot; Reservation
+Voyage &quot;1&quot; -- &quot;*&quot; Reservation
+Prestataire &quot;1&quot; -- &quot;*&quot; Vol
+Prestataire &quot;1&quot; -- &quot;*&quot; Sejour
+Prestataire &quot;1&quot; -- &quot;*&quot; LocationVoiture
+Voyage &quot;1&quot; -- &quot;*&quot; Vol
+Voyage &quot;1&quot; -- &quot;*&quot; Sejour
+Voyage &quot;1&quot; -- &quot;*&quot; LocationVoiture
+Voyage &quot;1&quot; -- &quot;*&quot; VoyageOption
+Option &quot;1&quot; -- &quot;*&quot; VoyageOption
+Client &quot;1&quot; -- &quot;*&quot; Avis
+Voyage &quot;1&quot; -- &quot;*&quot; Avis
+Client &quot;1&quot; -- &quot;*&quot; PointsFidelite
+Voyage &quot;1&quot; -- &quot;*&quot; PointsFidelite
+Client &quot;1&quot; -- &quot;*&quot; VoyagePersonnalise
+VoyagePersonnalise &quot;1&quot; -- &quot;*&quot; VoyagePersonnaliseVol
+VoyagePersonnalise &quot;1&quot; -- &quot;*&quot; VoyagePersonnaliseSejour
+VoyagePersonnalise &quot;1&quot; -- &quot;*&quot; VoyagePersonnaliseLocationVoiture
+VoyagePersonnalise &quot;1&quot; -- &quot;*&quot; VoyagePersonnaliseOption
+Vol &quot;1&quot; -- &quot;*&quot; VoyagePersonnaliseVol
+Sejour &quot;1&quot; -- &quot;*&quot; VoyagePersonnaliseSejour
+LocationVoiture &quot;1&quot; -- &quot;*&quot; VoyagePersonnaliseLocationVoiture
+Option &quot;1&quot; -- &quot;*&quot; VoyagePersonnaliseOption
+Reservation &quot;1&quot; -- &quot;*&quot; Paiement
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+   <summary>Diagramme</summary>
+   <img src="../../../images/05-voyages-4.png">
+</details>
+<p><br></p>
+<h3 id="creation">Création</h3>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">-- Création des types enum
+CREATE TYPE type_prestataire AS ENUM ('compagnie_aerienne', 'hotel', 'location_voiture');
+
+-- Création des tables
+CREATE TABLE Destination (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    pays VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE Client (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    numero_client VARCHAR(50) UNIQUE NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telephone VARCHAR(20)
+);
+
+CREATE TABLE Voyage (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    code VARCHAR(50) UNIQUE NOT NULL,
+    date_depart DATE NOT NULL,
+    date_retour DATE NOT NULL,
+    prix_base DECIMAL(10, 2) NOT NULL,
+    nombre_max_participants INTEGER,
+    destination_id INTEGER NOT NULL REFERENCES Destination(id)
+);
+
+CREATE TABLE Reservation (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    date_reservation DATE NOT NULL,
+    client_id INTEGER NOT NULL REFERENCES Client(id),
+    voyage_id INTEGER NOT NULL REFERENCES Voyage(id)
+);
+
+CREATE TABLE Prestataire (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    adresse TEXT,
+    numero_contact VARCHAR(20),
+    type type_prestataire NOT NULL
+);
+
+CREATE TABLE Vol (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    numero_vol VARCHAR(20) NOT NULL,
+    voyage_id INTEGER NOT NULL REFERENCES Voyage(id),
+    prestataire_id INTEGER NOT NULL REFERENCES Prestataire(id)
+);
+
+CREATE TABLE Sejour (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    type_chambre VARCHAR(50) NOT NULL,
+    voyage_id INTEGER NOT NULL REFERENCES Voyage(id),
+    prestataire_id INTEGER NOT NULL REFERENCES Prestataire(id)
+);
+
+CREATE TABLE LocationVoiture (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    categorie_voiture VARCHAR(50) NOT NULL,
+    voyage_id INTEGER NOT NULL REFERENCES Voyage(id),
+    prestataire_id INTEGER NOT NULL REFERENCES Prestataire(id)
+);
+
+CREATE TABLE Option (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    description TEXT,
+    prix DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE VoyageOption (
+    voyage_id INTEGER REFERENCES Voyage(id),
+    option_id INTEGER REFERENCES Option(id),
+    PRIMARY KEY (voyage_id, option_id)
+);
+
+CREATE TABLE AgentVoyage (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    numero_employe VARCHAR(50) UNIQUE NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    specialite VARCHAR(100)
+);
+
+CREATE TABLE Avis (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    note INTEGER CHECK (note BETWEEN 1 AND 5),
+    commentaire TEXT,
+    client_id INTEGER NOT NULL REFERENCES Client(id),
+    voyage_id INTEGER NOT NULL REFERENCES Voyage(id)
+);
+
+CREATE TABLE PointsFidelite (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    points INTEGER NOT NULL,
+    client_id INTEGER NOT NULL REFERENCES Client(id),
+    voyage_id INTEGER NOT NULL REFERENCES Voyage(id)
+);
+
+CREATE TABLE VoyagePersonnalise (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    client_id INTEGER NOT NULL REFERENCES Client(id)
+);
+
+CREATE TABLE VoyagePersonnaliseVol (
+    voyage_personnalise_id INTEGER REFERENCES VoyagePersonnalise(id),
+    vol_id INTEGER REFERENCES Vol(id),
+    PRIMARY KEY (voyage_personnalise_id, vol_id)
+);
+
+CREATE TABLE VoyagePersonnaliseSejour (
+    voyage_personnalise_id INTEGER REFERENCES VoyagePersonnalise(id),
+    sejour_id INTEGER REFERENCES Sejour(id),
+    PRIMARY KEY (voyage_personnalise_id, sejour_id)
+);
+
+CREATE TABLE VoyagePersonnaliseLocationVoiture (
+    voyage_personnalise_id INTEGER REFERENCES VoyagePersonnalise(id),
+    location_voiture_id INTEGER REFERENCES LocationVoiture(id),
+    PRIMARY KEY (voyage_personnalise_id, location_voiture_id)
+);
+
+CREATE TABLE VoyagePersonnaliseOption (
+    voyage_personnalise_id INTEGER REFERENCES VoyagePersonnalise(id),
+    option_id INTEGER REFERENCES Option(id),
+    PRIMARY KEY (voyage_personnalise_id, option_id)
+);
+
+CREATE TABLE Paiement (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    date DATE NOT NULL,
+    montant DECIMAL(10, 2) NOT NULL,
+    mode_paiement VARCHAR(50) NOT NULL,
+    reservation_id INTEGER NOT NULL REFERENCES Reservation(id)
+);
+
+CREATE TABLE VoyageOption (
+    voyage_id INTEGER REFERENCES Voyage(id),
+    option_id INTEGER REFERENCES Option(id),
+    PRIMARY KEY (voyage_id, option_id)
+);
+</code></pre>
+
+</details>
+<p><br></p>
+<hr />
+<p><small>
+   <cite>
+      <strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3.5 Sonnet</code>. L'IA
+      a été utilisée pour générer des explications, des exemples et des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur._
+   </cite>
+</small></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../04-restaurants/" class="btn btn-neutral float-left" title="4. Chaîne de restaurants"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../06-hopital/" class="btn btn-neutral float-right" title="6. Système de gestion d'un hôpital">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../04-restaurants/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../06-hopital/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

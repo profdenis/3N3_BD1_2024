@@ -126,8 +126,14 @@ crucial dans le stockage, la gestion et l'analyse des informations.
 | Zo         | zettaoctet       | 1 024 exaoctets   | 2^70   | 1.18 × 10^21     | ZB         | zettabyte        |
 | Yo         | yottaoctet       | 1 024 zettaoctets | 2^80   | 1.21 × 10^24     | YB         | yottabyte        |
 
-**Note** : _Page rédigée en partie avec l'aide d'un assistant IA, principalement
-à l'aide de Perplexity AI, avec les _LLM_ `GPT-4 Omni` et `Claude 3 Opus`. L'IA
-a été utilisée pour générer des explications, des exemples et des suggestions de
-structure. Toutes les informations ont été vérifiées, éditées et complétées par
-l'auteur._
+
+-------
+<small>
+   <cite>
+      **Note** : _Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les _LLM_ `GPT-4 Omni` et `Claude 3.5 Sonnet`. L'IA
+      a été utilisée pour générer des explications, des exemples et des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur._
+   </cite>
+</small>

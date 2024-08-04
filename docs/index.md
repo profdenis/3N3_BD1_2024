@@ -55,8 +55,12 @@ Pour apprendre SQL et pratiquer avec des exercices interactifs, voici quelques e
 2. **[Practical SQL](https://learning-oreilly-com.res.banq.qc.ca/library/view/practical-sql-2nd/9781098129866/)**
 3. **[SQL Pocket Guide](https://learning-oreilly-com.res.banq.qc.ca/library/view/sql-pocket-guide/9781492090397/)**
 
-**Note** : _Page rédigée en partie avec l'aide d'un assistant IA, principalement
-à l'aide de Perplexity AI, avec les _LLM_ `GPT-4 Omni` et `Claude 3 Opus`. L'IA
-a été utilisée pour générer des explications, des exemples et des suggestions de
-structure. Toutes les informations ont été vérifiées, éditées et complétées par
-l'auteur._
+<small>
+   <cite>
+      **Note** : _Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les _LLM_ `GPT-4 Omni` et `Claude 3.5 Sonnet`. L'IA
+      a été utilisée pour générer des explications, des exemples et des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur._
+   </cite>
+</small>

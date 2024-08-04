@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>3. Réseau de transports en commun - Cours de bases de données</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3. R\u00e9seau de transports en commun";
+        var mkdocs_page_input_path = "7. Exercices/DEA/03-transport.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Cours de bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/05-imbriqu%C3%A9es/">Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../3.%20SQL/06-r%C3%A9cursives/">Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >DEA</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../01-blog/">1. Blog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../02-livres/">2. Livres</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">3. Réseau de transports en commun</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#modeles-logiques">Modèles logiques</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#partie-1">Partie 1</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#partie-2">Partie 2</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#partie-3">Partie 3</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modele-physique">Modèle physique</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#creation">Création</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../04-restaurants/">4. Chaîne de restaurants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../05-voyages/">5. Agence de voyages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../06-hopital/">6. Système de gestion d'un hôpital</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../SQL/01-pagila/">1. Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../SQL/02-recettes/">2. Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../SQL/03-northwind/">3. BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Cours de bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">7. Exercices</li>
+          <li class="breadcrumb-item">DEA</li>
+      <li class="breadcrumb-item active">3. Réseau de transports en commun</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3-reseau-de-transports-en-commun">3. Réseau de transports en commun</h1>
+<h2 id="modeles-logiques">Modèles logiques</h2>
+<p>Créez un diagramme EA pour la base de données d'un réseau de transports en commun, basé sur les informations données
+ci-dessous.</p>
+<h3 id="partie-1">Partie 1</h3>
+<ol>
+<li>Le réseau de transports en commun comprend différents types de véhicules : bus, métros et tramways.</li>
+<li>Chaque véhicule a un numéro d'identification unique, une capacité de passagers et une date de mise en service.</li>
+<li>Le réseau est composé de plusieurs lignes. Chaque ligne a un numéro, un nom et un type (bus, métro ou tramway).</li>
+<li>Chaque ligne dessert plusieurs arrêts. Un arrêt a un nom, une adresse et des coordonnées géographiques.</li>
+<li>Les conducteurs sont affectés aux véhicules. Un conducteur a un numéro d'employé, un nom, un prénom et une date
+   d'embauche.</li>
+</ol>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">@startuml
+entity Vehicule {
+  * numero_identification : string
+  --
+  capacite_passagers : integer
+  date_mise_en_service : date
+  type : enum {bus, metro, tramway}
+}
+
+entity Ligne {
+  * numero : string
+  --
+  nom : string
+  type : enum {bus, metro, tramway}
+}
+
+entity Arret {
+  * id : integer
+  --
+  nom : string
+  adresse : string
+  coordonnees_geo : string
+}
+
+entity Conducteur {
+  * numero_employe : string
+  --
+  nom : string
+  prenom : string
+  date_embauche : date
+}
+
+Ligne &quot;*&quot; -- &quot;*&quot; Arret : dessert
+Conducteur &quot;*&quot; -- &quot;*&quot; Vehicule : conduit
+Ligne &quot;1&quot; -- &quot;*&quot; Vehicule : utilise
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+   <summary>Diagramme</summary>
+   <img src="../../../images/03-transport-1.png">
+</details>
+<p><br></p>
+<h3 id="partie-2">Partie 2</h3>
+<p>Ajoutez les éléments suivants au diagramme EA que vous avez obtenu dans la partie précédente.</p>
+<ol>
+<li>Chaque ligne a un horaire qui définit les heures de passage à chaque arrêt. Un horaire peut varier selon le jour de
+   la semaine (jour ouvré, samedi, dimanche et jours fériés).</li>
+<li>Les passagers peuvent acheter différents types de titres de transport : ticket unitaire, carnet de 10 tickets,
+   abonnement mensuel ou annuel.</li>
+<li>Chaque titre de transport a un prix et une durée de validité.</li>
+<li>Les passagers doivent s'enregistrer pour obtenir un abonnement. Un passager a un numéro de client, un nom, un prénom
+   et une adresse e-mail.</li>
+</ol>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">@startuml
+entity Vehicule {
+  * numero_identification : string
+  --
+  capacite_passagers : integer
+  date_mise_en_service : date
+  type : enum {bus, metro, tramway}
+}
+
+entity Ligne {
+  * numero : string
+  --
+  nom : string
+  type : enum {bus, metro, tramway}
+}
+
+entity Arret {
+  * id : integer
+  --
+  nom : string
+  adresse : string
+  coordonnees_geo : string
+}
+
+entity Conducteur {
+  * numero_employe : string
+  --
+  nom : string
+  prenom : string
+  date_embauche : date
+}
+
+Ligne &quot;*&quot; -- &quot;*&quot; Arret : dessert
+Conducteur &quot;*&quot; -- &quot;*&quot; Vehicule : conduit
+Ligne &quot;1&quot; -- &quot;*&quot; Vehicule : utilise
+
+entity Horaire {
+  * id : integer
+  --
+  jour_semaine : enum {ouvre, samedi, dimanche, ferie}
+  heure_passage : time
+}
+
+entity TitreTransport {
+  * id : integer
+  --
+  type : enum {unitaire, carnet10, mensuel, annuel}
+  prix : decimal
+  duree_validite : integer
+}
+
+entity Passager {
+  * numero_client : string
+  --
+  nom : string
+  prenom : string
+  email : string
+}
+
+Ligne &quot;1&quot; -- &quot;*&quot; Horaire
+Arret &quot;1&quot; -- &quot;*&quot; Horaire
+Passager &quot;*&quot; -- &quot;*&quot; TitreTransport : achete
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+   <summary>Diagramme</summary>
+   <img src="../../../images/03-transport-2.png">
+</details>
+<p><br></p>
+<h3 id="partie-3">Partie 3</h3>
+<p>Ajoutez les éléments suivants au diagramme EA que vous avez obtenu dans la partie précédente.</p>
+<ol>
+<li>Le réseau souhaite suivre la fréquentation des lignes. Pour cela, on enregistre le nombre de passagers montant et
+   descendant à chaque arrêt, pour chaque trajet.</li>
+<li>Les véhicules peuvent tomber en panne. On souhaite enregistrer les incidents, avec la date, le type d'incident et la
+   durée d'immobilisation du véhicule.</li>
+<li>Les arrêts peuvent être équipés de différentes installations : abris, bancs, distributeurs de tickets, panneaux
+   d'information en temps réel. On veut pouvoir savoir quelles installations sont présentes à chaque arrêt.</li>
+<li>Le réseau propose un système de vélos en libre-service aux arrêts principaux. Chaque station de vélos a un nombre de
+   places de stationnement et un nombre de vélos disponibles qui varie au cours de la journée.</li>
+</ol>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">@startuml
+entity Vehicule {
+  * numero_identification : string
+  --
+  capacite_passagers : integer
+  date_mise_en_service : date
+  type : enum {bus, metro, tramway}
+}
+
+entity Ligne {
+  * numero : string
+  --
+  nom : string
+  type : enum {bus, metro, tramway}
+}
+
+entity Arret {
+  * id : integer
+  --
+  nom : string
+  adresse : string
+  coordonnees_geo : string
+}
+
+entity Conducteur {
+  * numero_employe : string
+  --
+  nom : string
+  prenom : string
+  date_embauche : date
+}
+
+Ligne &quot;*&quot; -- &quot;*&quot; Arret : dessert
+Conducteur &quot;*&quot; -- &quot;*&quot; Vehicule : conduit
+Ligne &quot;1&quot; -- &quot;*&quot; Vehicule : utilise
+
+entity Horaire {
+  * id : integer
+  --
+  jour_semaine : enum {ouvre, samedi, dimanche, ferie}
+  heure_passage : time
+}
+
+entity TitreTransport {
+  * id : integer
+  --
+  type : enum {unitaire, carnet10, mensuel, annuel}
+  prix : decimal
+  duree_validite : integer
+}
+
+entity Passager {
+  * numero_client : string
+  --
+  nom : string
+  prenom : string
+  email : string
+}
+
+Ligne &quot;1&quot; -- &quot;*&quot; Horaire
+Arret &quot;1&quot; -- &quot;*&quot; Horaire
+Passager &quot;*&quot; -- &quot;*&quot; TitreTransport : achete
+
+
+entity Frequentation {
+  * id : integer
+  --
+  date : date
+  heure : time
+  passagers_montants : integer
+  passagers_descendants : integer
+}
+
+entity Incident {
+  * id : integer
+  --
+  date : date
+  type : string
+  duree_immobilisation : integer
+}
+
+entity Installation {
+  * id : integer
+  --
+  type : enum {abri, banc, distributeur, panneau_info}
+}
+
+entity StationVelos {
+  * id : integer
+  --
+  nombre_places : integer
+  velos_disponibles : integer
+}
+
+Arret &quot;1&quot; -- &quot;*&quot; Frequentation
+Vehicule &quot;1&quot; -- &quot;*&quot; Incident
+Arret &quot;*&quot; -- &quot;*&quot; Installation : equipee_de
+Arret &quot;1&quot; -- &quot;0..1&quot; StationVelos
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+   <summary>Diagramme</summary>
+   <img src="../../../images/03-transport-3.png">
+</details>
+<p><br></p>
+<h2 id="modele-physique">Modèle physique</h2>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-plantuml">@startuml
+!define TABLE(name,desc) class name as &quot;desc&quot; &lt;&lt; (T,#FFAAAA) &gt;&gt;
+!define PK(x) &lt;u&gt;x&lt;/u&gt;
+!define FK(x) &lt;i&gt;x&lt;/i&gt;
+hide empty methods
+hide empty fields
+
+TABLE(Vehicule, &quot;Vehicule&quot;) {
+    PK(id) : integer
+    numero_identification : string
+    capacite_passagers : integer
+    date_mise_en_service : date
+    type : type_vehicule
+    FK(ligne_id) : integer
+}
+
+TABLE(Ligne, &quot;Ligne&quot;) {
+    PK(id) : integer
+    numero : string
+    nom : string
+    type : type_ligne
+}
+
+TABLE(Arret, &quot;Arret&quot;) {
+    PK(id) : integer
+    nom : string
+    adresse : string
+    coordonnees_geo : string
+}
+
+TABLE(LigneArret, &quot;LigneArret&quot;) {
+    PK(FK(ligne_id)) : integer
+    PK(FK(arret_id)) : integer
+    ordre : integer
+}
+
+TABLE(Conducteur, &quot;Conducteur&quot;) {
+    PK(id) : integer
+    numero_employe : string
+    nom : string
+    prenom : string
+    date_embauche : date
+}
+
+TABLE(Horaire, &quot;Horaire&quot;) {
+    PK(id) : integer
+    jour_semaine : type_jour
+    heure_passage : time
+    FK(ligne_id) : integer
+    FK(arret_id) : integer
+}
+
+TABLE(TitreTransport, &quot;TitreTransport&quot;) {
+    PK(id) : integer
+    type : type_titre
+    prix : decimal
+    duree_validite : integer
+}
+
+TABLE(Passager, &quot;Passager&quot;) {
+    PK(id) : integer
+    numero_client : string
+    nom : string
+    prenom : string
+    email : string
+}
+
+TABLE(Frequentation, &quot;Frequentation&quot;) {
+    PK(id) : integer
+    date : date
+    heure : time
+    passagers_montants : integer
+    passagers_descendants : integer
+    FK(arret_id) : integer
+    FK(vehicule_id) : integer
+}
+
+TABLE(Incident, &quot;Incident&quot;) {
+    PK(id) : integer
+    date : date
+    type : string
+    duree_immobilisation : integer
+    FK(vehicule_id) : integer
+}
+
+TABLE(Installation, &quot;Installation&quot;) {
+    PK(id) : integer
+    type : type_installation
+}
+
+TABLE(ArretInstallation, &quot;ArretInstallation&quot;) {
+    PK(FK(arret_id)) : integer
+    PK(FK(installation_id)) : integer
+}
+
+TABLE(StationVelos, &quot;StationVelos&quot;) {
+    PK(id) : integer
+    nombre_places : integer
+    velos_disponibles : integer
+    FK(arret_id) : integer
+}
+
+Ligne &quot;1&quot; -- &quot;*&quot; Vehicule
+Ligne &quot;1&quot; -- &quot;*&quot; LigneArret
+Arret &quot;1&quot; -- &quot;*&quot; LigneArret
+Ligne &quot;1&quot; -- &quot;*&quot; Horaire
+Arret &quot;1&quot; -- &quot;*&quot; Horaire
+Arret &quot;1&quot; -- &quot;*&quot; Frequentation
+Vehicule &quot;1&quot; -- &quot;*&quot; Frequentation
+Vehicule &quot;1&quot; -- &quot;*&quot; Incident
+Arret &quot;1&quot; -- &quot;*&quot; ArretInstallation
+Installation &quot;1&quot; -- &quot;*&quot; ArretInstallation
+Arret &quot;1&quot; -- &quot;0..1&quot; StationVelos
+
+TABLE(ConducteurVehicule, &quot;ConducteurVehicule&quot;) {
+    PK(FK(conducteur_id)) : integer
+    PK(FK(vehicule_id)) : integer
+}
+
+TABLE(PassagerTitreTransport, &quot;PassagerTitreTransport&quot;) {
+    PK(FK(passager_id)) : integer
+    PK(FK(titre_transport_id)) : integer
+    date_achat : date
+}
+
+Conducteur &quot;1&quot; -- &quot;*&quot; ConducteurVehicule
+Vehicule &quot;1&quot; -- &quot;*&quot; ConducteurVehicule
+Passager &quot;1&quot; -- &quot;*&quot; PassagerTitreTransport
+TitreTransport &quot;1&quot; -- &quot;*&quot; PassagerTitreTransport
+
+@enduml
+</code></pre>
+
+</details>
+<p><br></p>
+<details>
+   <summary>Diagramme</summary>
+   <img src="../../../images/03-transport-4.png">
+</details>
+<p><br></p>
+<h3 id="creation">Création</h3>
+<details>
+    <summary>Code</summary>
+
+
+<pre><code class="language-sql">-- Création des types enum
+CREATE TYPE type_vehicule AS ENUM ('bus', 'metro', 'tramway');
+CREATE TYPE type_ligne AS ENUM ('bus', 'metro', 'tramway');
+CREATE TYPE type_jour AS ENUM ('ouvre', 'samedi', 'dimanche', 'ferie');
+CREATE TYPE type_titre AS ENUM ('unitaire', 'carnet10', 'mensuel', 'annuel');
+CREATE TYPE type_installation AS ENUM ('abri', 'banc', 'distributeur', 'panneau_info');
+
+-- Création des tables
+CREATE TABLE Ligne (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    numero VARCHAR(20) UNIQUE NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    type type_ligne NOT NULL
+);
+
+CREATE TABLE Vehicule (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    numero_identification VARCHAR(50) UNIQUE NOT NULL,
+    capacite_passagers INTEGER NOT NULL,
+    date_mise_en_service DATE NOT NULL,
+    type type_vehicule NOT NULL,
+    ligne_id INTEGER NOT NULL REFERENCES Ligne(id)
+);
+
+CREATE TABLE Arret (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    adresse TEXT,
+    coordonnees_geo VARCHAR(50)
+);
+
+CREATE TABLE LigneArret (
+    ligne_id INTEGER REFERENCES Ligne(id),
+    arret_id INTEGER REFERENCES Arret(id),
+    ordre INTEGER NOT NULL,
+    PRIMARY KEY (ligne_id, arret_id)
+);
+
+CREATE TABLE Conducteur (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    numero_employe VARCHAR(50) UNIQUE NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    date_embauche DATE NOT NULL
+);
+
+CREATE TABLE Horaire (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    jour_semaine type_jour NOT NULL,
+    heure_passage TIME NOT NULL,
+    ligne_id INTEGER NOT NULL REFERENCES Ligne(id),
+    arret_id INTEGER NOT NULL REFERENCES Arret(id)
+);
+
+CREATE TABLE TitreTransport (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    type type_titre NOT NULL,
+    prix DECIMAL(10, 2) NOT NULL,
+    duree_validite INTEGER NOT NULL
+);
+
+CREATE TABLE Passager (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    numero_client VARCHAR(50) UNIQUE NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE Frequentation (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    date DATE NOT NULL,
+    heure TIME NOT NULL,
+    passagers_montants INTEGER NOT NULL,
+    passagers_descendants INTEGER NOT NULL,
+    arret_id INTEGER NOT NULL REFERENCES Arret(id),
+    vehicule_id INTEGER NOT NULL REFERENCES Vehicule(id)
+);
+
+CREATE TABLE Incident (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    date DATE NOT NULL,
+    type VARCHAR(100) NOT NULL,
+    duree_immobilisation INTEGER NOT NULL,
+    vehicule_id INTEGER NOT NULL REFERENCES Vehicule(id)
+);
+
+CREATE TABLE Installation (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    type type_installation NOT NULL
+);
+
+CREATE TABLE ArretInstallation (
+    arret_id INTEGER REFERENCES Arret(id),
+    installation_id INTEGER REFERENCES Installation(id),
+    PRIMARY KEY (arret_id, installation_id)
+);
+
+CREATE TABLE StationVelos (
+    id INTEGER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    nombre_places INTEGER NOT NULL,
+    velos_disponibles INTEGER NOT NULL,
+    arret_id INTEGER UNIQUE NOT NULL REFERENCES Arret(id)
+);
+
+CREATE TABLE ConducteurVehicule (
+    conducteur_id INTEGER REFERENCES Conducteur(id),
+    vehicule_id INTEGER REFERENCES Vehicule(id),
+    PRIMARY KEY (conducteur_id, vehicule_id)
+);
+
+CREATE TABLE PassagerTitreTransport (
+    passager_id INTEGER REFERENCES Passager(id),
+    titre_transport_id INTEGER REFERENCES TitreTransport(id),
+    date_achat DATE NOT NULL,
+    PRIMARY KEY (passager_id, titre_transport_id)
+);
+</code></pre>
+
+</details>
+<p><br></p>
+<hr />
+<p><small>
+   <cite>
+      <strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3.5 Sonnet</code>. L'IA
+      a été utilisée pour générer des explications, des exemples et des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur._
+   </cite>
+</small></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../02-livres/" class="btn btn-neutral float-left" title="2. Livres"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../04-restaurants/" class="btn btn-neutral float-right" title="4. Chaîne de restaurants">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../02-livres/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../04-restaurants/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

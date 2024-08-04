@@ -152,8 +152,14 @@ fonctionnalités avancées, et sa robustesse. Ces avantages en font un choix
 privilégié pour de nombreuses entreprises et développeurs à travers le monde,
 offrant une solution fiable et performante pour une large gamme d'applications.
 
-**Note** : _Page rédigée en partie avec l'aide d'un assistant IA, principalement
-à l'aide de Perplexity AI, avec les _LLM_ `GPT-4 Omni` et `Claude 3 Opus`. L'IA
-a été utilisée pour générer des explications, des exemples et des suggestions de
-structure. Toutes les informations ont été vérifiées, éditées et complétées par
-l'auteur._
+
+-------
+<small>
+   <cite>
+      **Note** : _Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les _LLM_ `GPT-4 Omni` et `Claude 3.5 Sonnet`. L'IA
+      a été utilisée pour générer des explications, des exemples et des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur._
+   </cite>
+</small>

@@ -94,8 +94,14 @@ nombreuses entreprises et développeurs. Sa licence open-source et son large
 support communautaire contribuent également
 à sa popularité et à son adoption continue.
 
-**Note** : _Page rédigée en partie avec l'aide d'un assistant IA, principalement
-à l'aide de Perplexity AI, avec les _LLM_ `GPT-4 Omni` et `Claude 3 Opus`. L'IA
-a été utilisée pour générer des explications, des exemples et des suggestions de
-structure. Toutes les informations ont été vérifiées, éditées et complétées par
-l'auteur._
+
+-------
+<small>
+   <cite>
+      **Note** : _Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les _LLM_ `GPT-4 Omni` et `Claude 3.5 Sonnet`. L'IA
+      a été utilisée pour générer des explications, des exemples et des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur._
+   </cite>
+</small>

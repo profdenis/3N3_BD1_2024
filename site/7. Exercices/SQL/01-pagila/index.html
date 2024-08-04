@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>Base de données Pagila - Cours bases de données</title>
+    <title>1. Base de données Pagila - Cours de bases de données</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Base de donn\u00e9es Pagila";
+        var mkdocs_page_name = "1. Base de donn\u00e9es Pagila";
         var mkdocs_page_input_path = "7. Exercices/SQL/01-pagila.md";
         var mkdocs_page_url = null;
       </script>
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../../.." class="icon icon-home"> Cours bases de données
+          <a href="../../.." class="icon icon-home"> Cours de bases de données
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
@@ -99,6 +99,8 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
@@ -130,13 +132,23 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >DEA</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../DEA/01-blog/">1. Blog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../DEA/02-livres/">2. Livres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../DEA/03-transport/">3. Réseau de transports en commun</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../DEA/04-restaurants/">4. Chaîne de restaurants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../DEA/05-voyages/">5. Agence de voyages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../DEA/06-hopital/">6. Système de gestion d'un hôpital</a>
                 </li>
     </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" >SQL</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Base de données Pagila</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">1. Base de données Pagila</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#creation">Création</a>
     </li>
@@ -198,9 +210,9 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../02-recettes/">Recettes de cuisine</a>
+                <li class="toctree-l2"><a class="reference internal" href="../02-recettes/">2. Recettes de cuisine</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../03-northwind/">BD Northwind</a>
+                <li class="toctree-l2"><a class="reference internal" href="../03-northwind/">3. BD Northwind</a>
                 </li>
     </ul>
                   </li>
@@ -212,7 +224,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../..">Cours bases de données</a>
+          <a href="../../..">Cours de bases de données</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -221,7 +233,7 @@
     <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">7. Exercices</li>
           <li class="breadcrumb-item">SQL</li>
-      <li class="breadcrumb-item active">Base de données Pagila</li>
+      <li class="breadcrumb-item active">1. Base de données Pagila</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -230,7 +242,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="base-de-donnees-pagila">Base de données Pagila</h1>
+                <h1 id="1-base-de-donnees-pagila">1. Base de données Pagila</h1>
 <h2 id="creation">Création</h2>
 <p><a href="../../../src/create/pagila_create.sql">pagila_create.sql</a></p>
 <h2 id="dea">DEA</h2>
@@ -1052,12 +1064,22 @@ ORDER BY ap.films_together DESC, a1.last_name, a1.first_name, a2.last_name, a2.f
 
 </details>
 <p><br></p>
+<hr />
+<p><small>
+   <cite>
+      <strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3.5 Sonnet</code>. L'IA
+      a été utilisée pour générer des explications, des exemples et des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur._
+   </cite>
+</small></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../DEA/exercises_ER/" class="btn btn-neutral float-left" title="Exercises - Entity-Relationship Modeling"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../02-recettes/" class="btn btn-neutral float-right" title="Recettes de cuisine">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../DEA/06-hopital/" class="btn btn-neutral float-left" title="6. Système de gestion d'un hôpital"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02-recettes/" class="btn btn-neutral float-right" title="2. Recettes de cuisine">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -1080,7 +1102,7 @@ ORDER BY ap.films_together DESC, a1.last_name, a1.first_name, a2.last_name, a2.f
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../DEA/exercises_ER/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../DEA/06-hopital/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../02-recettes/" style="color: #fcfcfc">Next &raquo;</a></span>

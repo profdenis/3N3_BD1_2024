@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Modélisation Entité-Association - Cours bases de données</title>
+    <title>Modélisation Entité-Association - Cours de bases de données</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -31,7 +31,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Cours bases de données
+          <a href="../.." class="icon icon-home"> Cours de bases de données
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
@@ -131,23 +131,9 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#les-entites-faibles-dans-le-modele-entite-association">Les Entités Faibles dans le Modèle Entité-Association</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#definition">Définition</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#caracteristiques-des-entites-faibles">Caractéristiques des Entités Faibles</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#exemple">Exemple</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#comparaison-avec-la-conception-orientee-objet-oo-en-uml">Comparaison avec la Conception Orientée Objet (OO) en UML</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#illustration-uml">Illustration UML</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
-    </li>
-        </ul>
-    </li>
     </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../02-notation/">Différentes notations pour les DEA</a>
                   </li>
@@ -180,17 +166,27 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >DEA</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/exercises_ER/">Exercises - Entity-Relationship Modeling</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/01-blog/">1. Blog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/02-livres/">2. Livres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/03-transport/">3. Réseau de transports en commun</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/04-restaurants/">4. Chaîne de restaurants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/05-voyages/">5. Agence de voyages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/06-hopital/">6. Système de gestion d'un hôpital</a>
                 </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >SQL</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">Base de données Pagila</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">1. Base de données Pagila</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">Recettes de cuisine</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">2. Recettes de cuisine</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">BD Northwind</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">3. BD Northwind</a>
                 </li>
     </ul>
                   </li>
@@ -202,7 +198,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Cours bases de données</a>
+          <a href="../..">Cours de bases de données</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -332,93 +328,12 @@
 <p><img alt="contacts alternative notation" src="../../images/contacts_alt.png" /></p>
 <h4 id="notation-uml_1">Notation UML</h4>
 <p><img alt="contacts_uml.png" src="../../images/contacts_uml.png" /></p>
-<h2 id="les-entites-faibles-dans-le-modele-entite-association">Les Entités Faibles dans le Modèle Entité-Association</h2>
-<h3 id="definition">Définition</h3>
-<p>Dans le modèle entité-association (E-A), une <strong>entité faible</strong> est une entité
-qui ne peut pas être identifiée de manière unique par ses propres attributs
-seuls. Elle dépend d'une autre entité, appelée <strong>entité forte</strong>, pour son
-identification. Une entité faible est souvent utilisée pour représenter des
-objets qui n'ont pas de signification indépendante sans leur entité forte
-associée.</p>
-<h3 id="caracteristiques-des-entites-faibles">Caractéristiques des Entités Faibles</h3>
-<ol>
-<li><strong>Dépendance d'Existence</strong> : Une entité faible ne peut pas exister sans son
-   entité forte correspondante.</li>
-<li><strong>Clé Partielle</strong> : L'identification d'une entité faible nécessite une clé
-   partielle (un ensemble d'attributs propres à l'entité faible) en combinaison
-   avec la clé primaire de l'entité forte.</li>
-<li><strong>Relation d'Identification</strong> : Une relation spéciale, souvent appelée
-   relation d'identification, relie l'entité faible à son entité forte.</li>
-</ol>
-<h3 id="exemple">Exemple</h3>
-<p>Considérons une base de données pour une bibliothèque. Nous avons deux entités :
-<strong>Bibliothèque</strong> et <strong>Livre</strong>.</p>
-<ul>
-<li><strong>Bibliothèque</strong> (entité forte) : Identifiée par un attribut unique,
-  comme <code>ID_Bibliothèque</code>.</li>
-<li><strong>Livre</strong> (entité faible) : Identifié par une combinaison de <code>ID_Bibliothèque</code>
-  et <code>Numéro_Livre</code>. Un livre n'a pas de signification sans la bibliothèque à
-  laquelle il appartient.</li>
-</ul>
-<h3 id="comparaison-avec-la-conception-orientee-objet-oo-en-uml">Comparaison avec la Conception Orientée Objet (OO) en UML</h3>
-<p>En conception orientée objet avec UML (Unified Modeling Language), les concepts
-d'entités faibles et fortes peuvent être comparés aux relations de composition
-et d'agrégation.</p>
-<ul>
-<li><strong>Composition</strong> : Similaire aux entités faibles, une classe composante ne peut
-  pas exister indépendamment de la classe composite. Par exemple, une
-  classe <code>Page</code> peut être une composante d'une classe <code>Livre</code>, et une page n'a
-  pas de sens sans le livre auquel elle appartient.</li>
-<li><strong>Agrégation</strong> : Contrairement aux entités faibles, une classe agrégée peut
-  exister indépendamment de la classe agrégante. Par exemple, une
-  classe <code>Auteur</code> peut être associée à plusieurs <code>Livres</code>, mais elle peut
-  exister indépendamment de ces livres.</li>
-</ul>
-<h3 id="illustration-uml">Illustration UML</h3>
-<p>En UML, une composition est représentée par un losange rempli à l'extrémité de
-l'association, tandis qu'une agrégation est représentée par un losange vide.</p>
-<ul>
-<li><strong>Composition</strong> :</li>
-</ul>
-<details>
-    <summary>Code</summary>
-
-
-<pre><code class="language-plantuml">@startuml
-Livre *-- Page
-@enduml
-</code></pre>
-
-
-</details>
-<p><img alt="composition.png" src="../../images/composition.png" /></p>
-<ul>
-<li><strong>Agrégation</strong> :</li>
-</ul>
-<details>
-    <summary>Code</summary>
-
-<pre><code class="language-plantuml">@startuml
-Auteur o-- Livre
-@enduml
-</code></pre>
-
-</details>
-<p><img alt="aggrégation.png" src="../../images/aggr%C3%A9gation.png" /></p>
-<h3 id="conclusion">Conclusion</h3>
-<p>Les entités faibles sont un concept crucial dans le modèle entité-association
-pour modéliser des objets dépendants d'autres objets pour leur identification.
-En comparaison, la conception orientée objet utilise des relations de
-composition pour représenter des dépendances similaires, mais permet également
-des relations plus lâches avec l'agrégation. Comprendre ces concepts est
-essentiel pour concevoir des bases de données relationnelles robustes et bien
-structurées.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../../3.%20SQL/06-r%C3%A9cursives/" class="btn btn-neutral float-left" title="Requêtes récursives"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../02-notation/" class="btn btn-neutral float-right" title="Différentes notations pour les DEA">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../01b-enit%C3%A9s-faibles/" class="btn btn-neutral float-right" title="Les Entités Faibles">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -444,7 +359,7 @@ structurées.</p>
       <span><a href="../../3.%20SQL/06-r%C3%A9cursives/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../02-notation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../01b-enit%C3%A9s-faibles/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

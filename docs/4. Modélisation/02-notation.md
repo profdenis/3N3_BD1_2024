@@ -74,7 +74,7 @@ T5 <|--|> T6: rel_5
 ```
 
 </details>
-![notation2.png](..%2Fimages%2Fnotation2.png)
+![notation2.png](../images/notation2.png)
 
 ## Utilisation des cardinalités (ou multiplicités) à la place
 
@@ -119,7 +119,7 @@ note on link: au-moins-un-à-au-moins-un\nentre T3 et T6
 ```
 
 </details>
-![notation3.png](..%2Fimages%2Fnotation3.png)
+![notation3.png](../images/notation3.png)
 
 ## Notation en pied-de-corbeau
 
@@ -157,7 +157,7 @@ note on link: au-moins-un-à-au-moins-un\nentre T3 et T6
 ```
 
 </details>
-![notation4.png](..%2Fimages%2Fnotation4.png)
+![notation4.png](../images/notation4.png)
 
 ## Différents types de diagrammes EA avec PlantUML
 
@@ -208,7 +208,7 @@ Call "*" -- "0..1" Contact : "            "
 ```
 
 </details>
-![notation5.png](..%2Fimages%2Fnotation5.png)
+![notation5.png](../images/notation5.png)
 
 ### Avec types de données et contraintes (Logique)
 
@@ -241,5 +241,5 @@ Call "*" -- "0..1" Contact : "            "
 ```
 
 </details>
-![notation6.png](..%2Fimages%2Fnotation6.png)
+![notation6.png](../images/notation6.png)
 
