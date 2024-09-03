@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5 - Survol des opérations faisant partie des requêtes SQL - Cours de bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5 - Survol des op\u00e9rations faisant partie des requ\u00eates SQL";
+        var mkdocs_page_input_path = "3. SQL/05-survol-op\u00e9rations-SQL.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours de bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">5 - Survol des opérations faisant partie des requêtes SQL</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#creation-dune-table-de-clients">Création d'une Table de Clients</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#utilisation-de-select-et-from">Utilisation de SELECT et FROM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-1-selectionner-toutes-les-colonnes">Exemple 1 : Sélectionner Toutes les Colonnes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-2-selectionner-des-colonnes-specifiques">Exemple 2 : Sélectionner des Colonnes Spécifiques</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-3-selectionner-avec-un-alias">Exemple 3 : Sélectionner avec un Alias</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resume">Résumé</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#utilisation-de-la-clause-where">Utilisation de la Clause WHERE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-1-filtrer-par-ville">Exemple 1 : Filtrer par Ville</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-2-filtrer-par-nom">Exemple 2 : Filtrer par Nom</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-3-filtrer-par-email">Exemple 3 : Filtrer par Email</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-4-filtrer-par-plusieurs-conditions">Exemple 4 : Filtrer par Plusieurs Conditions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-5-filtrer-par-conditions-numeriques">Exemple 5 : Filtrer par Conditions Numériques</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resume_1">Résumé</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#utilisation-de-order-by">Utilisation de ORDER BY</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-1-tri-simple-par-nom">Exemple 1 : Tri Simple par Nom</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-2-tri-en-ordre-decroissant">Exemple 2 : Tri en Ordre Décroissant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-3-tri-par-plusieurs-colonnes">Exemple 3 : Tri par Plusieurs Colonnes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-4-tri-avec-une-clause-where">Exemple 4 : Tri avec une Clause WHERE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resume_2">Résumé</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fonctions-scalaires">Fonctions Scalaires</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-1-utilisation-de-upper-pour-convertir-en-majuscules">Exemple 1 : Utilisation de UPPER pour Convertir en Majuscules</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-2-utilisation-de-length-pour-obtenir-la-longueur-dune-chaine">Exemple 2 : Utilisation de LENGTH pour Obtenir la Longueur d'une Chaîne</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-3-utilisation-de-fonctions-sur-les-dates">Exemple 3 : Utilisation de Fonctions sur les Dates</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fonctions-dagregation">Fonctions d'Agrégation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-4-utilisation-de-count-pour-compter-le-nombre-de-clients">Exemple 4 : Utilisation de COUNT pour Compter le Nombre de Clients</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-5-utilisation-de-avg-pour-calculer-une-moyenne">Exemple 5 : Utilisation de AVG pour Calculer une Moyenne</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-6-utilisation-de-min-et-max-pour-trouver-les-valeurs-extremes">Exemple 6 : Utilisation de MIN et MAX pour Trouver les Valeurs Extrêmes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resume_3">Résumé</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#jointure-interne-inner-join">Jointure Interne (INNER JOIN)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#creation-de-la-table-commandes">Création de la Table commandes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#explications">Explications</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-1-ajouter-le-courriel-de-chaque-client-a-la-liste-des-commandes">Exemple 1 : Ajouter le Courriel de Chaque Client à la Liste des Commandes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#explication">Explication</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-2-lister-toutes-les-commandes-de-jean-dupont">Exemple 2 : Lister Toutes les Commandes de Jean Dupont</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#explication_1">Explication</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resume_4">Résumé</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#jointure-externe-gauche">Jointure externe gauche</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requete-trouver-les-clients-qui-nont-pas-de-commandes">Requête : Trouver les Clients qui n'ont pas de Commandes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#explication_2">Explication</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resultats-de-la-requete">Résultats de la Requête</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#comparaison-des-jointures-externes">Comparaison des Jointures Externes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-jointure-gauche-left-join">1. Jointure Gauche (LEFT JOIN)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-jointure-droite-right-join">2. Jointure Droite (RIGHT JOIN)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-jointure-externe-complete-full-join">3. Jointure Externe Complète (FULL JOIN)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#differences-cles">Différences Clés</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-dutilisation">Exemple d'Utilisation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#note-importante">Note Importante</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#regroupements-avec-group-by">Regroupements avec GROUP BY</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-1-nombre-de-commandes-par-client">Exemple 1 : Nombre de Commandes par Client</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#concept-de-regroupement">Concept de Regroupement</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#definition-des-groupes">Définition des Groupes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#formation-des-groupes">Formation des Groupes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#processus-de-regroupement">Processus de Regroupement</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#exemple-visuel">Exemple Visuel</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#utilite-du-regroupement">Utilité du Regroupement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-2-montant-total-des-commandes-par-ville">Exemple 2 : Montant Total des Commandes par Ville</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#utilisation-de-having">Utilisation de HAVING</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-3-clients-avec-plus-dune-commande">Exemple 3 : Clients avec Plus d'Une Commande</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exemple-4-villes-avec-un-montant-total-de-commandes-superieur-a-500">Exemple 4 : Villes avec un Montant Total de Commandes Supérieur à 500</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resume_5">Résumé</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06-imbriqu%C3%A9es/">6 - Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07-r%C3%A9cursives/">7 - Requêtes récursives</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/01-blog/">1. Blog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/02-livres/">2. Livres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/03-transport/">3. Réseau de transports en commun</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/04-restaurants/">4. Chaîne de restaurants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/05-voyages/">5. Agence de voyages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/06-hopital/">6. Système de gestion d'un hôpital</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">1. Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">2. Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">3. BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours de bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">3. SQL</li>
+      <li class="breadcrumb-item active">5 - Survol des opérations faisant partie des requêtes SQL</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="5-survol-des-operations-faisant-partie-des-requetes-sql">5 - Survol des opérations faisant partie des requêtes SQL</h1>
+<p>Pour commencer à comprendre les opérations de base d'une requête SQL, examinons une projection simple à l'aide des
+clauses <code>SELECT</code> et <code>FROM</code>. Ces clauses sont fondamentales pour extraire des données d'une base de données relationnelle
+comme PostgreSQL. Nous allons illustrer cela avec une table de clients d'un magasin.</p>
+<h2 id="creation-dune-table-de-clients">Création d'une Table de Clients</h2>
+<p>Imaginons que nous avons une table nommée <code>clients</code> qui contient des informations sur les clients d'un magasin. Voici
+comment cette table pourrait être définie et peuplée avec quelques lignes d'exemple :</p>
+<pre><code class="language-sql">CREATE TABLE clients
+(
+    id               SERIAL PRIMARY KEY,
+    nom              VARCHAR(50),
+    prenom           VARCHAR(50),
+    email            VARCHAR(100),
+    ville            VARCHAR(50),
+    date_inscription DATE
+);
+
+INSERT INTO clients (nom, prenom, email, ville, date_inscription)
+VALUES ('Dupont', 'Jean', 'jean.dupont@example.com', 'Paris', '2023-01-15'),
+       ('Martin', 'Marie', 'marie.martin@example.com', 'Lyon', '2023-02-20'),
+       ('Durand', 'Paul', 'paul.durand@example.com', 'Marseille', '2023-03-10'),
+       ('Lefevre', 'Sophie', 'sophie.lefevre@example.com', 'Toulouse', '2023-04-05'),
+       ('Moreau', 'Pierre', 'pierre.moreau@example.com', 'Nice', '2023-05-18'),
+       ('Simon', 'Lucie', 'lucie.simon@example.com', 'Nantes', '2023-06-22'),
+       ('Laurent', 'Julie', 'julie.laurent@example.com', 'Bordeaux', '2023-07-30'),
+       ('Lemoine', 'Antoine', 'antoine.lemoine@example.com', 'Strasbourg', '2023-08-14'),
+       ('Roux', 'Claire', 'claire.roux@example.com', 'Lille', '2023-09-01'),
+       ('Petit', 'Nicolas', 'nicolas.petit@example.com', 'Rennes', '2023-10-10');
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Email</th>
+<th>Ville</th>
+<th>Date d'inscription</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Dupont</td>
+<td>Jean</td>
+<td>jean.dupont@example.com</td>
+<td>Paris</td>
+<td>2023-01-15</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Martin</td>
+<td>Marie</td>
+<td>marie.martin@example.com</td>
+<td>Lyon</td>
+<td>2023-02-20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Durand</td>
+<td>Paul</td>
+<td>paul.durand@example.com</td>
+<td>Marseille</td>
+<td>2023-03-10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lefevre</td>
+<td>Sophie</td>
+<td>sophie.lefevre@example.com</td>
+<td>Toulouse</td>
+<td>2023-04-05</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Moreau</td>
+<td>Pierre</td>
+<td>pierre.moreau@example.com</td>
+<td>Nice</td>
+<td>2023-05-18</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Simon</td>
+<td>Lucie</td>
+<td>lucie.simon@example.com</td>
+<td>Nantes</td>
+<td>2023-06-22</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Laurent</td>
+<td>Julie</td>
+<td>julie.laurent@example.com</td>
+<td>Bordeaux</td>
+<td>2023-07-30</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Lemoine</td>
+<td>Antoine</td>
+<td>antoine.lemoine@example.com</td>
+<td>Strasbourg</td>
+<td>2023-08-14</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Roux</td>
+<td>Claire</td>
+<td>claire.roux@example.com</td>
+<td>Lille</td>
+<td>2023-09-01</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Petit</td>
+<td>Nicolas</td>
+<td>nicolas.petit@example.com</td>
+<td>Rennes</td>
+<td>2023-10-10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="utilisation-de-select-et-from">Utilisation de <code>SELECT</code> et <code>FROM</code></h2>
+<p>La clause <code>SELECT</code> est utilisée pour spécifier les colonnes que vous souhaitez récupérer, tandis que la clause <code>FROM</code>
+indique la table d'où proviennent ces données. Voici quelques exemples de requêtes SQL utilisant ces clauses :</p>
+<h3 id="exemple-1-selectionner-toutes-les-colonnes">Exemple 1 : Sélectionner Toutes les Colonnes</h3>
+<p>Pour récupérer toutes les informations de la table <code>clients</code>, vous pouvez utiliser l'astérisque (<code>*</code>) pour indiquer que
+vous voulez toutes les colonnes :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Email</th>
+<th>Ville</th>
+<th>Date d'inscription</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Dupont</td>
+<td>Jean</td>
+<td>jean.dupont@example.com</td>
+<td>Paris</td>
+<td>2023-01-15</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Martin</td>
+<td>Marie</td>
+<td>marie.martin@example.com</td>
+<td>Lyon</td>
+<td>2023-02-20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Durand</td>
+<td>Paul</td>
+<td>paul.durand@example.com</td>
+<td>Marseille</td>
+<td>2023-03-10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lefevre</td>
+<td>Sophie</td>
+<td>sophie.lefevre@example.com</td>
+<td>Toulouse</td>
+<td>2023-04-05</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Moreau</td>
+<td>Pierre</td>
+<td>pierre.moreau@example.com</td>
+<td>Nice</td>
+<td>2023-05-18</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Simon</td>
+<td>Lucie</td>
+<td>lucie.simon@example.com</td>
+<td>Nantes</td>
+<td>2023-06-22</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Laurent</td>
+<td>Julie</td>
+<td>julie.laurent@example.com</td>
+<td>Bordeaux</td>
+<td>2023-07-30</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Lemoine</td>
+<td>Antoine</td>
+<td>antoine.lemoine@example.com</td>
+<td>Strasbourg</td>
+<td>2023-08-14</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Roux</td>
+<td>Claire</td>
+<td>claire.roux@example.com</td>
+<td>Lille</td>
+<td>2023-09-01</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Petit</td>
+<td>Nicolas</td>
+<td>nicolas.petit@example.com</td>
+<td>Rennes</td>
+<td>2023-10-10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemple-2-selectionner-des-colonnes-specifiques">Exemple 2 : Sélectionner des Colonnes Spécifiques</h3>
+<p>Si vous ne voulez que certaines colonnes, par exemple, le nom et l'email des clients, vous pouvez spécifier ces colonnes
+dans la clause <code>SELECT</code> :</p>
+<pre><code class="language-sql">SELECT nom, email
+FROM clients;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Nom</th>
+<th>Email</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dupont</td>
+<td>jean.dupont@example.com</td>
+</tr>
+<tr>
+<td>Martin</td>
+<td>marie.martin@example.com</td>
+</tr>
+<tr>
+<td>Durand</td>
+<td>paul.durand@example.com</td>
+</tr>
+<tr>
+<td>Lefevre</td>
+<td>sophie.lefevre@example.com</td>
+</tr>
+<tr>
+<td>Moreau</td>
+<td>pierre.moreau@example.com</td>
+</tr>
+<tr>
+<td>Simon</td>
+<td>lucie.simon@example.com</td>
+</tr>
+<tr>
+<td>Laurent</td>
+<td>julie.laurent@example.com</td>
+</tr>
+<tr>
+<td>Lemoine</td>
+<td>antoine.lemoine@example.com</td>
+</tr>
+<tr>
+<td>Roux</td>
+<td>claire.roux@example.com</td>
+</tr>
+<tr>
+<td>Petit</td>
+<td>nicolas.petit@example.com</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemple-3-selectionner-avec-un-alias">Exemple 3 : Sélectionner avec un Alias</h3>
+<p>Vous pouvez également utiliser des alias pour renommer les colonnes dans le résultat. Cela peut être utile pour rendre
+les résultats plus lisibles ou pour éviter des conflits de noms :</p>
+<pre><code class="language-sql">SELECT nom AS NomClient, email AS EmailClient
+FROM clients;
+</code></pre>
+<h3 id="resume">Résumé</h3>
+<ul>
+<li><strong><code>SELECT</code></strong> : Spécifie les colonnes à récupérer.</li>
+<li><strong><code>FROM</code></strong> : Indique la table d'où proviennent les données.</li>
+</ul>
+<p>Ces opérations de base constituent le fondement de la manipulation des données dans SQL. À mesure que vous progressez,
+vous apprendrez à utiliser d'autres clauses et fonctions pour effectuer des opérations plus complexes, telles que le
+filtrage avec <code>WHERE</code>, le tri avec <code>ORDER BY</code>, et bien plus encore.</p>
+<h2 id="utilisation-de-la-clause-where">Utilisation de la Clause <code>WHERE</code></h2>
+<p>La deuxième opération fondamentale dans une requête SQL est le filtrage des données à l'aide de la clause <code>WHERE</code>. Cette
+clause permet de spécifier des conditions qui doivent être remplies pour qu'une ligne soit incluse dans le résultat de
+la requête. Examinons quelques exemples simples de filtrage sur notre table <code>clients</code>.</p>
+<p>La clause <code>WHERE</code> est utilisée pour extraire uniquement les enregistrements qui répondent à une condition spécifique.
+Voici quelques exemples illustrant son utilisation :</p>
+<h3 id="exemple-1-filtrer-par-ville">Exemple 1 : Filtrer par Ville</h3>
+<p>Supposons que nous souhaitons récupérer tous les clients qui habitent à Paris. Nous utiliserons la clause <code>WHERE</code> pour
+spécifier cette condition :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+WHERE ville = 'Paris';
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Email</th>
+<th>Ville</th>
+<th>Date d'inscription</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Dupont</td>
+<td>Jean</td>
+<td>jean.dupont@example.com</td>
+<td>Paris</td>
+<td>2023-01-15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemple-2-filtrer-par-nom">Exemple 2 : Filtrer par Nom</h3>
+<p>Si nous voulons trouver tous les clients dont le nom de famille est "Durand", nous pouvons écrire la requête suivante :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+WHERE nom = 'Durand';
+</code></pre>
+<h3 id="exemple-3-filtrer-par-email">Exemple 3 : Filtrer par Email</h3>
+<p>Pour récupérer les clients dont l'adresse email se termine par "@example.com", nous pouvons utiliser l'opérateur <code>LIKE</code>
+avec un motif de recherche :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+WHERE email LIKE '%@example.com';
+</code></pre>
+<h3 id="exemple-4-filtrer-par-plusieurs-conditions">Exemple 4 : Filtrer par Plusieurs Conditions</h3>
+<p>Il est également possible de combiner plusieurs conditions à l'aide des opérateurs logiques <code>AND</code> et <code>OR</code>. Par exemple,
+pour sélectionner les clients qui habitent à Lyon ou à Marseille, nous utiliserons <code>OR</code> :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+WHERE ville = 'Lyon'
+   OR ville = 'Marseille';
+</code></pre>
+<p>Pour sélectionner les clients qui habitent à Paris et dont le nom de famille est "Dupont", nous utiliserons <code>AND</code> :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+WHERE ville = 'Paris'
+  AND nom = 'Dupont';
+</code></pre>
+<h3 id="exemple-5-filtrer-par-conditions-numeriques">Exemple 5 : Filtrer par Conditions Numériques</h3>
+<p>Bien que notre table <code>clients</code> ne contienne pas de données numériques dans cet exemple, si elle avait une colonne comme
+<code>age</code>, nous pourrions filtrer les clients de plus de 30 ans comme suit :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+WHERE age &gt; 30;
+</code></pre>
+<h3 id="resume_1">Résumé</h3>
+<ul>
+<li><strong><code>WHERE</code></strong> : Utilisée pour filtrer les lignes en fonction de conditions spécifiques.</li>
+<li><strong>Opérateurs Logiques</strong> : <code>AND</code>, <code>OR</code> pour combiner plusieurs conditions.</li>
+<li><strong>Opérateurs de Comparaison</strong> : <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;&gt;</code> (différent).</li>
+<li><strong><code>LIKE</code></strong> : Utilisé pour les recherches de motifs dans les chaînes de caractères.</li>
+</ul>
+<p>La clause <code>WHERE</code> est essentielle pour extraire des données pertinentes et précises d'une base de données, en fonction
+des besoins spécifiques de l'utilisateur ou de l'application.</p>
+<h2 id="utilisation-de-order-by">Utilisation de <code>ORDER BY</code></h2>
+<p>Le tri des résultats dans une requête SQL est effectué à l'aide de la clause <code>ORDER BY</code>. Cette clause vous permet de
+spécifier l'ordre dans lequel les lignes doivent être retournées, que ce soit en ordre croissant ou décroissant. Vous
+pouvez trier les résultats en fonction d'une ou plusieurs colonnes.</p>
+<h3 id="exemple-1-tri-simple-par-nom">Exemple 1 : Tri Simple par Nom</h3>
+<p>Pour trier les résultats par le nom des clients en ordre croissant (par défaut), vous pouvez utiliser la requête
+suivante :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+ORDER BY nom;
+</code></pre>
+<h3 id="exemple-2-tri-en-ordre-decroissant">Exemple 2 : Tri en Ordre Décroissant</h3>
+<p>Pour trier les résultats par le nom des clients en ordre décroissant, utilisez le mot clé <code>DESC</code> :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+ORDER BY nom DESC;
+</code></pre>
+<h3 id="exemple-3-tri-par-plusieurs-colonnes">Exemple 3 : Tri par Plusieurs Colonnes</h3>
+<p>Vous pouvez trier les résultats par plusieurs colonnes. Par exemple, pour trier d'abord par ville en ordre croissant,
+puis par nom en ordre décroissant :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+ORDER BY ville, nom DESC;
+</code></pre>
+<h3 id="exemple-4-tri-avec-une-clause-where">Exemple 4 : Tri avec une Clause <code>WHERE</code></h3>
+<p>Vous pouvez combiner <code>ORDER BY</code> avec une clause <code>WHERE</code> pour filtrer et trier les résultats. Par exemple, pour obtenir
+les clients de Paris triés par date d'inscription :</p>
+<pre><code class="language-sql">SELECT *
+FROM clients
+WHERE ville = 'Paris'
+ORDER BY date_inscription;
+</code></pre>
+<h3 id="resume_2">Résumé</h3>
+<ul>
+<li><strong><code>ORDER BY</code></strong> : Utilisé pour spécifier l'ordre des résultats.</li>
+<li><strong>Ordre Croissant</strong> : Par défaut, les résultats sont triés en ordre croissant (<code>ASC</code>).</li>
+<li><strong>Ordre Décroissant</strong> : Utilisez <code>DESC</code> pour trier en ordre décroissant.</li>
+<li><strong>Tri Multiple</strong> : Vous pouvez trier par plusieurs colonnes en les séparant par des virgules.</li>
+<li><strong>Combinaison avec <code>WHERE</code></strong> : <code>ORDER BY</code> peut être utilisé après <code>WHERE</code> pour trier les résultats filtrés.</li>
+</ul>
+<p>Le tri des résultats est une fonctionnalité puissante qui vous permet de présenter les données de manière organisée et
+lisible, en fonction de vos besoins spécifiques.</p>
+<h2 id="fonctions-scalaires">Fonctions Scalaires</h2>
+<p>Dans SQL, les fonctions peuvent être utilisées dans la clause <code>SELECT</code> pour effectuer diverses opérations sur les
+données. Ces fonctions peuvent être des fonctions d'agrégation, qui opèrent sur un ensemble de valeurs pour en retourner
+une seule, ou des fonctions scalaires, qui opèrent sur une seule valeur et retournent une nouvelle valeur.</p>
+<p>Les fonctions scalaires sont appliquées à chaque ligne individuellement. Voici quelques exemples :</p>
+<h3 id="exemple-1-utilisation-de-upper-pour-convertir-en-majuscules">Exemple 1 : Utilisation de <code>UPPER</code> pour Convertir en Majuscules</h3>
+<p>Supposons que nous voulons afficher les noms de famille en majuscules :</p>
+<pre><code class="language-sql">SELECT UPPER(nom) AS NomMajuscule, prenom
+FROM clients;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>NomMajuscule</th>
+<th>Prénom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DUPONT</td>
+<td>Jean</td>
+</tr>
+<tr>
+<td>MARTIN</td>
+<td>Marie</td>
+</tr>
+<tr>
+<td>DURAND</td>
+<td>Paul</td>
+</tr>
+<tr>
+<td>LEFEVRE</td>
+<td>Sophie</td>
+</tr>
+<tr>
+<td>MOREAU</td>
+<td>Pierre</td>
+</tr>
+<tr>
+<td>SIMON</td>
+<td>Lucie</td>
+</tr>
+<tr>
+<td>LAURENT</td>
+<td>Julie</td>
+</tr>
+<tr>
+<td>LEMOINE</td>
+<td>Antoine</td>
+</tr>
+<tr>
+<td>ROUX</td>
+<td>Claire</td>
+</tr>
+<tr>
+<td>PETIT</td>
+<td>Nicolas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemple-2-utilisation-de-length-pour-obtenir-la-longueur-dune-chaine">Exemple 2 : Utilisation de <code>LENGTH</code> pour Obtenir la Longueur d'une Chaîne</h3>
+<p>Pour obtenir la longueur des adresses email :</p>
+<pre><code class="language-sql">SELECT nom, LENGTH(email) AS LongueurEmail
+FROM clients;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Nom</th>
+<th>LongueurEmail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dupont</td>
+<td>23</td>
+</tr>
+<tr>
+<td>Martin</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Durand</td>
+<td>23</td>
+</tr>
+<tr>
+<td>Lefevre</td>
+<td>26</td>
+</tr>
+<tr>
+<td>Moreau</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Simon</td>
+<td>22</td>
+</tr>
+<tr>
+<td>Laurent</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Lemoine</td>
+<td>28</td>
+</tr>
+<tr>
+<td>Roux</td>
+<td>23</td>
+</tr>
+<tr>
+<td>Petit</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemple-3-utilisation-de-fonctions-sur-les-dates">Exemple 3 : Utilisation de Fonctions sur les Dates</h3>
+<p>Imaginons que nous avons ajouté une colonne <code>date_inscription</code> à notre table <code>clients</code> et que nous voulons extraire
+l'année d'inscription :</p>
+<pre><code class="language-sql">ALTER TABLE clients
+    ADD COLUMN date_inscription DATE;
+
+UPDATE clients
+SET date_inscription = '2023-01-15'
+WHERE id = 1;
+-- (Ajoutez des dates pour les autres clients selon vos besoins)
+
+SELECT nom, EXTRACT(YEAR FROM date_inscription) AS AnneeInscription
+FROM clients;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Nom</th>
+<th>AnneeInscription</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dupont</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>Martin</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>Durand</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>Lefevre</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>Moreau</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>Simon</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>Laurent</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>Lemoine</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>Roux</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>Petit</td>
+<td>2023</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fonctions-dagregation">Fonctions d'Agrégation</h2>
+<p>Les fonctions d'agrégation calculent une valeur unique à partir d'un ensemble de valeurs. Voici quelques exemples :</p>
+<h3 id="exemple-4-utilisation-de-count-pour-compter-le-nombre-de-clients">Exemple 4 : Utilisation de <code>COUNT</code> pour Compter le Nombre de Clients</h3>
+<p>Pour compter le nombre total de clients dans la table :</p>
+<pre><code class="language-sql">SELECT COUNT(*) AS NombreClients
+FROM clients;
+</code></pre>
+<h3 id="exemple-5-utilisation-de-avg-pour-calculer-une-moyenne">Exemple 5 : Utilisation de <code>AVG</code> pour Calculer une Moyenne</h3>
+<p>Si nous avions une colonne <code>age</code> et nous voulions calculer l'âge moyen des clients :</p>
+<pre><code class="language-sql">ALTER TABLE clients
+    ADD COLUMN age INT;
+
+UPDATE clients
+SET age = 30
+WHERE id = 1;
+-- (Ajoutez des âges pour les autres clients selon vos besoins)
+
+SELECT AVG(age) AS AgeMoyen
+FROM clients;
+</code></pre>
+<h3 id="exemple-6-utilisation-de-min-et-max-pour-trouver-les-valeurs-extremes">Exemple 6 : Utilisation de <code>MIN</code> et <code>MAX</code> pour Trouver les Valeurs Extrêmes</h3>
+<p>Pour trouver l'âge minimum et maximum :</p>
+<pre><code class="language-sql">SELECT MIN(age) AS AgeMinimum, MAX(age) AS AgeMaximum
+FROM clients;
+</code></pre>
+<h3 id="resume_3">Résumé</h3>
+<ul>
+<li><strong>Fonctions Scalaires</strong> : Opèrent sur chaque ligne individuellement (ex. <code>UPPER</code>, <code>LENGTH</code>, <code>EXTRACT</code>).</li>
+<li><strong>Fonctions d'Agrégation</strong> : Opèrent sur un ensemble de lignes pour retourner une valeur unique (ex. <code>COUNT</code>, <code>AVG</code>,
+  <code>MIN</code>, <code>MAX</code>).</li>
+<li><strong>Fonctions sur les Dates</strong> : Utilisées pour manipuler et extraire des informations de date (ex. <code>EXTRACT</code>).</li>
+</ul>
+<p>Ces fonctions enrichissent les capacités de SQL en permettant des transformations et des calculs avancés sur les
+données.</p>
+<h2 id="jointure-interne-inner-join">Jointure Interne (<code>INNER JOIN</code>)</h2>
+<p>Une jointure interne (INNER JOIN) est une opération qui combine des lignes de deux tables basées sur une condition
+commune, généralement une clé étrangère. Elle retourne uniquement les lignes où il y a une correspondance dans les deux
+tables.</p>
+<h3 id="creation-de-la-table-commandes">Création de la Table commandes</h3>
+<p>Pour créer une table <code>commandes</code> qui enregistre les commandes placées par les clients, nous allons définir une clé
+étrangère reliant chaque commande à un client spécifique dans la table <code>clients</code>. Voici comment vous pouvez créer cette
+table, insérer des données, et la représenter en format Markdown.</p>
+<pre><code class="language-sql">CREATE TABLE commandes
+(
+    id            SERIAL PRIMARY KEY,
+    client_id     INT REFERENCES clients (id),
+    date_commande DATE,
+    montant       DECIMAL(10, 2)
+);
+
+INSERT INTO commandes (client_id, date_commande, montant)
+VALUES (1, '2023-01-20', 150.00),
+       (1, '2023-02-15', 200.50),
+       (2, '2023-03-05', 300.75),
+       (3, '2023-03-15', 120.00),
+       (4, '2023-04-10', 450.00),
+       (4, '2023-04-15', 300.00),
+       (4, '2023-04-20', 250.00),
+       (6, '2023-06-30', 60.00),
+       (8, '2023-08-20', 250.00),
+       (9, '2023-09-10', 320.00);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Client ID</th>
+<th>Date de Commande</th>
+<th>Montant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2023-01-20</td>
+<td>150.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>2023-02-15</td>
+<td>200.50</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>2023-03-05</td>
+<td>300.75</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>2023-03-15</td>
+<td>120.00</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4</td>
+<td>2023-04-10</td>
+<td>450.00</td>
+</tr>
+<tr>
+<td>6</td>
+<td>4</td>
+<td>2023-04-15</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4</td>
+<td>2023-04-20</td>
+<td>250.00</td>
+</tr>
+<tr>
+<td>8</td>
+<td>6</td>
+<td>2023-06-30</td>
+<td>60.00</td>
+</tr>
+<tr>
+<td>9</td>
+<td>8</td>
+<td>2023-08-20</td>
+<td>250.00</td>
+</tr>
+<tr>
+<td>10</td>
+<td>9</td>
+<td>2023-09-10</td>
+<td>320.00</td>
+</tr>
+</tbody>
+</table>
+<h3 id="explications">Explications</h3>
+<ul>
+<li><strong><code>client_id</code></strong> : Cette colonne est une clé étrangère qui référence l'identifiant (<code>id</code>) de la table <code>clients</code>. Cela
+  établit une relation entre les commandes et les clients, indiquant quel client a passé chaque commande.</li>
+<li><strong><code>date_commande</code></strong> : Enregistre la date à laquelle la commande a été passée.</li>
+<li><strong><code>montant</code></strong> : Indique le montant total de la commande.</li>
+</ul>
+<p>Cette structure permet de modéliser une relation un-à-plusieurs entre les clients et les commandes, où un client peut
+passer plusieurs commandes.</p>
+<h3 id="exemple-1-ajouter-le-courriel-de-chaque-client-a-la-liste-des-commandes">Exemple 1 : Ajouter le Courriel de Chaque Client à la Liste des Commandes</h3>
+<p>Pour obtenir une liste de toutes les commandes avec le courriel du client associé, nous utilisons une jointure interne
+entre la table <code>commandes</code> et la table <code>clients</code>. La condition de jointure est que l'identifiant du client dans la table
+<code>commandes</code> (<code>client_id</code>) doit correspondre à l'identifiant du client dans la table <code>clients</code> (<code>id</code>).</p>
+<pre><code class="language-sql">SELECT commandes.id AS CommandeID, commandes.date_commande, commandes.montant, clients.email
+FROM commandes
+         INNER JOIN clients ON commandes.client_id = clients.id;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>CommandeID</th>
+<th>Date de Commande</th>
+<th>Montant</th>
+<th>Email</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2023-01-20</td>
+<td>150.00</td>
+<td>jean.dupont@example.com</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2023-02-15</td>
+<td>200.50</td>
+<td>jean.dupont@example.com</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2023-03-05</td>
+<td>300.75</td>
+<td>marie.martin@example.com</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2023-03-15</td>
+<td>120.00</td>
+<td>paul.durand@example.com</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2023-04-10</td>
+<td>450.00</td>
+<td>sophie.lefevre@example.com</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2023-04-15</td>
+<td>300.00</td>
+<td>sophie.lefevre@example.com</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2023-04-20</td>
+<td>250.00</td>
+<td>sophie.lefevre@example.com</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2023-06-30</td>
+<td>60.00</td>
+<td>lucie.simon@example.com</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2023-08-20</td>
+<td>250.00</td>
+<td>antoine.lemoine@example.com</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2023-09-10</td>
+<td>320.00</td>
+<td>claire.roux@example.com</td>
+</tr>
+</tbody>
+</table>
+<h4 id="explication">Explication</h4>
+<ul>
+<li><strong><code>SELECT</code></strong> : Spécifie les colonnes à inclure dans le résultat. Ici, nous sélectionnons l'ID de la commande, la date
+  de commande, le montant, et l'email du client.</li>
+<li><strong><code>FROM commandes</code></strong> : Indique que la table principale pour la jointure est <code>commandes</code>.</li>
+<li><strong><code>INNER JOIN clients ON commandes.client_id = clients.id</code></strong> : Effectue la jointure interne en liant les commandes aux
+  clients en utilisant la clé étrangère <code>client_id</code> de <code>commandes</code> et la clé primaire <code>id</code> de <code>clients</code>.</li>
+</ul>
+<h3 id="exemple-2-lister-toutes-les-commandes-de-jean-dupont">Exemple 2 : Lister Toutes les Commandes de Jean Dupont</h3>
+<p>Pour lister toutes les commandes passées par Jean Dupont, nous utilisons également une jointure interne, mais avec une
+condition supplémentaire pour filtrer les résultats.</p>
+<pre><code class="language-sql">SELECT commandes.id AS CommandeID, commandes.date_commande, commandes.montant
+FROM commandes
+         INNER JOIN clients ON commandes.client_id = clients.id
+WHERE clients.nom = 'Dupont'
+  AND clients.prenom = 'Jean';
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>CommandeID</th>
+<th>Date de Commande</th>
+<th>Montant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2023-01-20</td>
+<td>150.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2023-02-15</td>
+<td>200.50</td>
+</tr>
+</tbody>
+</table>
+<h4 id="explication_1">Explication</h4>
+<ul>
+<li><strong><code>WHERE clients.nom = 'Dupont' AND clients.prenom = 'Jean'</code></strong> : Ajoute une condition pour filtrer les résultats afin
+  de n'inclure que les commandes passées par Jean Dupont.</li>
+<li>La jointure relie les tables <code>commandes</code> et <code>clients</code> de la même manière que dans le premier exemple, mais le <code>WHERE</code>
+  restreint les résultats à un client spécifique.</li>
+</ul>
+<h3 id="resume_4">Résumé</h3>
+<ul>
+<li><strong>Jointure Interne</strong> : Combine les lignes de deux tables où il y a une correspondance dans les colonnes spécifiées.</li>
+<li><strong>Utilisation</strong> : Souvent utilisée pour combiner des données réparties sur plusieurs tables, comme associer des
+  commandes à des clients.</li>
+<li><strong>Syntaxe</strong> : <code>INNER JOIN</code> suivi de la condition de correspondance (<code>ON</code>).</li>
+</ul>
+<p>Les jointures internes sont essentielles pour exploiter pleinement les relations entre les tables dans une base de
+données relationnelle. Elles permettent de combiner et d'analyser des données provenant de différentes sources de
+manière cohérente et efficace.</p>
+<h2 id="jointure-externe-gauche">Jointure externe gauche</h2>
+<p>Une jointure externe gauche (<code>LEFT JOIN</code>) est utilisée pour retourner toutes les lignes de la table de gauche (dans ce
+cas, <code>clients</code>), ainsi que les lignes correspondantes de la table de droite (<code>commandes</code>). Si aucune correspondance
+n'est trouvée dans la table de droite, les résultats contiendront des valeurs nulles pour les colonnes de la table de
+droite.</p>
+<h3 id="requete-trouver-les-clients-qui-nont-pas-de-commandes">Requête : Trouver les Clients qui n'ont pas de Commandes</h3>
+<p>Pour identifier les clients qui n'ont pas passé de commandes, nous pouvons utiliser une jointure externe gauche et
+filtrer les résultats pour inclure uniquement les lignes où il n'y a pas de correspondance dans la table <code>commandes</code>.</p>
+<pre><code class="language-sql">SELECT clients.id, clients.nom, clients.prenom, clients.email
+FROM clients
+         LEFT JOIN commandes ON clients.id = commandes.client_id
+WHERE commandes.id IS NULL;
+</code></pre>
+<h4 id="explication_2">Explication</h4>
+<ul>
+<li><strong><code>LEFT JOIN</code></strong> : Retourne toutes les lignes de la table <code>clients</code> et les lignes correspondantes de <code>commandes</code>. Si un
+  client n'a pas de commande, les colonnes de <code>commandes</code> contiendront des valeurs nulles.</li>
+<li><strong><code>WHERE commandes.id IS NULL</code></strong> : Filtre les résultats pour inclure uniquement les clients qui n'ont pas de
+  commandes, c'est-à-dire ceux pour lesquels <code>commandes.id</code> est <code>NULL</code>.</li>
+</ul>
+<h3 id="resultats-de-la-requete">Résultats de la Requête</h3>
+<p>Voici le tableau en format Markdown représentant les résultats de cette requête :</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Email</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Moreau</td>
+<td>Pierre</td>
+<td>pierre.moreau@example.com</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Laurent</td>
+<td>Julie</td>
+<td>julie.laurent@example.com</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Petit</td>
+<td>Nicolas</td>
+<td>nicolas.petit@example.com</td>
+</tr>
+</tbody>
+</table>
+<p>Ces résultats montrent les clients qui n'ont pas de commandes enregistrées dans la base de données. La jointure externe
+gauche est particulièrement utile pour identifier les enregistrements dans une table qui ne correspondent pas à des
+enregistrements dans une autre table.</p>
+<h2 id="comparaison-des-jointures-externes">Comparaison des Jointures Externes</h2>
+<h3 id="1-jointure-gauche-left-join">1. Jointure Gauche (<code>LEFT JOIN</code>)</h3>
+<ul>
+<li>Retourne toutes les lignes de la table de gauche (première table mentionnée).</li>
+<li>Inclut les lignes correspondantes de la table de droite si elles existent.</li>
+<li>Si aucune correspondance n'est trouvée, les colonnes de la table de droite contiennent <code>NULL</code>.</li>
+</ul>
+<pre><code class="language-sql">SELECT *
+FROM clients
+         LEFT JOIN commandes ON clients.id = commandes.client_id;
+</code></pre>
+<h3 id="2-jointure-droite-right-join">2. Jointure Droite (<code>RIGHT JOIN</code>)</h3>
+<ul>
+<li>Retourne toutes les lignes de la table de droite (deuxième table mentionnée).</li>
+<li>Inclut les lignes correspondantes de la table de gauche si elles existent.</li>
+<li>Si aucune correspondance n'est trouvée, les colonnes de la table de gauche contiennent NULL.</li>
+</ul>
+<pre><code class="language-sql">SELECT *
+FROM clients
+         RIGHT JOIN commandes ON clients.id = commandes.client_id;
+</code></pre>
+<h3 id="3-jointure-externe-complete-full-join">3. Jointure Externe Complète (<code>FULL JOIN</code>)</h3>
+<ul>
+<li>Combine les résultats d'une jointure gauche et d'une jointure droite.</li>
+<li>Retourne toutes les lignes des deux tables.</li>
+<li>Si aucune correspondance n'est trouvée, les colonnes de la table non correspondante contiennent NULL.</li>
+</ul>
+<pre><code class="language-sql">SELECT *
+FROM clients
+         FULL OUTER JOIN commandes ON clients.id = commandes.client_id;
+</code></pre>
+<h3 id="differences-cles">Différences Clés</h3>
+<ol>
+<li>
+<p><strong>LEFT JOIN</strong> : Utile pour trouver tous les enregistrements de la table de gauche, même s'ils n'ont pas de
+   correspondance dans la table de droite.</p>
+</li>
+<li>
+<p><strong>RIGHT JOIN</strong> : Similaire au LEFT JOIN, mais en se concentrant sur la table de droite. Moins couramment utilisé car
+   on peut généralement obtenir le même résultat en inversant l'ordre des tables et en utilisant un LEFT JOIN.</p>
+</li>
+<li>
+<p><strong>FULL JOIN</strong> : Combine les résultats des deux jointures précédentes. Utile pour voir toutes les données des
+   deux tables, qu'il y ait correspondance ou non.</p>
+</li>
+</ol>
+<h3 id="exemple-dutilisation">Exemple d'Utilisation</h3>
+<ul>
+<li><strong>LEFT JOIN</strong> : Trouver tous les clients, qu'ils aient passé des commandes ou non.</li>
+<li><strong>RIGHT JOIN</strong> : Trouver toutes les commandes, même si elles sont associées à des clients qui n'existent plus dans la
+  table clients.</li>
+<li><strong>FULL JOIN</strong> : Voir tous les clients et toutes les commandes, en identifiant les cas où il n'y a pas de
+  correspondance dans l'une ou l'autre table.</li>
+</ul>
+<h3 id="note-importante">Note Importante</h3>
+<p>Le mot <code>OUTER</code> peut être ajouté à chacune de ces jointures (<code>LEFT OUTER JOIN</code>, <code>RIGHT OUTER JOIN</code> et <code>FULL OUTER JOIN</code>),
+mais il est optionnel. L'utilisation de <code>OUTER</code> ne change pas le comportement de la jointure ; elle sert simplement à
+rendre explicite le fait qu'il s'agit d'une jointure externe.</p>
+<p>Ces jointures externes sont essentielles pour analyser des données qui peuvent ne pas avoir de correspondances parfaites
+entre les tables, permettant ainsi une vue plus complète des données disponibles.</p>
+<p>Les regroupements en SQL, réalisés avec la clause <code>GROUP BY</code>, permettent d'agréger des données en fonction de
+critères spécifiques. Voici une explication détaillée avec des exemples utilisant nos tables <code>clients</code> et <code>commandes</code>.</p>
+<h2 id="regroupements-avec-group-by">Regroupements avec <code>GROUP BY</code></h2>
+<p>Les regroupements en SQL, réalisés avec la clause <code>GROUP BY</code>, permettent d'agréger des données en fonction de
+critères spécifiques. Voici une explication détaillée avec des exemples utilisant nos tables <code>clients</code> et <code>commandes</code>.</p>
+<p>La clause <code>GROUP BY</code> est utilisée pour regrouper des lignes qui ont les mêmes valeurs dans des colonnes spécifiées. Elle
+est souvent utilisée avec des fonctions d'agrégation comme <code>COUNT()</code>, <code>SUM()</code>, <code>AVG()</code>, etc.</p>
+<h3 id="exemple-1-nombre-de-commandes-par-client">Exemple 1 : Nombre de Commandes par Client</h3>
+<pre><code class="language-sql">SELECT client_id, COUNT(*) AS nombre_commandes
+FROM commandes
+GROUP BY client_id;
+</code></pre>
+<p>Ce qui pourrait donner un résultat comme :</p>
+<table>
+<thead>
+<tr>
+<th>client_id</th>
+<th>nombre_commandes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Le concept de regroupement dans SQL, particulièrement avec la clause <code>GROUP BY</code>, est essentiel pour comprendre comment
+les données sont agrégées et résumées. Voici une explication détaillée du processus de formation des groupes :</p>
+<h3 id="concept-de-regroupement">Concept de Regroupement</h3>
+<h4 id="definition-des-groupes">Définition des Groupes</h4>
+<ul>
+<li><strong>Clé de Regroupement</strong> : Les groupes sont définis par les valeurs distinctes d'une ou plusieurs colonnes spécifiées
+  dans la clause <code>GROUP BY</code>. Dans notre exemple, la clé de regroupement est <code>client_id</code>. Cela signifie que chaque valeur
+  unique de <code>client_id</code> dans la table <code>commandes</code> définit un groupe distinct.</li>
+</ul>
+<h4 id="formation-des-groupes">Formation des Groupes</h4>
+<ol>
+<li>
+<p><strong>Identification des Valeurs Uniques</strong> : Le moteur SQL identifie toutes les valeurs uniques de la colonne <code>client_id</code>
+   dans la table <code>commandes</code>. Chaque valeur unique devient la base d'un groupe.</p>
+</li>
+<li>
+<p><strong>Regroupement des Lignes</strong> : Toutes les lignes (ou enregistrements) de la table qui partagent la même valeur de
+   <code>client_id</code> sont regroupées ensemble. Cela signifie que chaque groupe contient toutes les commandes associées à un
+   client particulier.</p>
+</li>
+</ol>
+<h4 id="processus-de-regroupement">Processus de Regroupement</h4>
+<ul>
+<li><strong>Extraction des Données</strong> : Le moteur SQL parcourt la table <code>commandes</code> et extrait chaque ligne.</li>
+<li><strong>Association aux Groupes</strong> : Pour chaque ligne, le moteur vérifie la valeur de <code>client_id</code> et l'associe au groupe
+  correspondant. Si un groupe pour cette valeur de <code>client_id</code> n'existe pas encore, il est créé.</li>
+<li><strong>Agrégation des Données</strong> : Une fois les lignes regroupées, des fonctions d'agrégation (comme <code>COUNT</code>, <code>SUM</code>, etc.)
+  sont appliquées à chaque groupe pour calculer des statistiques ou des résumés.</li>
+</ul>
+<h4 id="exemple-visuel">Exemple Visuel</h4>
+<p>Imaginons une table simplifiée avec les <code>client_id</code> suivants : 1, 1, 2, 3, 4, 4, 4.</p>
+<ul>
+<li><strong>Groupes Formés</strong> :<ul>
+<li>Groupe pour <code>client_id</code> 1 : [1, 1]</li>
+<li>Groupe pour <code>client_id</code> 2 :</li>
+<li>Groupe pour <code>client_id</code> 3 :</li>
+<li>Groupe pour <code>client_id</code> 4 : [4, 4, 4]</li>
+</ul>
+</li>
+</ul>
+<p>Chaque groupe contient toutes les lignes où <code>client_id</code> a la même valeur. Les fonctions d'agrégation sont ensuite
+appliquées à ces groupes pour obtenir des résultats comme le nombre total de commandes par client.</p>
+<h3 id="utilite-du-regroupement">Utilité du Regroupement</h3>
+<p>Le regroupement permet de transformer des données brutes en informations significatives en résumant et en analysant les
+données selon des critères spécifiques. Cela est particulièrement utile pour générer des rapports, des statistiques, et
+des analyses qui nécessitent une vue d'ensemble des données agrégées.</p>
+<h3 id="exemple-2-montant-total-des-commandes-par-ville">Exemple 2 : Montant Total des Commandes par Ville</h3>
+<pre><code class="language-sql">SELECT clients.ville, SUM(commandes.montant) AS montant_total
+FROM clients
+         JOIN commandes ON clients.id = commandes.client_id
+GROUP BY clients.ville;
+</code></pre>
+<p>Résultat possible :</p>
+<table>
+<thead>
+<tr>
+<th>ville</th>
+<th>montant_total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paris</td>
+<td>350.50</td>
+</tr>
+<tr>
+<td>Lyon</td>
+<td>300.75</td>
+</tr>
+<tr>
+<td>Marseille</td>
+<td>120.00</td>
+</tr>
+<tr>
+<td>Toulouse</td>
+<td>1000.00</td>
+</tr>
+<tr>
+<td>Nantes</td>
+<td>60.00</td>
+</tr>
+<tr>
+<td>Strasbourg</td>
+<td>250.00</td>
+</tr>
+<tr>
+<td>Lille</td>
+<td>320.00</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utilisation-de-having">Utilisation de <code>HAVING</code></h3>
+<p>La clause <code>HAVING</code> est utilisée avec <code>GROUP BY</code> pour filtrer les résultats des groupes. Contrairement à <code>WHERE</code> qui
+filtre les lignes individuelles avant le regroupement, <code>HAVING</code> filtre les groupes après le regroupement.</p>
+<h3 id="exemple-3-clients-avec-plus-dune-commande">Exemple 3 : Clients avec Plus d'Une Commande</h3>
+<pre><code class="language-sql">SELECT client_id, COUNT(*) AS nombre_commandes
+FROM commandes
+GROUP BY client_id
+HAVING COUNT(*) &gt; 1;
+</code></pre>
+<p>Résultat possible :</p>
+<table>
+<thead>
+<tr>
+<th>client_id</th>
+<th>nombre_commandes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemple-4-villes-avec-un-montant-total-de-commandes-superieur-a-500">Exemple 4 : Villes avec un Montant Total de Commandes Supérieur à 500</h3>
+<pre><code class="language-sql">SELECT clients.ville, SUM(commandes.montant) AS montant_total
+FROM clients
+         JOIN commandes ON clients.id = commandes.client_id
+GROUP BY clients.ville
+HAVING SUM(commandes.montant) &gt; 500;
+</code></pre>
+<p>Résultat possible :</p>
+<pre><code class="language-markdown">| ville     | montant_total |
+|-----------|---------------|
+| Toulouse  | 1000.00       |
+</code></pre>
+<h3 id="resume_5">Résumé</h3>
+<ul>
+<li><strong><code>GROUP BY</code></strong> : Regroupe les lignes ayant les mêmes valeurs dans les colonnes spécifiées.</li>
+<li>Utilisé avec des fonctions d'agrégation (<code>COUNT()</code>, <code>SUM()</code>, <code>AVG()</code>, etc.) pour calculer des statistiques sur chaque
+  groupe.</li>
+<li><strong><code>HAVING</code></strong> : Filtre les résultats des groupes après le regroupement.</li>
+<li><code>WHERE</code> filtre les lignes individuelles avant le regroupement, tandis que <code>HAVING</code> filtre les groupes après le
+  regroupement.</li>
+</ul>
+<p>Les regroupements sont essentiels pour l'analyse de données, permettant de résumer et d'agréger des informations de
+manière significative à partir de grands ensembles de données.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../04b-groupes-universit%C3%A9/" class="btn btn-neutral float-left" title="4b - Groupement et Agrégats (Université)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../06-imbriqu%C3%A9es/" class="btn btn-neutral float-right" title="6 - Requêtes SQL imbriquées">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../04b-groupes-universit%C3%A9/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../06-imbriqu%C3%A9es/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
