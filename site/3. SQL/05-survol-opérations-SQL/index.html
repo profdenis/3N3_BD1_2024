@@ -962,7 +962,7 @@ FROM clients;
 données.</p>
 <h2 id="jointure-interne-inner-join">Jointure Interne (<code>INNER JOIN</code>)</h2>
 <p>Une jointure interne (INNER JOIN) est une opération qui combine des lignes de deux tables basées sur une condition
-commune, généralement une clé étrangère. Elle retourne uniquement les lignes où il y a une correspondance dans les deux
+commune, généralement une clé étrangère. Elle retourne uniquement les lignes avec lesquelles il y a une correspondance dans les deux
 tables.</p>
 <h3 id="creation-de-la-table-commandes">Création de la Table commandes</h3>
 <p>Pour créer une table <code>commandes</code> qui enregistre les commandes placées par les clients, nous allons définir une clé
@@ -1196,7 +1196,7 @@ WHERE clients.nom = 'Dupont'
 </ul>
 <h3 id="resume_4">Résumé</h3>
 <ul>
-<li><strong>Jointure Interne</strong> : Combine les lignes de deux tables où il y a une correspondance dans les colonnes spécifiées.</li>
+<li><strong>Jointure Interne</strong> : Combine les lignes de deux tables avec lesquelles il y a une correspondance dans les colonnes spécifiées.</li>
 <li><strong>Utilisation</strong> : Souvent utilisée pour combiner des données réparties sur plusieurs tables, comme associer des
   commandes à des clients.</li>
 <li><strong>Syntaxe</strong> : <code>INNER JOIN</code> suivi de la condition de correspondance (<code>ON</code>).</li>
@@ -1211,7 +1211,7 @@ n'est trouvée dans la table de droite, les résultats contiendront des valeurs 
 droite.</p>
 <h3 id="requete-trouver-les-clients-qui-nont-pas-de-commandes">Requête : Trouver les Clients qui n'ont pas de Commandes</h3>
 <p>Pour identifier les clients qui n'ont pas passé de commandes, nous pouvons utiliser une jointure externe gauche et
-filtrer les résultats pour inclure uniquement les lignes où il n'y a pas de correspondance dans la table <code>commandes</code>.</p>
+filtrer les résultats pour inclure uniquement les lignes avec lesquelles il n'y a pas de correspondance dans la table <code>commandes</code>.</p>
 <pre><code class="language-sql">SELECT clients.id, clients.nom, clients.prenom, clients.email
 FROM clients
          LEFT JOIN commandes ON clients.id = commandes.client_id
@@ -1297,7 +1297,7 @@ FROM clients
    correspondance dans la table de droite.</p>
 </li>
 <li>
-<p><strong>RIGHT JOIN</strong> : Similaire au LEFT JOIN, mais en se concentrant sur la table de droite. Moins couramment utilisé car
+<p><strong>RIGHT JOIN</strong> : Similaire au LEFT JOIN, mais en se concentrant sur la table de droite. Moins couramment utilisé, car
    on peut généralement obtenir le même résultat en inversant l'ordre des tables et en utilisant un LEFT JOIN.</p>
 </li>
 <li>
@@ -1410,7 +1410,7 @@ les données sont agrégées et résumées. Voici une explication détaillée du
 </ul>
 </li>
 </ul>
-<p>Chaque groupe contient toutes les lignes où <code>client_id</code> a la même valeur. Les fonctions d'agrégation sont ensuite
+<p>Chaque groupe contient toutes les lignes avec lesquelles <code>client_id</code> a la même valeur. Les fonctions d'agrégation sont ensuite
 appliquées à ces groupes pour obtenir des résultats comme le nombre total de commandes par client.</p>
 <h3 id="utilite-du-regroupement">Utilité du Regroupement</h3>
 <p>Le regroupement permet de transformer des données brutes en informations significatives en résumant et en analysant les
@@ -1512,6 +1512,16 @@ HAVING SUM(commandes.montant) &gt; 500;
 </ul>
 <p>Les regroupements sont essentiels pour l'analyse de données, permettant de résumer et d'agréger des informations de
 manière significative à partir de grands ensembles de données.</p>
+<hr />
+<p><small>
+   <cite>
+      <strong>Note</strong> : Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les LLM <code>GPT-4 Omni</code> et <code>Claude 3.5 Sonnet</code>. L'IA
+      a été utilisée pour générer des explications, des exemples et/ou des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur.
+   </cite>
+</small></p>
               
             </div>
           </div><footer>
