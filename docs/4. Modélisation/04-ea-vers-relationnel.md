@@ -78,7 +78,7 @@ call(CALL_ID, phone, date, time, contact_id*)
 
 ### Simple Bank
 
-![SimpleBank_uml.png](..%2Fimages%2FSimpleBank_uml.png)
+![SimpleBank_uml.png](../images/SimpleBank_uml.png)
 
 <details>
     <summary>Réponse</summary>
