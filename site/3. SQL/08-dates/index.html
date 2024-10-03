@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>8 - Utilisation de date et timestamp - Cours de bases de données</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "8 - Utilisation de date et timestamp";
+        var mkdocs_page_input_path = "3. SQL/08-dates.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Cours de bases de données
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">1. Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. SQL</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../01-intro/">1 - Introduction à SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02a-bases-contacts/">2a - Base de Données de Contacts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05-survol-op%C3%A9rations-SQL/">5 - Survol des opérations faisant partie des requêtes SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06-imbriqu%C3%A9es/">6 - Requêtes SQL imbriquées</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07-r%C3%A9cursives/">7 - Requêtes récursives</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">8 - Utilisation de date et timestamp</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#differences-entre-date-et-timestamp">Différences entre date et timestamp</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#conversion">Conversion</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#comparaisons-simples-avec-des-dates-en-format-iso">Comparaisons simples avec des dates en format ISO</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fonctions-courantes-sur-les-dates">Fonctions courantes sur les dates</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#extract">EXTRACT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#date_part">DATE_PART</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#differences-entre-extract-et-date_part">Différences entre EXTRACT et DATE_PART</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#date_trunc">DATE_TRUNC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#now-et-current_date">now et current_date</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#differences-entre-now-et-current_date">Différences entre now() et current_date</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operations-avec-interval">Opérations avec interval</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exemples-avances">Exemples avancés</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#calculer-lage">Calculer l'âge</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#convertir-une-chaine-en-date">Convertir une chaîne en date</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#formater-une-date">Formater une date</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operations-sur-les-dates">Opérations sur les dates</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operations-sur-les-timestamps">Opérations sur les timestamps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#points-importants-a-noter">Points importants à noter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conversion-dun-intervalle-en-nombre-dheures-float">Conversion d'un intervalle en nombre d'heures (float)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conversion-en-numeric">Conversion en numeric</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#points-importants-a-noter_1">Points importants à noter</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">7. Exercices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/01-blog/">1. Blog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/02-livres/">2. Livres</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/03-transport/">3. Réseau de transports en commun</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/04-restaurants/">4. Chaîne de restaurants</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/05-voyages/">5. Agence de voyages</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/06-hopital/">6. Système de gestion d'un hôpital</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">1. Base de données Pagila</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">2. Recettes de cuisine</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">3. BD Northwind</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Cours de bases de données</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">3. SQL</li>
+      <li class="breadcrumb-item active">8 - Utilisation de date et timestamp</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="8-utilisation-de-date-et-timestamp">8 - Utilisation de <code>date</code> et <code>timestamp</code></h1>
+<p>Voici un guide sur les opérations et fonctions sur les dates et les <code>timestamp</code> dans PostgreSQL.</p>
+<h2 id="differences-entre-date-et-timestamp">Différences entre <code>date</code> et <code>timestamp</code></h2>
+<p>Voici les principales différences entre les types <code>date</code> et <code>timestamp</code> dans PostgreSQL :</p>
+<ol>
+<li>
+<p>Contenu stocké :</p>
+<ul>
+<li><code>date</code> stocke uniquement une date (année, mois, jour)</li>
+<li><code>timestamp</code> stocke une date et une heure (année, mois, jour, heure, minute, seconde, et optionnellement des
+  fractions de seconde)</li>
+</ul>
+</li>
+<li>
+<p>Taille de stockage :</p>
+<ul>
+<li><code>date</code> occupe 4 octets</li>
+<li><code>timestamp</code> occupe 8 octets</li>
+</ul>
+</li>
+<li>
+<p>Précision :</p>
+<ul>
+<li><code>date</code> a une précision d'un jour</li>
+<li><code>timestamp</code> a une précision d'une microseconde</li>
+</ul>
+</li>
+<li>
+<p>Plage de valeurs :</p>
+<ul>
+<li><code>date</code> : de 4713 avant J.-C. à 5874897 après J.-C.</li>
+<li><code>timestamp</code> : de 4713 avant J.-C. à 294276 après J.-C.</li>
+</ul>
+</li>
+<li>
+<p>Opérations temporelles :</p>
+<ul>
+<li><code>date</code> permet des opérations basiques sur les dates</li>
+<li><code>timestamp</code> permet des opérations plus précises incluant les heures, minutes et secondes</li>
+</ul>
+</li>
+<li>
+<p>Fuseau horaire :</p>
+<ul>
+<li><code>date</code> n'inclut pas d'information de fuseau horaire</li>
+<li><code>timestamp</code> peut inclure ou non une information de fuseau horaire (selon qu'on utilise <code>timestamp with time zone</code>
+  ou <code>timestamp without time zone</code>)</li>
+</ul>
+</li>
+<li>
+<p>Utilisation :</p>
+<ul>
+<li><code>date</code> est utilisé quand seule la date est importante (ex: date de naissance)</li>
+<li><code>timestamp</code> est utilisé quand on a besoin de la date et de l'heure précise (ex: horodatage d'une transaction)</li>
+</ul>
+</li>
+</ol>
+<p>En général, <code>timestamp</code> offre plus de flexibilité et de précision, mais <code>date</code> peut être suffisant et plus efficace en
+termes de stockage si seule la date est nécessaire.</p>
+<h3 id="conversion">Conversion</h3>
+<p>Pour convertir un <code>timestamp</code> en <code>date</code>, ou vice-versa, on peut <em>caster</em> dans l'un ou dans l'autre :</p>
+<pre><code class="language-sql">select (now()::date);
+-- now() donne le timestamp courant
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2024-09-27</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">select (CURRENT_DATE::timestamp);
+-- CURRENT_DATE donne la date d'aujourd'hui
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">current_date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2024-09-27 00:00:00.000000</td>
+</tr>
+</tbody>
+</table>
+<p>Citations:</p>
+<ul>
+<li>[1] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/</li>
+<li>[2] https://stackoverflow.com/questions/5876218/difference-between-timestamps-with-without-time-zone-in-postgresql</li>
+<li>[3] https://www.enterprisedb.com/blog/postgresql-interval-date-timestamp-and-time-data-types</li>
+<li>[4] https://neon.tech/docs/data-types/date-and-time</li>
+<li>[5] https://stackoverflow.com/questions/60825438/postgres-date-compare-with-iso-timestamp</li>
+<li>[6] https://www.sqlines.com/postgresql/how-to/datediff</li>
+<li>[7] https://www.postgresql.org/docs/current/datatype-datetime.html</li>
+</ul>
+<h2 id="comparaisons-simples-avec-des-dates-en-format-iso">Comparaisons simples avec des dates en format ISO</h2>
+<p>PostgreSQL supporte nativement le format de date ISO 8601 (YYYY-MM-DD) pour les comparaisons :</p>
+<ul>
+<li>Table <code>users</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">created</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">2024-09-25 20:42:08.200074</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">bob</td>
+<td style="text-align: left;">2023-08-09 12:12:00.000000</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">alice</td>
+<td style="text-align: left;">2024-07-25 02:42:08.200074</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">select *
+from users
+where created &gt; '2024-09-15';
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">created</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">2024-09-25 20:42:08.200074</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">-- Sélectionner les enregistrements entre deux dates
+select *
+from users
+where created between '2023-01-01' and '2023-12-12';
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">created</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">bob</td>
+<td style="text-align: left;">2023-08-09 12:12:00.000000</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">-- Sélectionner les enregistrements entre deux dates
+select *
+from users
+where created between '2023-01-01' and '2023-08-09';
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">created</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="fonctions-courantes-sur-les-dates">Fonctions courantes sur les dates</h2>
+<h3 id="extract">EXTRACT</h3>
+<p>Permet d'extraire une partie spécifique d'une date ou d'un timestamp[1].</p>
+<pre><code class="language-sql">select name, extract(year from created) as annee
+from users;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">annee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">2024</td>
+</tr>
+<tr>
+<td style="text-align: left;">alice</td>
+<td style="text-align: left;">2024</td>
+</tr>
+<tr>
+<td style="text-align: left;">bob</td>
+<td style="text-align: left;">2023</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">select name, extract(month from created) as mois
+from users;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">mois</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr>
+<td style="text-align: left;">alice</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr>
+<td style="text-align: left;">bob</td>
+<td style="text-align: left;">8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="date_part">DATE_PART</h3>
+<p>Similaire à EXTRACT, permet d'obtenir une partie spécifique d'une date[2].</p>
+<pre><code class="language-sql">select name, date_part('year', created) as annee
+from users;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">annee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">2024</td>
+</tr>
+<tr>
+<td style="text-align: left;">alice</td>
+<td style="text-align: left;">2024</td>
+</tr>
+<tr>
+<td style="text-align: left;">bob</td>
+<td style="text-align: left;">2023</td>
+</tr>
+</tbody>
+</table>
+<h4 id="differences-entre-extract-et-date_part">Différences entre <code>EXTRACT</code> et <code>DATE_PART</code></h4>
+<p>Voici les principales différences entre les fonctions <code>EXTRACT()</code> et <code>DATE_PART()</code> dans PostgreSQL :</p>
+<ol>
+<li>
+<p>Syntaxe :</p>
+<ul>
+<li><code>EXTRACT()</code> utilise la syntaxe : <code>EXTRACT(champ FROM source)</code></li>
+<li><code>DATE_PART()</code> utilise la syntaxe : <code>DATE_PART('champ', source)</code></li>
+</ul>
+</li>
+<li>
+<p>Standard SQL :</p>
+<ul>
+<li><code>EXTRACT()</code> est conforme au standard SQL</li>
+<li><code>DATE_PART()</code> est spécifique à PostgreSQL</li>
+</ul>
+</li>
+<li>
+<p>Type de retour :</p>
+<ul>
+<li><code>EXTRACT()</code> retourne un type numeric depuis PostgreSQL 14</li>
+<li><code>DATE_PART()</code> retourne toujours un double precision (float8)</li>
+</ul>
+</li>
+<li>
+<p>Performance :</p>
+<ul>
+<li>Avant PostgreSQL 14, <code>EXTRACT()</code> était réécrit en <code>DATE_PART()</code> en interne</li>
+<li>Depuis PostgreSQL 14, les implémentations sont différentes</li>
+</ul>
+</li>
+<li>
+<p>Précision :</p>
+<ul>
+<li><code>EXTRACT()</code> peut être plus précis pour certains calculs depuis PostgreSQL 14</li>
+<li><code>DATE_PART()</code> peut perdre en précision dans certains cas à cause du type float</li>
+</ul>
+</li>
+<li>
+<p>Utilisation :</p>
+<ul>
+<li><code>EXTRACT()</code> est généralement préféré pour la compatibilité SQL</li>
+<li><code>DATE_PART()</code> reste utilisé par habitude ou pour des raisons de compatibilité avec d'anciennes versions</li>
+</ul>
+</li>
+</ol>
+<p>En pratique, les deux fonctions sont très similaires et interchangeables dans la plupart des cas. Le choix dépend
+souvent des préférences personnelles ou des conventions de codage. Pour une meilleure portabilité et précision,
+<code>EXTRACT()</code> est généralement recommandé.</p>
+<p>Citations:</p>
+<ul>
+<li>[1] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/</li>
+<li>[2] https://docs.getdbt.com/blog/extract-sql-love-letter</li>
+<li>[3] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-extract/</li>
+<li>[4] https://materialize.com/docs/sql/functions/date-part/</li>
+<li>[5] https://stackoverflow.com/questions/38442340/difference-between-extractyear-from-timestamp-function-and-date-partyear-t</li>
+<li>[6] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-date_part/</li>
+<li>[7] https://www.timescale.com/learn/postgresql-date-and-time-functions</li>
+<li>[8] https://www.commandprompt.com/education/date-time-functions-in-postgresql-with-examples/</li>
+</ul>
+<h3 id="date_trunc">DATE_TRUNC</h3>
+<p>Tronque une date à une précision spécifiée[2].</p>
+<pre><code class="language-sql">select name, date_trunc('month', created)
+from users;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">date_trunc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">2024-09-01 00:00:00.000000</td>
+</tr>
+<tr>
+<td style="text-align: left;">bob</td>
+<td style="text-align: left;">2023-08-01 00:00:00.000000</td>
+</tr>
+<tr>
+<td style="text-align: left;">alice</td>
+<td style="text-align: left;">2024-07-01 00:00:00.000000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="now-et-current_date"><code>now</code> et <code>current_date</code></h3>
+<ul>
+<li><code>now()</code> : Retourne la date et l'heure actuelles avec le fuseau horaire[2].</li>
+<li><code>current_date</code> : Retourne la date actuelle[2].</li>
+</ul>
+<pre><code class="language-sql">select now();
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2024-09-25 21:12:05.032204 +00:00</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">select current_date;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">current_date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+</tbody>
+</table>
+<h3 id="differences-entre-now-et-current_date">Différences entre <code>now()</code> et <code>current_date</code></h3>
+<ol>
+<li>
+<p>Type de retour :</p>
+<ul>
+<li><code>now()</code> retourne un timestamp with time zone (date et heure avec fuseau horaire)</li>
+<li><code>current_date</code> retourne uniquement une date (sans heure ni fuseau horaire)</li>
+</ul>
+</li>
+<li>
+<p>Précision :</p>
+<ul>
+<li><code>now()</code> inclut l'heure, les minutes, les secondes et les microsecondes</li>
+<li><code>current_date</code> ne retourne que la date (année, mois, jour)</li>
+</ul>
+</li>
+<li>
+<p>Utilisation dans les transactions :</p>
+<ul>
+<li><code>now()</code> renvoie la même valeur tout au long d'une transaction</li>
+<li><code>current_date</code> peut changer si la transaction chevauche minuit</li>
+</ul>
+</li>
+<li>
+<p>Performance :</p>
+<ul>
+<li><code>current_date</code> est généralement plus rapide car il ne traite que la date[3]</li>
+</ul>
+</li>
+<li>
+<p>Comportement avec les fuseaux horaires :</p>
+<ul>
+<li><code>now()</code> prend en compte le fuseau horaire de la session</li>
+<li><code>current_date</code> retourne toujours la date locale du serveur</li>
+</ul>
+</li>
+<li>
+<p>Flexibilité :</p>
+<ul>
+<li><code>now()</code> peut être converti facilement en d'autres types temporels</li>
+<li><code>current_date</code> est limité aux opérations sur les dates</li>
+</ul>
+</li>
+<li>
+<p>Constance :</p>
+<ul>
+<li><code>now()</code> reste constant dans une transaction, utile pour la cohérence des données</li>
+<li><code>current_date</code> peut changer, reflétant toujours la date actuelle</li>
+</ul>
+</li>
+</ol>
+<p>En résumé, <code>now()</code> offre plus de précision et de flexibilité, tandis que CURRENT_DATE est plus simple et plus rapide
+lorsque seule la date est nécessaire[1][3][4].</p>
+<p>Citations:</p>
+<ul>
+<li>[1] https://www.devart.com/dbforge/postgresql/studio/compare-dates.html</li>
+<li>[2] https://www.cybertec-postgresql.com/en/postgresql-now-vs-nowtimestamp-vs-clock_timestamp/</li>
+<li>[3] https://www.postgresql.org/message-id/48B1BE33.3060505@vieonet.com</li>
+<li>[4] https://stackoverflow.com/questions/57469642/difference-between-current-timestamp-and-current-date</li>
+<li>[5] https://stackoverflow.com/questions/5876218/difference-between-timestamps-with-without-time-zone-in-postgresql</li>
+<li>[6] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/</li>
+<li>[7] https://www.timescale.com/learn/postgresql-date-and-time-functions</li>
+<li>[8] https://www.postgresql.org/docs/8.1/functions-datetime.html</li>
+</ul>
+<h2 id="operations-avec-interval">Opérations avec <code>interval</code></h2>
+<p>L'utilisation d'<code>interval</code> permet d'effectuer des calculs sur les dates[5]:</p>
+<pre><code class="language-sql">-- Ajouter 1 mois à la date actuelle
+select current_date + interval '1 month';
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">?column?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2024-10-25 00:00:00.000000</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">-- Soustraire 2 semaines à une date spécifique
+select date '2023-01-15' - interval '2 weeks';
+</code></pre>
+<pre><code class="language-sql">-- les utilisateurs créés dans le dernier mois
+select name, users.created
+from users
+where created &gt; current_date - interval '1 month';
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">created</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">2024-09-25 20:42:08.200074</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exemples-avances">Exemples avancés</h2>
+<h3 id="calculer-lage">Calculer l'âge</h3>
+<pre><code class="language-sql">select name, age(created)
+from users;
+-- Retourne l'intervalle entre la date spécifiée et la date actuelle
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">0 years 0 mons 0 days -20 hours -42 mins -8.200074 secs</td>
+</tr>
+<tr>
+<td style="text-align: left;">bob</td>
+<td style="text-align: left;">1 years 1 mons 15 days 11 hours 48 mins 0.0 secs</td>
+</tr>
+<tr>
+<td style="text-align: left;">alice</td>
+<td style="text-align: left;">0 years 1 mons 30 days 21 hours 17 mins 51.799926 secs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="convertir-une-chaine-en-date">Convertir une chaîne en date</h3>
+<pre><code class="language-sql">select to_date('2023-09-21', 'yyyy-mm-dd');
+-- Convertit la chaîne en date
+</code></pre>
+<h3 id="formater-une-date">Formater une date</h3>
+<pre><code class="language-sql">select to_char(current_date, 'DD/MM/YYYY');
+-- Formate la date actuelle au format JJ/MM/AAAA
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">to_char</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">25/09/2024</td>
+</tr>
+</tbody>
+</table>
+<p>Ces exemples couvrent les opérations les plus courantes sur les dates et timestamps dans PostgreSQL. N'oubliez pas que
+PostgreSQL offre de nombreuses autres fonctions et possibilités pour manipuler les dates et les heures selon vos besoins
+spécifiques.</p>
+<p>Citations:</p>
+<ul>
+<li>[1] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-extract/</li>
+<li>[2] https://www.postgresqltutorial.com/postgresql-date-functions/</li>
+<li>[3] https://www.timescale.com/learn/postgresql-date-and-time-functions</li>
+<li>[4] https://www.tutorialspoint.com/postgresql/postgresql_date_time.htm</li>
+<li>[5] https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-interval/</li>
+<li>[6] https://www.commandprompt.com/education/postgresql-interval-data-type-with-examples/</li>
+<li>[7] https://www.commandprompt.com/education/date-time-functions-in-postgresql-with-examples/</li>
+<li>[8] https://www.geeksforgeeks.org/postgresql-interval-data-type/</li>
+<li>[9] https://www.tutorialsteacher.com/postgresql/interval-data-type</li>
+<li>[10] https://www.enterprisedb.com/blog/postgresql-interval-date-timestamp-and-time-data-types</li>
+<li>[11] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/</li>
+<li>[12] https://stackoverflow.com/questions/60825438/postgres-date-compare-with-iso-timestamp</li>
+<li>[13] https://stackoverflow.com/questions/31123409/interval-days-in-postgresql-with-two-parameters</li>
+<li>[14] https://www.postgresql.org/docs/current/datatype-datetime.html</li>
+</ul>
+<h2 id="operations-sur-les-dates">Opérations sur les dates</h2>
+<ol>
+<li>
+<p>Soustraction de dates :</p>
+<ul>
+<li>Vous pouvez soustraire deux dates pour obtenir un intervalle.</li>
+<li>Exemple : <code>date '2023-09-21' - date '2023-01-01'</code> retournera un intervalle représentant la différence entre ces
+  deux dates[3].</li>
+</ul>
+</li>
+<li>
+<p>Addition/Soustraction avec un intervalle :</p>
+<ul>
+<li>Vous pouvez ajouter ou soustraire un intervalle à une date.</li>
+<li>Exemple : <code>date '2023-09-21' + interval '1 month'</code> ajoutera un mois à la date spécifiée[2].</li>
+</ul>
+</li>
+</ol>
+<h2 id="operations-sur-les-timestamps">Opérations sur les timestamps</h2>
+<ol>
+<li>
+<p>Soustraction de timestamps :</p>
+<ul>
+<li>La soustraction de deux timestamps retourne un intervalle.</li>
+<li>Exemple : <code>timestamp '2023-09-21 10:00:00' - timestamp '2023-09-20 09:00:00'</code> donnera l'intervalle entre ces deux
+  moments[4].</li>
+</ul>
+</li>
+<li>
+<p>Addition/Soustraction avec un intervalle :</p>
+<ul>
+<li>Comme pour les dates, vous pouvez ajouter ou soustraire des intervalles aux timestamps.</li>
+<li>Exemple : <code>timestamp '2023-09-21 10:00:00' - interval '2 hours'</code> soustraira 2 heures au timestamp[6].</li>
+</ul>
+</li>
+</ol>
+<h2 id="points-importants-a-noter">Points importants à noter</h2>
+<ol>
+<li>
+<p>Précision : Les opérations sur les timestamps sont plus précises car elles prennent en compte les heures, minutes et
+   secondes[1].</p>
+</li>
+<li>
+<p>Fuseaux horaires : Pour les <code>timestamp with time zone</code>, PostgreSQL gère automatiquement les ajustements de fuseau
+   horaire lors des opérations[7].</p>
+</li>
+<li>
+<p>Intervalles complexes : Vous pouvez utiliser des intervalles complexes comme <code>interval '1 year 2 months 3 days'</code> pour
+   des calculs plus élaborés[2].</p>
+</li>
+<li>
+<p>Fonction AGE() : Pour calculer la différence entre deux dates ou timestamps de manière plus lisible, vous pouvez
+   utiliser la fonction <code>age()</code>[5].</p>
+</li>
+</ol>
+<p>Ces opérations sont très utiles pour effectuer des calculs temporels dans vos requêtes, comme trouver la durée entre
+deux événements ou calculer des dates futures ou passées basées sur une date de référence.</p>
+<p>Citations:</p>
+<ul>
+<li>[1] https://docs.postgresql.fr/16/functions-datetime.html</li>
+<li>[2] https://learnsql.fr/blog/fonctions-de-date-de-postgresql/</li>
+<li>[3] https://forums.postgresql.fr/viewtopic.php?id=1067</li>
+<li>[4] https://postgresql.developpez.com/documentation/francais/10beta4/functions-datetime.html</li>
+<li>[5] https://sql.sh/fonctions/date-heure</li>
+<li>[6] https://postgresql.developpez.com/documentation/francais/8.2.5/functions-datetime.html</li>
+<li>[7] https://www.postgresql.org/docs/8.1/functions-datetime.html</li>
+</ul>
+<h2 id="conversion-dun-intervalle-en-nombre-dheures-float">Conversion d'un intervalle en nombre d'heures (float)</h2>
+<p>La méthode la plus courante pour convertir un intervalle en nombre est de le transformer en secondes, puis de le diviser
+pour obtenir l'unité souhaitée. Pour obtenir un nombre d'heures en float, vous pouvez utiliser la fonction EXTRACT avec
+l'unité 'epoch' :</p>
+<pre><code class="language-sql">select extract(epoch from interval '4 hours 30 minutes') / 3600.0 as heures;
+</code></pre>
+<p>Cette requête retournera 4.5, représentant 4 heures et 30 minutes en format décimal[1].</p>
+<h2 id="conversion-en-numeric">Conversion en numeric</h2>
+<p>Pour une conversion en type numeric, qui offre une précision arbitraire, vous pouvez utiliser une approche similaire :</p>
+<pre><code class="language-sql">select cast(extract(epoch from interval '4 hours 30 minutes') / 3600.0 as numeric(10, 2)) as heures;
+</code></pre>
+<p>Cette requête convertira l'intervalle en un nombre de type numeric avec 2 décimales[6].</p>
+<h2 id="points-importants-a-noter_1">Points importants à noter</h2>
+<ol>
+<li>
+<p><em>Précision</em> : La conversion d'un intervalle en nombre peut entraîner une perte de précision, surtout pour les
+   intervalles incluant des années ou des mois, car ces unités n'ont pas une durée fixe en secondes[5].</p>
+</li>
+<li>
+<p><em>Unités variables</em> : Les années et les mois sont traités de manière spéciale dans les intervalles PostgreSQL. Par
+   exemple, '1 year' n'est pas toujours égal à 365 jours, ce qui peut conduire à des résultats inattendus lors de la
+   conversion[3].</p>
+</li>
+<li>
+<p><em>Choix de l'unité</em> : Vous pouvez ajuster le diviseur (3600.0 dans les exemples ci-dessus) pour obtenir d'autres unités.
+   Par exemple, utilisez 86400.0 pour obtenir des jours, ou 60.0 pour des minutes.</p>
+</li>
+<li>
+<p><em>Fonction <code>to_char()</code></em> : Pour des besoins de formatage plus complexes, vous pouvez utiliser la fonction to_char() qui
+   permet de formater divers types de données, y compris les intervalles[2].</p>
+</li>
+</ol>
+<p>En conclusion, bien que PostgreSQL ne fournisse pas de conversion directe d'un intervalle en float ou numeric, il est
+possible d'effectuer cette conversion en utilisant la fonction EXTRACT avec l'unité 'epoch', suivie d'une division et
+éventuellement d'un CAST si nécessaire.</p>
+<p>Citations:</p>
+<ul>
+<li>[1] https://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres</li>
+<li>[2] https://www.postgresql.org/docs/8.1/functions-formatting.html</li>
+<li>[3] https://www.alibabacloud.com/blog/how-to-convert-a-postgresql-time-interval-to-a-numeric-value_598990</li>
+<li>[4] https://www.postgresql.org/message-id/20180914134014.18a9cf7d%40wrkhors.com</li>
+<li>[5] https://github.com/cockroachdb/cockroach/issues/43272</li>
+<li>[6] https://www.postgresql.org/docs/9.3/datatype-numeric.html</li>
+</ul>
+<hr />
+<p><small>
+   <cite>
+      <strong>Note</strong> : <em>Page rédigée en partie avec l'aide d'un assistant IA, principalement
+      à l'aide de Perplexity AI, avec les _LLM</em> <code>GPT-4 Omni</code> et <code>Claude 3.5 Sonnet</code>. L'IA
+      a été utilisée pour générer des explications, des exemples et des suggestions de
+      structure. Toutes les informations ont été vérifiées, éditées et complétées par
+      l'auteur._
+   </cite>
+</small></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../07-r%C3%A9cursives/" class="btn btn-neutral float-left" title="7 - Requêtes récursives"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="btn btn-neutral float-right" title="Modélisation Entité-Association">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../07-r%C3%A9cursives/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
