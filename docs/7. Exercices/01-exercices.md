@@ -31,7 +31,7 @@ SQL.
 2. [Livres](DEA/02-livres.md)
 3. [Réseau de transport en commun](DEA/03-transport.md)
 4. [Chapine de restaurants](DEA/04-restaurants.md)
-5. [Agence de oyages.md](DEA/05-voyages.md)
+5. [Agence de voyages](DEA/05-voyages.md)
 6. [Système de gestion d'un hôpital](DEA/06-hopital.md)
 
 

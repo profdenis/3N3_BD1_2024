@@ -219,25 +219,26 @@ where n_offerings > (select avg(n_offerings) as avg_n_offerings
 
 - Ne pas *sur-utiliser* la syntaxe `with`
 - Par exemple, ne réécrivez pas cette requête
-  ```sql
-  select name, email 
-  from student 
-  where email like '%@example.com'
-  union
-  select name, email 
-  from instructor 
-  where email like '%@example.com';
-  ```
+
+```sql
+select name, email 
+from student 
+where email like '%@example.com'
+union
+select name, email 
+from instructor 
+where email like '%@example.com';
+```
 
   comme
 
-  ```sql
-  with students_example as (select name, email from student where email like '%@example.com'),
-       instructor_example as (select name, email from instructor where email like '%@example.com')
-  select * from students_example
-  union
-  select * from instructor_example;
-  ```
+```sql
+with students_example as (select name, email from student where email like '%@example.com'),
+   instructor_example as (select name, email from instructor where email like '%@example.com')
+select * from students_example
+union
+select * from instructor_example;
+```
 
 - Bien que cette requête soit techniquement correcte et équivalente à la requête
   originale, l'utilisation de `with` pour définir 2 tables temporaires est

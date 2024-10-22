@@ -396,23 +396,23 @@ where n_offerings &gt; (select avg(n_offerings) as avg_n_offerings
 </code></pre>
 <ul>
 <li>Ne pas <em>sur-utiliser</em> la syntaxe <code>with</code></li>
-<li>Par exemple, ne réécrivez pas cette requête
-  <code>sql
-  select name, email 
-  from student 
-  where email like '%@example.com'
-  union
-  select name, email 
-  from instructor 
-  where email like '%@example.com';</code></li>
+<li>Par exemple, ne réécrivez pas cette requête</li>
 </ul>
+<pre><code class="language-sql">select name, email 
+from student 
+where email like '%@example.com'
+union
+select name, email 
+from instructor 
+where email like '%@example.com';
+</code></pre>
 <p>comme</p>
-<p><code>sql
-  with students_example as (select name, email from student where email like '%@example.com'),
-       instructor_example as (select name, email from instructor where email like '%@example.com')
-  select * from students_example
-  union
-  select * from instructor_example;</code></p>
+<pre><code class="language-sql">with students_example as (select name, email from student where email like '%@example.com'),
+   instructor_example as (select name, email from instructor where email like '%@example.com')
+select * from students_example
+union
+select * from instructor_example;
+</code></pre>
 <ul>
 <li>Bien que cette requête soit techniquement correcte et équivalente à la requête
   originale, l'utilisation de <code>with</code> pour définir 2 tables temporaires est
