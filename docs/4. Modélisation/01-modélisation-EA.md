@@ -44,7 +44,7 @@
     - la notation **UML**, ou
     - d'autres notations [notation.md](02-notation.md)
     - le modèle *conceptuel* est très général, comme une première ébauche, se
-      concentrant uniquement sur les entités et les relations
+      concentrant uniquement sur les entités et les associations
     - le modèle *logique* ajoute des types de données et des contraintes au
       modèle *conceptuel*
 
@@ -67,9 +67,9 @@
 #### Notation Traditionnelle
 
 - **Ensembles d'entités** : rectangles
-- **Ensembles de relations** : losanges
+- **Ensembles de associations** : losanges
 - **Attributs** : ovales
-- **Flèches** pour connecter les ensembles de relations aux ensembles
+- **Flèches** pour connecter les ensembles de associations aux ensembles
   d'entités :
     - *triangle noir plein* : au plus 1
     - *triangle rond ouvert* ou *triangle transparent* : exactement 1
@@ -81,10 +81,10 @@
 [notation.md](02-notation.md)
 
 - **Entités** : rectangles
-- **Relations** : lignes entre les entités, éventuellement avec des étiquettes
+- **Associations** : lignes entre les entités, éventuellement avec des étiquettes
   et des flèches directionnelles à côté des étiquettes
 - **Attributs** : dans les rectangles des entités, sous les noms des entités
-- **Cardinalités** pour connecter les relations aux entités :
+- **Cardinalités** pour connecter les associations aux entités :
     - *au plus 1* : `0..1`
     - *exactement 1* : `1` ou `1..1`
     - *plusieurs* : `*`
