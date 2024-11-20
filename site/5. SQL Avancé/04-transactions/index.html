@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Différentes notations pour les DEA - Cours de bases de données</title>
+    <title>Transactions - Cours de bases de données</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Diff\u00e9rentes notations pour les DEA";
-        var mkdocs_page_input_path = "4. Mod\u00e9lisation/02-notation.md";
+        var mkdocs_page_name = "Transactions";
+        var mkdocs_page_input_path = "5. SQL Avanc\u00e9/04-transactions.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -100,53 +100,43 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">4. Modélisation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-vues/">Vues</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Différentes notations pour les DEA</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-objet-relationel/">Modèle objet-relationel</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Transactions</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#notation-traditionnelle-du-diagramme-entite-association">Notation traditionnelle du diagramme entité-association</a>
+    <li class="toctree-l2"><a class="reference internal" href="#version-1">Version 1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#version-2">Version 2</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#version-3">Version 3</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#version-4">Version 4</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#diagramme-avec-etiquettes">Diagramme avec étiquettes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#transaction">Transaction</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#diagramme-sans-etiquettes">Diagramme sans étiquettes</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#utilisation-des-cardinalites-ou-multiplicites-a-la-place">Utilisation des cardinalités (ou multiplicités) à la place</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#notation-en-pied-de-corbeau">Notation en pied-de-corbeau</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#differents-types-de-diagrammes-ea-avec-plantuml">Différents types de diagrammes EA avec PlantUML</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#base-de-donnees-de-contacts">Base de données de contacts</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#diagramme-de-base-conceptuel">Diagramme de base (Conceptuel)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#avec-types-de-donnees-et-contraintes-logique">Avec types de données et contraintes (Logique)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#insert-into-retuning-id">insert into ... retuning id</a>
     </li>
         </ul>
     </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../03-exemples/">Exemples</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/04-transactions/">Transactions</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
@@ -203,8 +193,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">4. Modélisation</li>
-      <li class="breadcrumb-item active">Différentes notations pour les DEA</li>
+          <li class="breadcrumb-item">5. SQL Avancé</li>
+      <li class="breadcrumb-item active">Transactions</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -213,249 +203,261 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="differentes-notations-pour-les-dea">Différentes notations pour les DEA</h1>
-<h2 id="notation-traditionnelle-du-diagramme-entite-association">Notation traditionnelle du diagramme entité-association</h2>
-<p><strong>Remarque</strong> : il est difficile d'inclure des losanges pour les associations
-avec PlantUML, mais nous pouvons nommer les associations avec une étiquette. Les
-étiquettes ne sont pas utilisées dans le premier diagramme en raison des boîtes
-de notes proches des associations. Le deuxième diagramme montre les étiquettes
-des associations au lieu des boîtes de notes.</p>
-<p>Nous incluons généralement des boîtes de notes uniquement dans certains cas, pas
-sur toutes les associations. Il est souvent recommandé de nommer les
-associations pour clarifier leur objectif ou leur signification, non seulement
-en utilisant la notation traditionnelle ERD, mais aussi avec d'autres notations.</p>
-<h3 id="diagramme-avec-etiquettes">Diagramme avec étiquettes</h3>
-<details>
-    <summary>Code</summary>
+                <h1 id="transactions">Transactions</h1>
+<p><a href="../../src/exemples_fk.sql">exemples_fk.sql</a></p>
+<h2 id="version-1">Version 1</h2>
+<pre><code class="language-sql">create schema exemples_fk1;
+set search_path to exemples_fk1;
 
+create table users
+(
+    id       int generated by default as identity primary key,
+    username varchar(16) unique not null,
+    email    text unique        not null
+);
 
-<pre><code class="language-plantuml">
-@startuml
-
-T1 -- T2
-
-note on link: plusieurs-à-plusieurs\nentre T1 et T2
-
-T2 --&gt; T3
-
-note on link: plusieurs-à-un\nentre T2 et T3
-
-T3 --|&gt; T4
-
-note on link: plusieurs-à-exactement-un\nentre T3 et T4
-
-T2 &lt;-&gt; T5
-
-note on link: un-à-un\nentre T2 et T5
-
-T5 &lt;|--|&gt; T6
-
-note on link: exactement-un-à-exactement-un\nentre T5 et T6
-
-@enduml
+create table profile
+(
+    id          int generated by default as identity primary key,
+    name        text not null,
+    description text not null,
+    user_id int references users(id)
+);
 </code></pre>
-
-
-</details>
-<p><img alt="Diagramme avec étiquettes" src="../../images/notation1.png" /></p>
-<h3 id="diagramme-sans-etiquettes">Diagramme sans étiquettes</h3>
-<p>Nous pouvons inclure <code>&lt;</code> ou <code>&gt;</code> dans les étiquettes pour aider à lire
-l'association plus facilement. Ce n'est pas très utile dans cet exemple
-générique, mais ce sera utile dans les exemples spécifiques.</p>
-<details>
-    <summary>Code</summary>
-
-
 <pre><code class="language-plantuml">@startuml
 
-T1 -- T2: rel_1
-
-T2 --&gt; T3: rel_2 &gt;
-
-T3 --|&gt; T4: rel_3 &gt;
-
-T2 &lt;-&gt; T5: &lt; rel_4
-
-T5 &lt;|--|&gt; T6: rel_5
-
-@enduml
-</code></pre>
-
-
-</details>
-<p><img alt="notation2.png" src="../../images/notation2.png" /></p>
-<h2 id="utilisation-des-cardinalites-ou-multiplicites-a-la-place">Utilisation des cardinalités (ou multiplicités) à la place</h2>
-<p><strong>Remarques</strong> :</p>
-<ul>
-<li>
-<p><code>*</code> peut être remplacé par <code>n</code>, ou parfois <code>m</code>.</p>
-</li>
-<li>
-<p>C'est la notation préférée, avec des étiquettes ajoutées sur les associations
-  si nécessaire.</p>
-</li>
-</ul>
-<details>
-    <summary>Code</summary>
-
-
-<pre><code class="language-plantuml">@startuml
-
-T1 &quot;*&quot; -- &quot;*&quot; T2
-
-note on link: plusieurs-à-plusieurs\nentre T1 et T2
-
-T2 &quot;*&quot; -- &quot;0..1&quot; T3
-
-note on link: plusieurs-à-un\nentre T2 et T3
-
-T3 &quot;*&quot; -- &quot;1&quot; T4
-
-note on link: plusieurs-à-exactement-un\nentre T3 et T4
-
-T2 &quot;0..1&quot; - &quot;0..1&quot; T5
-
-note on link: un-à-un\nentre T2 et T5
-
-T5 &quot;1&quot; -- &quot;1&quot; T6
-
-note on link: exactement-un-à-exactement-un\nentre T5 et T6
-
-T3 &quot;1..*&quot; - &quot;1..*&quot; T6
-
-note on link: au-moins-un-à-au-moins-un\nentre T3 et T6
-
-@enduml
-</code></pre>
-
-
-</details>
-<p><img alt="notation3.png" src="../../images/notation3.png" /></p>
-<h2 id="notation-en-pied-de-corbeau">Notation en pied-de-corbeau</h2>
-<details>
-    <summary>Code</summary>
-
-
-<pre><code class="language-plantuml">@startuml
-
-T1 }o--o{ T2
-
-note on link: plusieurs-à-plusieurs\nentre T1 et T2
-
-T2 }o--o| T3
-
-note on link: plusieurs-à-un\nentre T2 et T3
-
-T3 }o--|| T4
-
-note on link: plusieurs-à-exactement-un\nentre T3 et T4
-
-T2 |o-o| T5
-
-note on link: un-à-un\nentre T2 et T5
-
-T5 ||--|| T6
-
-note on link: exactement-un-à-exactement-un\nentre T5 et T6
-
-T3 }|-|{ T6
-
-note on link: au-moins-un-à-au-moins-un\nentre T3 et T6
-
-@enduml
-</code></pre>
-
-
-</details>
-<p><img alt="notation4.png" src="../../images/notation4.png" /></p>
-<h2 id="differents-types-de-diagrammes-ea-avec-plantuml">Différents types de diagrammes EA avec PlantUML</h2>
-<ul>
-<li>Il existe différents types de DEA :<ul>
-<li><strong>conceptuel</strong></li>
-<li><strong>logique</strong></li>
-<li><strong>physique</strong></li>
-</ul>
-</li>
-<li>Les modèles <em>conceptuels</em> et <em>logiques</em> ne contiennent pas de clés étrangères.
-  Il y a des associations, qui seront éventuellement converties en clés
-  étrangères, et peut-être en tables, à une étape ultérieure, généralement dans
-  les modèles physiques.</li>
-<li>Les modèles <em>conceptuels</em> sont très basiques, sans types de données ni
-  contraintes.</li>
-<li>Les types de données et les contraintes sont généralement ajoutés aux modèles
-  <em>logiques</em>.</li>
-<li>Les associations sont traduites en tables et en clés étrangères dans les
-  modèles <em>physiques</em>. Les diagrammes produits par Datagrip peuvent être
-  considérés comme des modèles <em>physiques</em>, rétro-conçus à partir d'une base de
-  données existante.</li>
-</ul>
-<h3 id="base-de-donnees-de-contacts">Base de données de contacts</h3>
-<h4 id="diagramme-de-base-conceptuel">Diagramme de base (Conceptuel)</h4>
-<details>
-    <summary>Code</summary>
-
-
-<pre><code class="language-plantuml">@startuml
-entity Call {
-    call_id
+entity users {
+    * id: int &lt;&lt;generated&gt;&gt; &lt;&lt;pk&gt;&gt;
     --
-    phone
-    datetime
+    * username: varchar(16)
+    * email: text
 }
 
-entity Contact {
-    contact_id
+entity profile {
+    * id: int &lt;&lt;generated&gt;&gt; &lt;&lt;pk&gt;&gt;
     --
-    name
-    phone
-    address
-    email
+    * name: text
+    * description: text
+    user_id: int &lt;&lt;fk users(id)&gt;&gt;
 }
 
-Call &quot;*&quot; -- &quot;0..1&quot; Contact : &quot;            &quot;
+users &quot;0..1&quot; -- &quot;*&quot; profile
+
 @enduml
 </code></pre>
-
-
-</details>
-<p><img alt="notation5.png" src="../../images/notation5.png" /></p>
-<h3 id="avec-types-de-donnees-et-contraintes-logique">Avec types de données et contraintes (Logique)</h3>
-<p>Le cercle avant un nom de colonne signifie <strong>obligatoire</strong>, et l'absence de ce
-cercle signifie <strong>optionnel</strong>.</p>
-<details>
-    <summary>Code</summary>
-
-
+<h2 id="version-2">Version 2</h2>
 <pre><code class="language-plantuml">@startuml
-entity Call {
-    * call_id : INT
+
+entity users {
+    * id: int &lt;&lt;generated&gt;&gt; &lt;&lt;pk&gt;&gt;
     --
-    phone : VARCHAR
-    datetime : DATETIME
+    * username: varchar(16)
+    * email: text
 }
 
-entity Contact {
-    * contact_id : INT
+entity profile {
+    * id: int &lt;&lt;generated&gt;&gt; &lt;&lt;pk&gt;&gt;
     --
-    name : VARCHAR
-    phone : VARCHAR
-    address : VARCHAR
-    email : VARCHAR
+    * name: text
+    * description: text
+    * user_id: int &lt;&lt;fk users(id)&gt;&gt;
 }
 
-Call &quot;*&quot; -- &quot;0..1&quot; Contact : &quot;            &quot;
+users &quot;1&quot; -- &quot;*&quot; profile
+
 @enduml
 </code></pre>
+<pre><code class="language-sql">create schema exemples_fk2;
+set search_path to exemples_fk2;
+
+create table users
+(
+    id       int generated by default as identity primary key,
+    username varchar(16) unique not null,
+    email    text unique        not null
+);
+
+create table profile
+(
+    id          int generated by default as identity primary key,
+    name        text not null,
+    description text not null,
+    user_id int references users(id) not null 
+);
+</code></pre>
+<h2 id="version-3">Version 3</h2>
+<pre><code class="language-plantuml">@startuml
+
+entity users {
+    * id: int &lt;&lt;generated&gt;&gt; &lt;&lt;pk&gt;&gt;
+    --
+    * username: varchar(16)
+    * email: text
+    profile_id: int &lt;&lt;fk profile(id)&gt;&gt;
+}
+
+entity profile {
+    * id: int &lt;&lt;generated&gt;&gt; &lt;&lt;pk&gt;&gt;
+    --
+    * name: text
+    * description: text
+    * user_id: int &lt;&lt;fk users(id)&gt;&gt;
+}
+
+users &quot;1&quot; -- &quot;0..1&quot; profile
+
+@enduml
+</code></pre>
+<pre><code class="language-sql">create schema exemples_fk3;
+set search_path to exemples_fk3;
+
+-- erreur, profile n'existe pas
+-- si on inverse la création des tables, on obtiendra également une erreur, que users n'existe pas
+create table users
+(
+    id         int generated by default as identity primary key,
+    username   varchar(16) unique not null,
+    email      text unique        not null,
+    profile_id int references profile (id)
+);
+
+create table profile
+(
+    id          int generated by default as identity primary key,
+    name        text                      not null,
+    description text                      not null,
+    user_id     int references users (id) not null
+);
+</code></pre>
+<pre><code class="language-sql">create schema exemples_fk3;
+set search_path to exemples_fk3;
+
+create table users
+(
+    id         int generated by default as identity primary key,
+    username   varchar(16) unique not null,
+    email      text unique        not null,
+    profile_id int -- references profile (id)
+);
+
+create table profile
+(
+    id          int generated by default as identity primary key,
+    name        text                      not null,
+    description text                      not null,
+    user_id     int references users (id) not null
+);
+
+alter table users add foreign key (profile_id) references profile(id);
+
+insert into users(username, email) values ('denis', 'denis@example.com');
+insert into profile(name, description, user_id) values ('public', 'profil public', 1); 
+update users set profile_id = 1 where id = 1;
+</code></pre>
+<h2 id="version-4">Version 4</h2>
+<pre><code class="language-plantuml">@startuml
+
+entity users {
+    * id: int &lt;&lt;generated&gt;&gt; &lt;&lt;pk&gt;&gt;
+    --
+    * username: varchar(16)
+    * email: text
+    * profile_id: int &lt;&lt;fk profile(id)&gt;&gt;
+}
+
+entity profile {
+    * id: int &lt;&lt;generated&gt;&gt; &lt;&lt;pk&gt;&gt;
+    --
+    * name: text
+    * description: text
+    * user_id: int &lt;&lt;fk users(id)&gt;&gt;
+}
+
+users &quot;1&quot; -- &quot;1&quot; profile
+
+@enduml
+</code></pre>
+<pre><code class="language-sql">create schema exemples_fk4;
+set search_path to exemples_fk4;
+
+create table users
+(
+    id         int generated by default as identity primary key,
+    username   varchar(16) unique not null,
+    email      text unique        not null,
+    profile_id int                not null -- references profile (id)
+);
+
+create table profile
+(
+    id          int generated by default as identity primary key,
+    name        text                      not null,
+    description text                      not null,
+    user_id     int references users (id) not null
+);
+
+alter table users
+    add foreign key (profile_id) references profile (id);
 
 
-</details>
-<p><img alt="notation6.png" src="../../images/notation6.png" /></p>
+-- erreur: profile_id ne peut pas être null
+insert into users(username, email)
+values ('denis', 'denis@example.com');
+
+-- erreur: user_id n'existe pas
+insert into profile(name, description, user_id)
+values ('public', 'profil public', 1);
+</code></pre>
+<p><strong>Solution</strong> : utiliser une transaction</p>
+<pre><code class="language-sql">create schema exemples_fk5;
+set search_path to exemples_fk5;
+
+create table users
+(
+    id         int generated by default as identity primary key,
+    username   varchar(16) unique not null,
+    email      text unique        not null,
+    profile_id int                not null -- references profile (id)
+);
+
+create table profile
+(
+    id          int generated by default as identity primary key,
+    name        text                      not null,
+    description text                      not null,
+    user_id     int references users (id) not null
+);
+
+alter table users
+    add constraint user_id_fk foreign key (profile_id) references profile (id) deferrable;
+</code></pre>
+<h3 id="transaction">Transaction</h3>
+<pre><code class="language-sql">begin transaction;
+
+set constraints user_id_fk deferred ;
+
+insert into users(username, email, profile_id)
+values ('denis', 'denis@example.com', 0);
+
+insert into profile(name, description, user_id)
+values ('public', 'profil public', 1);
+
+update users set profile_id = 1 where id = 1;
+
+set constraints user_id_fk immediate;
+
+commit;
+</code></pre>
+<h3 id="insert-into-retuning-id">insert into ... retuning id</h3>
+<pre><code class="language-sql">insert into profile(name, description, user_id)
+values ('public', 'profil public', 1) returning id;
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../01b-enit%C3%A9s-faibles/" class="btn btn-neutral float-left" title="Les Entités Faibles"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../03-exemples/" class="btn btn-neutral float-right" title="Exemples">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../03-objet-relationel/" class="btn btn-neutral float-left" title="Modèle objet-relationel"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="btn btn-neutral float-right" title="Gestion des Utilisateurs et Sécurité">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -478,10 +480,10 @@ Call &quot;*&quot; -- &quot;0..1&quot; Contact : &quot;            &quot;
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../01b-enit%C3%A9s-faibles/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../03-objet-relationel/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../03-exemples/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
