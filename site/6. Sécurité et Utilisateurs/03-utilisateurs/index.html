@@ -195,6 +195,8 @@
     </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04-mots-de-passe/">Gestion des mots de passe d'application dans une BD</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">7. Exercices</span></p>
               <ul>
@@ -297,24 +299,23 @@ dans <code>psql</code>. Cette commande invite l'utilisateur à entrer son nouvea
 passe de manière sécurisée.</p>
 <p>Voici les étapes :</p>
 <ol>
-<li>
-<p>Ouvrez le terminal et connectez-vous à PostgreSQL en tant qu'utilisateur dont
-   vous souhaitez modifier le mot de passe :
-   <code>sh
-   psql -U nom_utilisateur -d nom_base_de_donnees</code></p>
-</li>
-<li>
-<p>Une fois connecté, exécutez la commande <code>\password</code> :
-   <code>sql
-   \password</code></p>
-</li>
-<li>
-<p>PostgreSQL vous demandera d'entrer le nouveau mot de passe deux fois pour
-   confirmation :
-   <code>Enter new password:
-   Enter it again:</code></p>
-</li>
+<li>Ouvrez le terminal et connectez-vous à PostgreSQL en tant qu'utilisateur dont
+   vous souhaitez modifier le mot de passe :</li>
 </ol>
+<pre><code class="language-sh">psql -U nom_utilisateur -d nom_base_de_donnees
+</code></pre>
+<ol>
+<li>Une fois connecté, exécutez la commande <code>\password</code> :</li>
+</ol>
+<pre><code class="language-sql">\password
+</code></pre>
+<ol>
+<li>PostgreSQL vous demandera d'entrer le nouveau mot de passe deux fois pour
+   confirmation :</li>
+</ol>
+<pre><code>Enter new password:
+Enter it again:
+</code></pre>
 <p>Exemple complet :</p>
 <pre><code class="language-sh">psql -U alice -d mydatabase
 </code></pre>
@@ -328,26 +329,19 @@ l'écrire en clair dans une commande <code>ALTER USER</code>, il peut utiliser l
 commande <code>\password</code> suivie du nom de l'utilisateur cible. Cela permet de
 modifier le mot de passe de l'utilisateur de manière sécurisée.</p>
 <p>Voici les étapes :</p>
-<ol>
-<li>
-<p>Ouvrez le terminal et connectez-vous à PostgreSQL en tant qu'administrateur (
-   ou un utilisateur ayant les privilèges nécessaires) :
-   <code>sh
-   psql -U admin -d nom_base_de_donnees</code></p>
-</li>
-<li>
-<p>Une fois connecté, exécutez la commande <code>\password</code> suivie du nom de
-   l'utilisateur dont vous souhaitez modifier le mot de passe :
-   <code>sql
-   \password nom_utilisateur</code></p>
-</li>
-<li>
-<p>PostgreSQL vous demandera d'entrer le nouveau mot de passe deux fois pour
-   confirmation :
-   <code>Enter new password:
-   Enter it again:</code></p>
-</li>
-</ol>
+<p>1- Ouvrez le terminal et connectez-vous à PostgreSQL en tant qu'administrateur (
+   ou un utilisateur ayant les privilèges nécessaires) :</p>
+<pre><code class="language-sh">psql -U admin -d nom_base_de_donnees
+</code></pre>
+<p>2- Une fois connecté, exécutez la commande <code>\password</code> suivie du nom de
+   l'utilisateur dont vous souhaitez modifier le mot de passe :</p>
+<pre><code class="language-sql">\password nom_utilisateur
+</code></pre>
+<p>3- PostgreSQL vous demandera d'entrer le nouveau mot de passe deux fois pour
+   confirmation :</p>
+<pre><code>Enter new password:
+Enter it again:
+</code></pre>
 <p>Exemple complet :</p>
 <pre><code class="language-sh">psql -U admin -d mydatabase
 </code></pre>
@@ -420,24 +414,16 @@ tous les utilisateurs qui sont des développeurs.</p>
 <h3 id="52-exemple-de-controle-dacces">5.2. Exemple de Contrôle d'Accès</h3>
 <p>Supposons que vous avez une base de données avec plusieurs tables et que vous
 souhaitez gérer les accès de manière structurée :</p>
-<ol>
-<li>
-<p><strong>Créer un rôle pour les développeurs</strong> :
-   <code>sql
-   CREATE ROLE dev_team;</code></p>
-</li>
-<li>
-<p><strong>Attribuer des privilèges au rôle</strong> :
-   <code>sql
-   GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO dev_team;</code></p>
-</li>
-<li>
-<p><strong>Attribuer le rôle aux utilisateurs</strong> :
-   <code>sql
-   GRANT dev_team TO alice;
-   GRANT dev_team TO bob;</code></p>
-</li>
-</ol>
+<p>1- <strong>Créer un rôle pour les développeurs</strong> :</p>
+<pre><code class="language-sql">CREATE ROLE dev_team;
+</code></pre>
+<p>2- <strong>Attribuer des privilèges au rôle</strong> :</p>
+<pre><code class="language-sql">GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO dev_team;
+</code></pre>
+<p>3- <strong>Attribuer le rôle aux utilisateurs</strong> :</p>
+<pre><code class="language-sql">GRANT dev_team TO alice;
+GRANT dev_team TO bob;
+</code></pre>
 <h3 id="postgresql-et-le-rbac">PostgreSQL et le RBAC</h3>
 <p>PostgreSQL utilise le RBAC pour gérer
 les permissions et les accès des utilisateurs. PostgreSQL implémente
@@ -467,44 +453,30 @@ gestion des permissions en créant des rôles parents et enfants.</p>
 </ul>
 <h3 id="exemples-dutilisation-du-rbac-dans-postgresql">Exemples d'Utilisation du RBAC dans PostgreSQL</h3>
 <h4 id="creation-de-roles-et-attribution-de-permissions">Création de Rôles et Attribution de Permissions</h4>
-<ol>
-<li>
-<p><strong>Créer des rôles</strong> :
-   <code>sql
-   CREATE ROLE dev_team;
-   CREATE ROLE qa_team;
-   CREATE ROLE admin_team WITH LOGIN SUPERUSER;</code></p>
-</li>
-<li>
-<p><strong>Attribuer des privilèges aux rôles</strong> :
-   <code>sql
-   GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO dev_team;
-   GRANT SELECT ON employees TO qa_team;</code></p>
-</li>
-<li>
-<p><strong>Créer des utilisateurs et attribuer des rôles</strong> :
-   <code>sql
-   CREATE USER alice WITH PASSWORD 'password123';
-   CREATE USER bob WITH PASSWORD 'password456';
-   GRANT dev_team TO alice;
-   GRANT qa_team TO bob;</code></p>
-</li>
-</ol>
+<p>1- <strong>Créer des rôles</strong> :</p>
+<pre><code class="language-sql">CREATE ROLE dev_team;
+CREATE ROLE qa_team;
+CREATE ROLE admin_team WITH LOGIN SUPERUSER;
+</code></pre>
+<p>2- <strong>Attribuer des privilèges aux rôles</strong> :</p>
+<pre><code class="language-sql">GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO dev_team;
+GRANT SELECT ON employees TO qa_team;
+</code></pre>
+<p>3- <strong>Créer des utilisateurs et attribuer des rôles</strong> :</p>
+<pre><code class="language-sql">CREATE USER alice WITH PASSWORD 'password123';
+CREATE USER bob WITH PASSWORD 'password456';
+GRANT dev_team TO alice;
+GRANT qa_team TO bob;
+</code></pre>
 <h4 id="heritage-des-permissions">Héritage des Permissions</h4>
-<ol>
-<li>
-<p><strong>Créer un rôle parent et un rôle enfant</strong> :
-   <code>sql
-   CREATE ROLE senior_dev INHERIT;
-   GRANT dev_team TO senior_dev;</code></p>
-</li>
-<li>
-<p><strong>Attribuer le rôle enfant à un utilisateur</strong> :
-   <code>sql
-   CREATE USER charlie WITH PASSWORD 'password789';
-   GRANT senior_dev TO charlie;</code></p>
-</li>
-</ol>
+<p>1- <strong>Créer un rôle parent et un rôle enfant</strong> :</p>
+<pre><code class="language-sql">CREATE ROLE senior_dev INHERIT;
+GRANT dev_team TO senior_dev;
+</code></pre>
+<p>2- <strong>Attribuer le rôle enfant à un utilisateur</strong> :</p>
+<pre><code class="language-sql">CREATE USER charlie WITH PASSWORD 'password789';
+GRANT senior_dev TO charlie;
+</code></pre>
 <p>Dans cet exemple, <code>charlie</code> hérite des permissions du rôle <code>dev_team</code> via le
 rôle <code>senior_dev</code>.</p>
 <h2 id="conclusion">Conclusion</h2>
@@ -527,7 +499,7 @@ robuste et une administration efficace de votre base de données.</p>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../02-rbac/" class="btn btn-neutral float-left" title="Contrôle d'Accès Basé sur les Rôles (RBAC)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../7.%20Exercices/01-exercices/" class="btn btn-neutral float-right" title="Exercices">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../04-mots-de-passe/" class="btn btn-neutral float-right" title="Gestion des mots de passe d'application dans une BD">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -553,7 +525,7 @@ robuste et une administration efficace de votre base de données.</p>
       <span><a href="../02-rbac/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../7.%20Exercices/01-exercices/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../04-mots-de-passe/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -74,21 +74,21 @@ Voici les étapes :
 
 1. Ouvrez le terminal et connectez-vous à PostgreSQL en tant qu'utilisateur dont
    vous souhaitez modifier le mot de passe :
-   ```sh
-   psql -U nom_utilisateur -d nom_base_de_donnees
-   ```
+```sh
+psql -U nom_utilisateur -d nom_base_de_donnees
+```
 
 2. Une fois connecté, exécutez la commande `\password` :
-   ```sql
-   \password
-   ```
+```sql
+\password
+```
 
 3. PostgreSQL vous demandera d'entrer le nouveau mot de passe deux fois pour
    confirmation :
-   ```
-   Enter new password:
-   Enter it again:
-   ```
+```
+Enter new password:
+Enter it again:
+```
 
 Exemple complet :
 
@@ -111,24 +111,24 @@ modifier le mot de passe de l'utilisateur de manière sécurisée.
 
 Voici les étapes :
 
-1. Ouvrez le terminal et connectez-vous à PostgreSQL en tant qu'administrateur (
+1- Ouvrez le terminal et connectez-vous à PostgreSQL en tant qu'administrateur (
    ou un utilisateur ayant les privilèges nécessaires) :
-   ```sh
-   psql -U admin -d nom_base_de_donnees
-   ```
+```sh
+psql -U admin -d nom_base_de_donnees
+```
 
-2. Une fois connecté, exécutez la commande `\password` suivie du nom de
+2- Une fois connecté, exécutez la commande `\password` suivie du nom de
    l'utilisateur dont vous souhaitez modifier le mot de passe :
-   ```sql
-   \password nom_utilisateur
-   ```
+```sql
+\password nom_utilisateur
+```
 
-3. PostgreSQL vous demandera d'entrer le nouveau mot de passe deux fois pour
+3- PostgreSQL vous demandera d'entrer le nouveau mot de passe deux fois pour
    confirmation :
-   ```
-   Enter new password:
-   Enter it again:
-   ```
+```
+Enter new password:
+Enter it again:
+```
 
 Exemple complet :
 
@@ -230,21 +230,21 @@ tous les utilisateurs qui sont des développeurs.
 Supposons que vous avez une base de données avec plusieurs tables et que vous
 souhaitez gérer les accès de manière structurée :
 
-1. **Créer un rôle pour les développeurs** :
-   ```sql
-   CREATE ROLE dev_team;
-   ```
+1- **Créer un rôle pour les développeurs** :
+```sql
+CREATE ROLE dev_team;
+```
 
-2. **Attribuer des privilèges au rôle** :
-   ```sql
-   GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO dev_team;
-   ```
+2- **Attribuer des privilèges au rôle** :
+```sql
+GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO dev_team;
+```
 
-3. **Attribuer le rôle aux utilisateurs** :
-   ```sql
-   GRANT dev_team TO alice;
-   GRANT dev_team TO bob;
-   ```
+3- **Attribuer le rôle aux utilisateurs** :
+```sql
+GRANT dev_team TO alice;
+GRANT dev_team TO bob;
+```
 
 ### PostgreSQL et le RBAC
 
@@ -282,40 +282,40 @@ gestion des permissions en créant des rôles parents et enfants.
 
 #### Création de Rôles et Attribution de Permissions
 
-1. **Créer des rôles** :
-   ```sql
-   CREATE ROLE dev_team;
-   CREATE ROLE qa_team;
-   CREATE ROLE admin_team WITH LOGIN SUPERUSER;
-   ```
+1- **Créer des rôles** :
+```sql
+CREATE ROLE dev_team;
+CREATE ROLE qa_team;
+CREATE ROLE admin_team WITH LOGIN SUPERUSER;
+```
 
-2. **Attribuer des privilèges aux rôles** :
-   ```sql
-   GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO dev_team;
-   GRANT SELECT ON employees TO qa_team;
-   ```
+2- **Attribuer des privilèges aux rôles** :
+```sql
+GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO dev_team;
+GRANT SELECT ON employees TO qa_team;
+```
 
-3. **Créer des utilisateurs et attribuer des rôles** :
-   ```sql
-   CREATE USER alice WITH PASSWORD 'password123';
-   CREATE USER bob WITH PASSWORD 'password456';
-   GRANT dev_team TO alice;
-   GRANT qa_team TO bob;
-   ```
+3- **Créer des utilisateurs et attribuer des rôles** :
+```sql
+CREATE USER alice WITH PASSWORD 'password123';
+CREATE USER bob WITH PASSWORD 'password456';
+GRANT dev_team TO alice;
+GRANT qa_team TO bob;
+```
 
 #### Héritage des Permissions
 
-1. **Créer un rôle parent et un rôle enfant** :
-   ```sql
-   CREATE ROLE senior_dev INHERIT;
-   GRANT dev_team TO senior_dev;
-   ```
+1- **Créer un rôle parent et un rôle enfant** :
+```sql
+CREATE ROLE senior_dev INHERIT;
+GRANT dev_team TO senior_dev;
+```
 
-2. **Attribuer le rôle enfant à un utilisateur** :
-   ```sql
-   CREATE USER charlie WITH PASSWORD 'password789';
-   GRANT senior_dev TO charlie;
-   ```
+2- **Attribuer le rôle enfant à un utilisateur** :
+```sql
+CREATE USER charlie WITH PASSWORD 'password789';
+GRANT senior_dev TO charlie;
+```
 
 Dans cet exemple, `charlie` hérite des permissions du rôle `dev_team` via le
 rôle `senior_dev`.
